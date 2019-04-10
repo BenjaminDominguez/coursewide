@@ -1,0 +1,17 @@
+@import 'config';
+@import 'topbar';
+@import 'navbar';
+@import 'carousel';
+@import 'courses';
+@import 'forms';
+@import 'showcase';
+
+.container {
+    padding: 3rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-family;
+}

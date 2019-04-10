@@ -1,0 +1,39 @@
+.bg-showcase {
+    height: 90vh;
+    padding: auto;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.showcase-inner {
+
+    &-right-md {
+        position: absolute;
+        height: 70%;
+        top: 10%;
+        width: 600px;
+        right: 0;
+        margin-left: auto;
+        margin-bottom: 4rem;
+        padding: 30px;
+        border-radius: 10px 0 0 10px;
+        box-shadow: -1px 1px 5px #999;
+        color: white;
+        background: $sec-pri-gradient;
+        // background: rgba(#169FFF, 0.8);
+        .showcase-header-text{
+            font-size: 3rem;
+            font-weight: 100;
+        }
+        p{
+            font-size: 1.5rem;
+        }
+
+        #submit-button-showcase{
+            background: white;
+            color: $secondary-color;
+            border: 1px solid #999;
+        }
+    }
+}

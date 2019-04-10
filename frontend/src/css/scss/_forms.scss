@@ -1,0 +1,101 @@
+form.register-form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+    box-shadow: -1px 2px 3px #999;
+    border-radius: 0 0 5px 5px;
+    border-top: 10px solid rgba($secondary-color, 0.5);
+    padding: 10px;
+
+    .form-control,
+    .form-heading{
+        margin: 10px auto;
+    }
+
+    .form-control {
+        .form-input {
+            width: 300px;
+            height: 30px;
+            border-radius: 10px;
+            border: 0.5px solid rgba(#999, 0.5);
+            outline: none;
+            padding: 10px;
+            font-size: 1rem;
+            &:focus{
+                box-shadow: -1px 1px 5px $secondary-color;
+                border: 1px solid $secondary-color;
+                transition: box-shadow 0.3s ease-in;
+            }
+        }
+
+        
+    }
+ 
+}
+
+.buttons {
+    margin: auto;
+    padding: auto;
+}
+
+.step-button {
+    margin: 10px auto;
+    display: inline;
+
+    .button-continue {
+
+        cursor: pointer;
+        outline: none;
+        border: none;
+        width: 150px;
+        height: 40px;
+        padding: 10px;
+        border-radius: 5px;
+        background: $secondary-color;
+        opacity: 0.5;
+        color: white;
+        font-size: 1rem;
+
+        &:hover {
+            opacity: 1;
+            transition: opacity 0.2s ease-in;
+            box-shadow: -1px 1px 10px $secondary-color;
+        }
+    }
+
+    .button-back {
+        margin: 10px auto;
+        display: inline;
+        cursor: pointer;
+        outline: none;
+        border: 0.5px solid rgba(#999, 0.5);
+        width: 150px;
+        height: 40px;
+        margin-left: 10px;
+        padding: 10px;
+        background: white;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 5px;
+
+        &:hover {
+            opacity: 1;
+            box-shadow: -1px 1px 10px $secondary-color;
+            transition: box-shadow 0.1s ease-in;
+        }
+    }
+}
+
+.confirm-register{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .confirm-register-content {
+        width: 400px;
+        margin: auto;
+        text-align: center;
+    }
+}

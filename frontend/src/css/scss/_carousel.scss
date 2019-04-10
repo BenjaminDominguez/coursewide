@@ -1,0 +1,56 @@
+.courseCarousel{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-content: center;
+    margin-top: 3rem;
+    padding: 1rem 7rem;
+    overflow: hidden;
+    
+    &Header{
+        text-align: center;
+        margin-top: 3rem;
+    }
+    .courseBox{
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        width: 300px;
+        padding: 20px;
+        margin: auto;
+        justify-content: center;
+        border-radius: 0 0 10px 10px;
+        border-top: 7px solid $secondary-color;
+        box-shadow: -1px 1px 5px #999;
+
+        .takeCourse{
+            cursor: pointer;
+            height: 50px;
+            width: 150px;
+            margin: auto;
+            background: $secondary-color;
+            color: white;
+            border: none;
+            font-size: 1rem;
+            font-style: inherit;
+            border-radius: 10px;
+            outline: none;
+
+            &:hover{
+                box-shadow: -1px 1px 10px $secondary-color;
+                transition: box-shadow 0.3s ease-in;
+            }
+        }
+
+        .courseName {
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .taughtBy {
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,129 @@
+nav.navbar {
+    margin: 0;
+    padding: 5px 0;
+    position: relative;
+    box-sizing: border-box; 
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    background: $primary-secondary-gradient;
+    //box-shadow: -1px 1px 10px #999;
+
+    .hamburger {
+        position: absolute;
+        margin: 28px 10px 5px 10px;
+        left: 80%;
+        transform: translate(10%, -45%);
+        cursor: pointer;
+        margin-left: 10px;
+
+        .line {
+            height: 3px;
+            margin: 5px;
+            width: 30px;
+            background: white;
+            display: block;
+            
+        }
+        &.hamburger-hidden{
+            display: none;
+        }
+    }
+
+    ul.nav-ul-link{
+        list-style-type: none;
+        margin: 2px 30px 0 0;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        .link {
+            color: white;
+            text-decoration: none;
+            margin: 1rem;
+
+            &:hover {
+                transition: color 0.1s ease-in;
+                color: #89f7fe;
+                cursor: pointer;
+            }
+        }
+
+        .nav-link{
+            margin: 10px 20px;
+            display: inline;
+            font-size: 1.2rem;
+            
+            &#nav-brand{
+                font-size: 2rem;
+                margin-left: auto;
+                padding-right: 30px;
+                color: white;
+            }
+
+            &.nav-link-login{
+                padding: 12px 50px;
+                font-size: 1rem;
+                border-radius: 5px;
+                width: auto;
+                color: black;
+                cursor: pointer;
+                border: none;
+                outline: none;
+                background: white;
+
+                .link {
+                    color: black;
+                    &:hover{
+                        color: black;
+                    }
+                }
+
+                &:hover{
+                    box-shadow: -1px 1px 10px white;
+                }
+            }
+        }
+
+        .nav-hamburger-toggle {
+            transition: max-height 0.8s ease-in;
+            max-height: 1000px;
+            
+
+            &.nav-hamburger-toggle-hidden{
+                max-height: 0px;
+                transition: max-height 0.8s ease-out;
+            }
+
+        }
+    }
+
+    // @media(max-width: 550px){
+    //     max-height: 10px;
+    //     transition: max-height 0.5s;
+    // }
+    //This is about the point where the branding meets the navbar with three items
+    @media(max-width: 900px) {
+        
+        ul.nav-ul-link {
+            flex-direction: column;
+            
+            .nav-link {
+                display: block;
+                text-align: center;
+                font-size: 2rem;
+                margin-bottom: 10px;
+
+                &#nav-brand{
+                    margin: 10px auto;
+                }
+
+                &.nav-link-login{
+                    margin: 10px auto;
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,11 @@
+.courseItem {
+  margin-bottom: 20px;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: -1px 1px 5px #999; }
+  .courseItem h1 {
+    font-size: 1.5rem;
+    font-weight: 700; }
+  .courseItem p {
+    font-size: 1.5rem;
+    font-weight: 400; }

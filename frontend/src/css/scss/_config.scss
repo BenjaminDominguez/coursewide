@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+$font-family: 'Montserrat', sans-serif;
+
+$primary-color: #89f7fe;
+$secondary-color: #66a6ff;
+
+$primary-secondary-gradient: linear-gradient(120deg, $primary-color 0%, $secondary-color 100%);
+$sec-pri-gradient: linear-gradient(180deg, $secondary-color, $primary-color);

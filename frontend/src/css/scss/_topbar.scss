@@ -1,0 +1,91 @@
+$top-bar-height: 2rem;
+
+nav.topbar {
+    height: auto;
+    padding: 10px 0;
+    margin: auto;
+    position: block;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(white, 0.5);
+    background: $primary-secondary-gradient;
+
+    .icons i {
+        color: white;
+        margin-right: 2rem;
+        transition: color 0.3s ease-in;
+
+        &:nth-child(5) {
+            margin-right: 60px;
+        }
+
+        &.fa-twitter {
+            &:hover {
+                cursor: pointer;
+                transition: color 0.3s ease-in;
+                color: $secondary-color;
+            }
+        }
+
+        &.fa-facebook-f {
+            &:hover {
+                cursor: pointer;
+                transition: color 0.3s ease-in;
+                color: #3C5A99;
+            }
+        }
+
+        &.fa-instagram {
+            &:hover {
+                cursor: pointer;
+                transition: color 0.3s ease-in;
+                color: lighten(#e1306c, 10);
+            }
+        }
+
+        &.fa-linkedin-in {
+            &:hover {
+                cursor: pointer;
+                transition: color 0.3s ease-in;
+                color: lighten(#0077b5, 10);
+            }
+        }
+
+        &.fa-pinterest-p {
+            &:hover {
+                cursor: pointer;
+                transition: color 0.3s ease-in;
+                color: lighten(#c8232c, 10);
+            }
+        }
+    }
+
+    .topbar-contact {
+        color: white;
+        padding: 5px 0;
+        margin: 0 20px 0 0;
+        font-size: 1.2rem;
+    }
+
+    @media(max-width: 824px) and (min-width: 699px) {
+        justify-content: flex-start;
+        padding-left: 20px;
+    }
+
+    @media(max-width: 700px) {
+
+        height: auto;
+        justify-content: center;
+
+        .icons {
+            margin: 0 0 0 40px;
+            i {
+                display: inline-block;
+                padding: 10px;
+                margin: auto;
+            }
+        }
+    }
+}
