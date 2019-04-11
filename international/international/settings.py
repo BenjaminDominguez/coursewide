@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'courses',
-    'users'
+    'users',
+    'knox'
 ]
 
 MIDDLEWARE = [

@@ -4,6 +4,7 @@ import './css/css/main.css';
 import App from './main/App';
 import Courses from './components/courses/Courses';
 import Register from './components/register/Register';
+import Course from './components/course/Course';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
@@ -13,6 +14,7 @@ const routing = (
             <Route exact path="/" component={App} />
             <Route exact path="/courses" component={Courses} />
             <Route exact path="/register" component={Register} />
+            <Route path="/course/:id" component={Course} />
         </div>
     </Router>
 )

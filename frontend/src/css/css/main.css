@@ -305,6 +305,32 @@ form.register-form {
     color: #66a6ff;
     border: 1px solid #999; }
 
+.course-info {
+  display: flex;
+  flex-direction: column;
+  box-shadow: -1px 1px 5px #999;
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  padding: 20px 100px 20px 26%; }
+  .course-info h1, .course-info p {
+    color: #66a6ff; }
+  .course-info p {
+    font-size: 1.5rem; }
+  .course-info .language {
+    padding: 10px;
+    background: rgba(137, 247, 254, 0.8);
+    cursor: pointer;
+    border-radius: 10px;
+    max-width: 80px; }
+    .course-info .language:hover {
+      box-shadow: -1px 1px 10px #66a6ff; }
+    .course-info .language p {
+      margin: 0;
+      padding: 0;
+      color: #66a6ff;
+      font-size: 1rem; }
+
 .container {
   padding: 3rem; }
 
