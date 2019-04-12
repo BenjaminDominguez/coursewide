@@ -1,0 +1,55 @@
+
+GET http://localhost:8000/api/courses
+
+###
+
+POST http://localhost:8000/api/courses/
+content-type: application/json;
+
+{
+    "name": "Introduction to Django",
+    "description": "You will learn how to make great web applications",
+    "modules": []
+}
+
+
+###
+
+POST http://localhost:8000/api/courses/11/add_module/
+Content-Type: application/json;
+
+{
+    "order": 1,
+    "name": "Introduction to Divs"
+}
+
+###
+POST http://localhost:8000/api/courses/11/add_module/
+Content-Type: application/json;
+
+{
+    "order": 2,
+    "name": "Introduction to Positioning"
+}
+
+###
+POST http://localhost:8000/api/courses/11/add_module/
+Content-Type: application/json;
+
+{
+    "order": 3,
+    "name": "Introduction to Paragraphs"
+}
+
+###
+POST http://localhost:8000/api/courses/11/add_module/
+Content-Type: application/json;
+
+{
+    "order": 5,
+    "name": "Introduction to a Pair of Giraffes"
+}
+
+
+
+

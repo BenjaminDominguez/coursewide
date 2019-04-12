@@ -11,12 +11,12 @@ class Register extends Component {
     this.apiPostURL = 'http://localhost:8000/api/users/'
     this.state = {
       step: 1,
-      email: '',
-      username: '',
-      password: '',
-      fullName: '',
-      language: '',
-      country: ''
+      email: null,
+      username: null,
+      password: null,
+      fullName: null,
+      language: null,
+      country: null
     }
   }
 

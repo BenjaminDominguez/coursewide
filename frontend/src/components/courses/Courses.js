@@ -4,6 +4,7 @@ import Search from './Search';
 import Navbar from '../layout/Navbar';
 import Topbar from '../layout/Topbar';
 
+
 class Courses extends Component {
     constructor() {
         super();
@@ -18,7 +19,7 @@ class Courses extends Component {
             .then((res) => res.json())
                 .then((data) => {
                     let courses = data.map((course) => {
-                        return <CourseItem key={course.id} name={course.name} description={course.description} />
+                        return <CourseItem key={course.id} info={course} />
                     })
                     this.setState({courses: courses})
                     console.log(this.state.courses)

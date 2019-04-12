@@ -15,7 +15,15 @@ class Course(models.Model):
 
 class Module(models.Model):
     name = models.CharField(max_length=1000)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, related_name='modules', on_delete=models.CASCADE)
+    order = models.IntegerField()
+
+    class Meta:
+        unique_together = ('name', 'order')
+        ordering = ['order']
+
+    def __str__(self):
+        return 'Module ' + str(self.order) + ': ' + str(self.name)
 
 class Lesson(models.Model):
     name = models.CharField(max_length=1000)

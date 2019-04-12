@@ -99,3 +99,60 @@ form.register-form{
         text-align: center;
     }
 }
+
+.flashed-message {
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+    width: 400px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    
+    &.red {
+        color: white;
+        background: rgba(red, 0.5);
+    }
+
+}
+
+form.module-form {
+
+    //This should change. Going to add a course-container div to my main file or add a layout file
+    display: flex;
+    flex-direction: column;
+
+    .input-group {
+        .module-input{
+            width: 300px;
+            height: 40px;
+            padding: 5px;
+            outline: none;
+            font-size: 1.5rem;
+            border: none;
+            border: 1.5px solid $secondary-color;
+            border-radius: 5px;
+            margin-bottom: 40px;
+
+        }
+
+        .module-temp-button {
+            margin-left: 10px;
+            height: 50px;
+            padding: 5px;
+            font-size: 1.5rem;
+            width: 100px;
+            outline: none;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background: white;
+            border: 1.5px solid $secondary-color;
+            color: $secondary-color;
+
+            &:hover{
+                box-shadow: -1px 1px 5px $secondary-color;
+                transition: box-shadow 0.1s ease-in;
+            }
+        }
+    }
+}

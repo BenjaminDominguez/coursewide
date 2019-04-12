@@ -5,7 +5,7 @@ import App from './main/App';
 import Courses from './components/courses/Courses';
 import Register from './components/register/Register';
 import Course from './components/course/Course';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
