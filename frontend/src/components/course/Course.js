@@ -2,83 +2,122 @@ import React, { Component } from 'react';
 import Topbar from '../layout/Topbar';
 import Navbar from '../layout/Navbar';
 import CourseDetails from './CourseDetails';
+import EditCourse from './EditCourse';
 import CourseModules from './CourseModules';
 
+/*
+Course will not be included in the redux store.
+*/
+
 class Course extends Component {
-  constructor() {
-    super();
-    this.APIURL = 'http://localhost:8000/api/courses'
+
+  constructor(props) {
+    super(props);
+
     this.state = {
-      newModuleName: '',
-      courseID: null,
-      modules: [],
-      courseInfo: '',
-      toggleEdit: false
+      courseContent: {
+        courseName: '',
+        courseDescription: '',
+        instructorName: '',
+        modules: []
+      },
+      editContent: {
+        toggleEdit: false,
+        newModuleName: ''
+      }
+    }
+  };
+
+  //Run as soon as the component mounts
+  componentDidMount = () => {
+    const { id } = this.props.match.params;
+
+    const APIURL = 'http://localhost:8000/api/courses';
+
+    fetch(`${APIURL}/${id}`)
+      .then((res) => res.json())
+      .then((course) => {
+        let courseContent = {...this.state.courseContent}
+        courseContent.courseName = course.name;
+        courseContent.courseDescription = course.description;
+        courseContent.modules = course.modules;
+        
+        this.setState({courseContent})
+      })
     }
 
+  handleEditChange = (e) => {
+    const editContent = {...this.state.editContent}
+    editContent.newModuleName = e.target.value
+    this.setState({editContent})
   }
 
-  handleChange = (e) => {
-    this.setState({
-      newModuleName: e.target.value
-    })
+  handleToggle = (e) => {
+    e.preventDefault();
+    let editContent = { ...this.state.editContent }
+    editContent.toggleEdit = !editContent.toggleEdit
+    this.setState({editContent})
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`${this.APIURL}/${this.state.courseID}/add_module/`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: this.state.newModuleName,
-        order: this.state.modules.length + 1
-      })
-    }
-    )
-    .then((res) => res.json())
-    .then((data) => {
-      this.setState({modules: this.state.modules.concat(data)})
-    })
-  }
 
-  handleToggleEdit = (e) => {
-    e.preventDefault();
-    this.setState({toggleEdit: !this.state.toggleEdit})
-  }
-
-  componentDidMount() {
-
-    //get the id from the params
     const { id } = this.props.match.params;
-    this.setState({courseID: id})
-    fetch(`${this.APIURL}/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({courseInfo: data})
-        data.modules.map((module) => {
-          this.setState({modules: this.state.modules.concat(module)})
-        })
-      })
+
+    let APIURL = `http://localhost:8000/api/courses/${id}/add_module/`
+    fetch(APIURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+          {
+            name: this.state.editContent.newModuleName,
+            order: this.state.courseContent.modules.length + 1
+          }
+        )
+    })
+    .then((res) => res.json())
+    .then((module) => console.log(module))
   }
+
 
   render() {
-    return (
+    // Save topbar and Navbar as header for reuse
+    const header = (
     <div>
+      
       <Topbar />
       <Navbar />
-      <CourseDetails info={this.state.courseInfo} handleToggleEdit={this.handleToggleEdit}/>
-      <CourseModules 
-      editState={this.state.toggleEdit} 
-      modules={this.state.modules}
-      handleChange={this.handleChange}
-      handleSubmit={this.handleSubmit}
+      <CourseDetails 
+      editState={this.state.editContent.toggleEdit} 
+      handleToggle={this.handleToggle}
+      name={ this.state.courseContent.courseName } 
+      description={ this.state.courseContent.courseDescription }
       />
     </div>
     )
-  }
+
+    switch(this.state.editContent.toggleEdit){
+      case(false):  
+        return (
+          <div>
+            { header }
+            <CourseModules modules={ this.state.courseContent.modules } />
+          </div>
+      )
+      case(true):
+          return (
+            <div>
+              { header }
+              <EditCourse handleSubmit={this.handleSubmit}
+              handleEditChange={this.handleEditChange}
+              modules={ this.state.courseContent.modules } 
+              />
+            </div>
+          )
+        }
+    }
 }
 
 export default Course;

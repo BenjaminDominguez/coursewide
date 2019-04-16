@@ -13,7 +13,7 @@ class EmailPassword extends Component {
       <div>
         <Topbar />
         <Navbar />
-        <div className="container">
+        <div className="container form-container">
             <form className="register-form">
                     <h1 className="form-heading"> Register </h1>
                     <div className="form-control">
@@ -29,7 +29,7 @@ class EmailPassword extends Component {
                         <button onClick={increment} className="button-continue" type="submit">Continue</button>
                     </div>
                     <div className="form-control">
-                    <p>Already a user? <Link to="/">Login here</Link></p>
+                    <p>Already a user? <Link to="/login">Login here</Link></p>
                     </div>
                 </form>
             </div>

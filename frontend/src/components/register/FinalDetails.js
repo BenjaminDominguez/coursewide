@@ -9,7 +9,7 @@ class FinalDetails extends Component {
         <div>
             <Topbar />
             <Navbar />
-            <div className="container">
+            <div className="container form-container">
                 <form className="register-form">
                     <h1 className="form-heading"> Register </h1>
                     <div className="form-control">

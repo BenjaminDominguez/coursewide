@@ -2,15 +2,22 @@ form.register-form{
     display: flex;
     flex-direction: column;
     width: 400px;
-    margin: auto;
+    margin: 40px auto;
+    height: 400px;
     box-shadow: -1px 2px 3px #999;
     border-radius: 0 0 5px 5px;
-    border-top: 10px solid rgba($secondary-color, 0.5);
+    border-top: 10px solid rgba($secondary-color, 1);
     padding: 10px;
+    background: rgba(white, 0.8);
 
     .form-control,
-    .form-heading{
+    .form-heading,
+    .form-subheading{
         margin: 10px auto;
+    }
+
+    .form-subheading{
+        color: rgba(#999, 0.9);
     }
 
     .form-control {
@@ -30,6 +37,15 @@ form.register-form{
         }
 
         
+    }
+
+    &#login-form{
+        height: auto;
+        padding: 3rem;
+
+        .form-heading{
+            margin-bottom: 2rem;
+        }
     }
  
 }
@@ -57,10 +73,17 @@ form.register-form{
         color: white;
         font-size: 1rem;
 
+        &.last-step{
+            opacity: 1;
+            color: white;
+            font-weight: 500;
+            background: darken(#ABEBC6, 20);
+        }
+
         &:hover {
             opacity: 1;
             transition: opacity 0.2s ease-in;
-            box-shadow: -1px 1px 10px $secondary-color;
+            box-shadow: -1px 1px 10px #abebc6;
         }
     }
 
@@ -97,6 +120,7 @@ form.register-form{
         width: 400px;
         margin: auto;
         text-align: center;
+        color: white;
     }
 }
 
@@ -123,7 +147,7 @@ form.module-form {
 
     .input-group {
         .module-input{
-            width: 300px;
+            width: 900px;
             height: 40px;
             padding: 5px;
             outline: none;
@@ -154,5 +178,26 @@ form.module-form {
                 transition: box-shadow 0.1s ease-in;
             }
         }
+    }
+}
+
+form.courses-search-form{
+    position: relative;
+    input.courses-search-input{
+        width: 300px;
+        height: 40px;
+        margin: 20px 20px 20px 40px;
+        font-size: 1rem;
+        padding: 0 5px;
+        outline: none;
+        border: none;
+        border-bottom: 1.5px solid $secondary-color;
+        box-shadow: -1px 0px 3px $secondary-color;
+    }
+    i{
+        position: absolute;
+        top: 32px;
+        left: 310px;
+        color: #999;
     }
 }

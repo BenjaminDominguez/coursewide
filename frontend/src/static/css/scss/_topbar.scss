@@ -9,8 +9,7 @@ nav.topbar {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
-    border-bottom: 1px solid rgba(white, 0.5);
-    background: $primary-secondary-gradient;
+    background: rgba(#999, 0.1);
 
     .icons i {
         color: white;
@@ -22,42 +21,47 @@ nav.topbar {
         }
 
         &.fa-twitter {
+            color: $secondary-color;
             &:hover {
                 cursor: pointer;
                 transition: color 0.3s ease-in;
-                color: $secondary-color;
+                
             }
         }
 
         &.fa-facebook-f {
+            color: #3C5A99;
             &:hover {
                 cursor: pointer;
                 transition: color 0.3s ease-in;
-                color: #3C5A99;
+                
             }
         }
 
         &.fa-instagram {
+            color: lighten(#e1306c, 10);
             &:hover {
                 cursor: pointer;
                 transition: color 0.3s ease-in;
-                color: lighten(#e1306c, 10);
+                
             }
         }
 
         &.fa-linkedin-in {
+            color: lighten(#0077b5, 10);
             &:hover {
                 cursor: pointer;
                 transition: color 0.3s ease-in;
-                color: lighten(#0077b5, 10);
+                
             }
         }
 
         &.fa-pinterest-p {
+            color: lighten(#c8232c, 10);
             &:hover {
                 cursor: pointer;
                 transition: color 0.3s ease-in;
-                color: lighten(#c8232c, 10);
+                
             }
         }
     }

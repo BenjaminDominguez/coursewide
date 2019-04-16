@@ -56,8 +56,11 @@
     padding: 10px;
     max-height: 20rem;
     color: $secondary-color;
-    border-radius: 5px;
-    box-shadow: -1px 1px 5px #999;
-    margin-bottom: 20px;
     font-size: 1rem;
+    cursor: pointer;
+    border-left: 5px solid $secondary-color;
+
+    &:hover{
+        background: rgba(#999, 0.1);
+    }
 }

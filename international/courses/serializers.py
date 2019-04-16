@@ -1,16 +1,24 @@
 from rest_framework import serializers
-from courses.models import Course, Module
+from courses.models import Course, Module, Language
+
+class ModuleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Module
+        fields = ['id', 'order', 'name']
 
 class CourseSerializer(serializers.ModelSerializer):
-    modules = serializers.StringRelatedField(
+
+    modules = ModuleSerializer(many=True)
+
+    languages_supported = serializers.StringRelatedField(
         many=True
     )
 
     class Meta:
         model = Course
-        fields = ['id', 'name', 'description', 'modules']
+        fields = '__all__'
 
-class ModuleSerializer(serializers.ModelSerializer):
+class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Module
-        fields = ['order', 'name']
+        model = Language
+        fields = '__all__'

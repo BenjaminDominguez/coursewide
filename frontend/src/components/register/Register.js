@@ -48,9 +48,10 @@ class Register extends Component {
       case 3:
         return <Confirm state={this.state} increment={this.incrementStep} decrement={this.decrementStep} />
       case 4:
-        const { email, password, language, country } = this.state;
+        const { email, password, username, language, country } = this.state;
         const data = {
             email: email,
+            username: username,
             password: password,
             language: language,
             country: country,

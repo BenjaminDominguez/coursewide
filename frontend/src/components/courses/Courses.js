@@ -3,6 +3,7 @@ import CourseItem from './CourseItem';
 import Search from './Search';
 import Navbar from '../layout/Navbar';
 import Topbar from '../layout/Topbar';
+import { Redirect } from 'react-router-dom';
 
 
 class Courses extends Component {
@@ -10,16 +11,23 @@ class Courses extends Component {
         super();
         this.courseURL = 'http://localhost:8000/api/courses'
         this.state = {
-            courses: []
+            courses: [],
+            query: ''
         }
     }
+
+    handleSearch = e => {
+      e.preventDefault();
+      this.setState({query: e.target.value})
+    }
+
 
     componentDidMount() {
         fetch(this.courseURL)
             .then((res) => res.json())
                 .then((data) => {
                     let courses = data.map((course) => {
-                        return <CourseItem key={course.id} info={course} />
+                        return <CourseItem key={course.id} info={course} redirectPath={`/courses/${course.id}`}/>
                     })
                     this.setState({courses: courses})
                     console.log(this.state.courses)
@@ -31,8 +39,9 @@ class Courses extends Component {
     <div>
     <Topbar />
     <Navbar />
-      <div className="container">
-        <h1> Available Courses </h1>
+      <div className="courses-container">
+        <h1> Check out some of our available courses </h1>
+        <Search handleSearch={this.handleSearch} />
         { this.state.courses }
       </div>
     </div>

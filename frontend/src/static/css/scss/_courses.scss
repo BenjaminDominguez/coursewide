@@ -1,0 +1,36 @@
+
+.courseItem{
+    margin-bottom: 20px;
+    padding: 2rem;
+    border-radius: 10px;
+    
+    &:hover{
+        cursor: pointer;
+        background: rgba(#999, 0.15);
+    }
+    .course-description {
+        font-weight: 600;
+    }
+    .course-title{
+        font-weight: 1000;
+        color: $secondary-color;
+    }
+
+    .course-instructor{
+        font-weight: 400;
+    }
+
+    .course-language{
+        margin-right: 10px;
+        background: white;
+        outline: none; 
+        border: none;
+        font-size: 1rem;
+        font-weight: 400;
+        box-shadow: -1px 1px 5px $secondary-color;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+
+    }
+}

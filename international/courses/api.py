@@ -1,8 +1,8 @@
-from courses.models import Course, Module
+from courses.models import Course, Module, Language
 from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .serializers import CourseSerializer, ModuleSerializer
+from .serializers import CourseSerializer, ModuleSerializer, LanguageSerializer
 from django.shortcuts import get_object_or_404
 
 #viewsets go here
@@ -41,5 +41,26 @@ class CourseViewSet(viewsets.ModelViewSet):
         new_module = Module.objects.create(order=module["order"], name=module["name"], course=course) 
 
         return Response(new_module.__str__(), status=201)
+
+    @action(detail=True, methods=['POST'])
+    def add_language_support(self, request, pk=None):
+        language_serializer = LanguageSerializer(data=request.data)
+        language_serializer.is_valid(raise_exception=True)
+        language_data = language_serializer.validated_data
+        language = Language.objects.filter(**language_data)
+        if language is None:
+            language = Language.objects.create(**language_data)
+            language.save()
+
+        course = get_object_or_404(Course, pk=pk)
+        course.add_language(language)
+
+        serializer = self.serializer_class(course)
+
+        return Response(serializer.data, status=201)
+
+
+        
+
 
 

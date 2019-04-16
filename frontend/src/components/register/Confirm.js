@@ -31,38 +31,23 @@ formattedState = () => Object.keys(this.props.state).map((field) => {
 
 //new on click event
 
-validateInformation = () => {
-    //ensure all fields are not empty
-    const { state } = this.props;
-    let values = Object.values(state);
-    console.log(values)
-    for (let value in values) {
-        //if value of a state object is equal to ""
-        if (value === null){
-            this.setState({flashedMessages: "Please fill in all fields", flashClass: "red"})
-            // return nothing to stop the function
-            return
-        }
-    }
-}
-
   render() {
 
-    const { decrement } = this.props;
+    const { decrement, increment } = this.props;
     return (
     <div>
     <Topbar />
     <Navbar />
-      <div className="container">
+      <div className="container form-container">
       <div className="confirm-register">
             <FlashedMessages flashClass={this.state.flashClass} message={this.state.flashedMessages} />
             {this.formattedState() }
         <div className="buttons">
             <div className="step-button">
-                <button onClick={this.validateInformation} className="button-continue" type="submit">Continue</button>
+                <button onClick={ increment } className="button-continue last-step" type="submit">Register</button>
             </div>
             <div className="step-button">
-                <button onClick={decrement} className="button-back" type="submit">Go back</button>
+                <button onClick={ decrement } className="button-back" type="submit">Go back</button>
             </div>
         </div>
         </div>
