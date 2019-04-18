@@ -9,6 +9,46 @@ nav.topbar {
   justify-content: flex-end;
   flex-wrap: wrap;
   background: rgba(153, 153, 153, 0.1); }
+  nav.topbar .username {
+    display: flex;
+    margin-right: 40px;
+    cursor: pointer; }
+    nav.topbar .username p {
+      padding: 0;
+      margin: 0;
+      font-size: 1.5rem;
+      color: #66a6ff; }
+    nav.topbar .username .ball {
+      width: 10px;
+      height: 10px;
+      border-radius: 75%;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 1px solid white; }
+      nav.topbar .username .ball.ball-green {
+        background: rgba(46, 204, 113, 0.9); }
+      nav.topbar .username .ball.ball-red {
+        background: rgba(231, 76, 60, 0.9); }
+    nav.topbar .username i {
+      font-size: 1.5rem;
+      color: #66a6ff; }
+      nav.topbar .username i.fa-caret-down {
+        padding: 0;
+        margin: 5px 0 0 5px; }
+      nav.topbar .username i.fa-bell, nav.topbar .username i.fa-comment-alt {
+        margin: 3px 0 0 30px;
+        position: relative; }
+      nav.topbar .username i.fa-bell {
+        font-size: 1.7rem; }
+      nav.topbar .username i.fa-comment-alt {
+        margin-top: 6px;
+        font-size: 1.5rem; }
+        nav.topbar .username i.fa-comment-alt .ball {
+          top: -3px;
+          right: -4px; }
   nav.topbar .icons i {
     color: white;
     margin-right: 2rem;
@@ -448,8 +488,40 @@ form.courses-search-form {
   .module-item:hover {
     background: rgba(153, 153, 153, 0.1); }
 
+.moduleContainer {
+  padding: 2rem 5rem 1rem 7rem;
+  display: flex; }
+  .moduleContainer .modules-ul {
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid rgba(153, 153, 153, 0.2); }
+    .moduleContainer .modules-ul .module-list-item {
+      cursor: pointer;
+      padding: 20px; }
+      .moduleContainer .modules-ul .module-list-item:hover, .moduleContainer .modules-ul .module-list-item.active {
+        background: rgba(153, 153, 153, 0.4); }
+  .moduleContainer .moduleVideoContainer {
+    margin-top: 15px;
+    margin-left: 50px; }
+
 .languages-container .languages-page-header {
   text-align: center; }
+
+.languages-container .language-box {
+  width: 33%; }
+
+.languages-container img {
+  height: 300px;
+  width: 300px;
+  background-size: 100px 100px;
+  display: inline;
+  margin: auto; }
+
+.languages-container .spanish img {
+  content: url(../../svg/spain.svg); }
+
+.languages-container .english img {
+  content: url(../../svg/england.svg); }
 
 .container {
   padding: 3rem; }

@@ -1,0 +1,25 @@
+
+.moduleContainer {
+    padding: 2rem 5rem 1rem 7rem;
+    display: flex;
+
+    .modules-ul{
+        list-style-type: none;
+        padding: 0;
+        border: 1px solid rgba(#999, 0.2);
+        .module-list-item {
+            cursor: pointer;
+            padding: 20px;
+
+            &:hover,
+            &.active{
+                background: rgba(#999, 0.4);
+            }
+        }
+    }
+
+    .moduleVideoContainer{
+        margin-top: 15px;
+        margin-left: 50px;
+    }
+}

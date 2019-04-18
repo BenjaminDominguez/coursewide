@@ -18,13 +18,11 @@ class Languages extends Component {
           <h1 className="languages-page-header"> Our currently supported languages 
           </h1>
             <div className="row">
-              <div className="col language-box">
-                <h1 className="language-title">Spanish
-                  </h1>
-                   <ul className="language-ul">
-                      <li>HTML</li>
-                    <li>Django</li>
-                  </ul>
+              <div className="col-md-4 language-box spanish">
+              <img/>
+              </div>
+              <div className="col-md-4 langauge-box english">
+              <img/>
               </div>
           </div>
         </div>

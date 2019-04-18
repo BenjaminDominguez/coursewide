@@ -3,6 +3,11 @@ import AddNewModule from './AddNewModule';
 
 class EditCourse extends Component {
   
+  handleDelete = (e) => {
+    e.preventDefault()
+  
+  }
+  
   render() {
 
     return (
@@ -12,7 +17,7 @@ class EditCourse extends Component {
         <h3>Current Modules </h3>
         {
           this.props.modules.map((module) => {
-            return (<p>{module.name}</p>)
+            return (<p>{module.name} </p>)
           })
         }
       </div>

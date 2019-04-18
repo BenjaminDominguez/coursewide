@@ -2,4 +2,21 @@
     .languages-page-header{
         text-align: center;
     }
+    .language-box{
+        width: 33%;
+    }
+    img {
+        height: 300px;
+        width: 300px;
+        background-size: 100px 100px;
+        display: inline;
+        margin: auto;
+        }
+
+    .spanish img {
+        content: url(../../svg/spain.svg);
+    }
+    .english img{
+        content: url(../../svg/england.svg);
+    }
 }

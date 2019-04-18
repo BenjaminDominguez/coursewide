@@ -11,6 +11,68 @@ nav.topbar {
     flex-wrap: wrap;
     background: rgba(#999, 0.1);
 
+    .username {
+        display: flex;
+        margin-right: 40px;
+        cursor: pointer;
+
+        p {
+            padding: 0;
+            margin: 0;
+            font-size: 1.5rem;
+            color: $secondary-color;
+        }
+
+        .ball{
+            width: 10px;
+            height: 10px;
+            border-radius: 75%;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 1px solid white;
+
+            &.ball-green{
+                background: rgba(#2ECC71, 0.9);
+            }
+
+            &.ball-red{
+                background: rgba(#E74C3C, 0.9);
+            }
+        }
+
+        i {
+            font-size: 1.5rem;
+            color: $secondary-color;
+            &.fa-caret-down{
+                padding: 0;
+                margin: 5px 0 0 5px;
+            }
+
+            &.fa-bell,
+            &.fa-comment-alt{
+                margin: 3px 0 0 30px;
+                position: relative;
+            }
+
+            &.fa-bell{
+                font-size: 1.7rem;
+            }
+
+            &.fa-comment-alt{
+                margin-top: 6px;
+                font-size: 1.5rem;
+                .ball{
+                    top: -3px;
+                    right: -4px;
+                }
+            }
+        }
+
+    }
+
     .icons i {
         color: white;
         margin-right: 2rem;

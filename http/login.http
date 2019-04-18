@@ -1,0 +1,21 @@
+GET http://localhost:8000/api/users
+
+###
+
+POST http://localhost:8000/api/auth/token/obtain/
+Content-Type: application/json
+
+{
+    "username": "benjamindominguez",
+    "password": "mjnoppq12"
+}
+
+#This works, returns refresh and access token
+###
+
+POST http://localhost:8000/api/auth/token/refresh/logout/
+Content-Type: application/json
+
+{
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU1NTYxNTIzMSwianRpIjoiNDM2ZWRjZDAxYzdkNDc2ZGIzYzVkNzQ4ZjVjZmZjM2QiLCJ1c2VyX2lkIjozMCwidXNlcm5hbWUiOiJiZW5qYW1pbmRvbWluZ3VleiJ9.R_GMAuAiUEsRbtyxmw-29H_GwKwrc5aaLcs39nawEmA",
+}

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { newModule } from '../../actions/courseActions';
-import { connect } from 'react-redux';
 
 class AddNewModule extends Component {
   
@@ -19,12 +17,4 @@ class AddNewModule extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    id: state.course.courseInfo.id,
-    modules: state.course.courseInfo.modules
-  }
-}
-
-
-export default connect(mapStateToProps, { newModule })(AddNewModule);
+export default AddNewModule;

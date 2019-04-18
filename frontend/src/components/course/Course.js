@@ -4,6 +4,8 @@ import Navbar from '../layout/Navbar';
 import CourseDetails from './CourseDetails';
 import EditCourse from './EditCourse';
 import CourseModules from './CourseModules';
+import { getCourseInfo } from '../../actions/courseActions';
+import { connect } from 'react-redux';
 
 /*
 Course will not be included in the redux store.
@@ -15,12 +17,6 @@ class Course extends Component {
     super(props);
 
     this.state = {
-      courseContent: {
-        courseName: '',
-        courseDescription: '',
-        instructorName: '',
-        modules: []
-      },
       editContent: {
         toggleEdit: false,
         newModuleName: ''
@@ -30,21 +26,10 @@ class Course extends Component {
 
   //Run as soon as the component mounts
   componentDidMount = () => {
-    const { id } = this.props.match.params;
-
-    const APIURL = 'http://localhost:8000/api/courses';
-
-    fetch(`${APIURL}/${id}`)
-      .then((res) => res.json())
-      .then((course) => {
-        let courseContent = {...this.state.courseContent}
-        courseContent.courseName = course.name;
-        courseContent.courseDescription = course.description;
-        courseContent.modules = course.modules;
-        
-        this.setState({courseContent})
-      })
-    }
+    console.log('Getting course info')  
+    this.props.getCourseInfo(this.props.match.params.id)
+  
+  }
 
   handleEditChange = (e) => {
     const editContent = {...this.state.editContent}
@@ -92,8 +77,8 @@ class Course extends Component {
       <CourseDetails 
       editState={this.state.editContent.toggleEdit} 
       handleToggle={this.handleToggle}
-      name={ this.state.courseContent.courseName } 
-      description={ this.state.courseContent.courseDescription }
+      name={ this.props.courseName } 
+      description={ this.props.courseDescription }
       />
     </div>
     )
@@ -103,7 +88,7 @@ class Course extends Component {
         return (
           <div>
             { header }
-            <CourseModules modules={ this.state.courseContent.modules } />
+            <CourseModules courseID={this.props.match.params.id} modules={ this.props.modules } />
           </div>
       )
       case(true):
@@ -112,7 +97,7 @@ class Course extends Component {
               { header }
               <EditCourse handleSubmit={this.handleSubmit}
               handleEditChange={this.handleEditChange}
-              modules={ this.state.courseContent.modules } 
+              modules={ this.props.modules } 
               />
             </div>
           )
@@ -120,4 +105,10 @@ class Course extends Component {
     }
 }
 
-export default Course;
+const mapStateToProps = (state) => ({
+  courseName: state.course.courseName,
+  courseDescription: state.course.courseDescription,
+  modules: state.course.modules
+})
+
+export default connect(mapStateToProps, { getCourseInfo })(Course);

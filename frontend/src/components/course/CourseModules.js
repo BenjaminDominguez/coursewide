@@ -9,11 +9,18 @@ class CourseModules extends Component {
 
   render() {
 
+    const { courseID } = this.props;
+    const baseURL = `${courseID}/modules`
+
     return (
     <div class="course-container">
       <div class="modules">
           { this.props.modules.map((module, index) => {
-            return <ModuleItem key = { index } module = { module } />
+            return <ModuleItem 
+            key = { index } 
+            module = { module } 
+            moduleURL={ baseURL + `/${module.id}` }
+            modules={ this.props.modules } />
           })}
       </div>
     </div>

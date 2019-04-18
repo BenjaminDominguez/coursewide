@@ -1,33 +1,25 @@
-import { FETCH_COURSE_INFO, NEW_MODULE, TOGGLE_EDIT_COURSE } from '../actions/types';
+import * as course from '../actions/courseActions';
 
 const initialState = {
-    courseInfo: {
-        modules: []
-    },
-    editState: false
+    courseName: null,
+    courseDescription: null,
+    instructorName: null,
+    modules: []
 }
 
-export default function(state=initialState, action){
-    switch(action.type){
-        case FETCH_COURSE_INFO:
+export default (state=initialState, action) => {
+    switch(action.type) {
+        case course.COURSE_INFO_REQUEST:
+            console.log('COURSE_INFO_REQUEST ran')
             return {
-                ...state,
-                courseInfo: action.payload
-            };
-        case NEW_MODULE:
-            return {
-                ...state,
-                courseInfo: {
-                    modules: action.payload 
+                courseName: action.payload.name,
+                courseDescription: action.payload.description,
+                modules: action.payload.modules
                 }
-            }; 
-        case TOGGLE_EDIT_COURSE:
-            return {
-                ...state,
-                editState: action.payload
-            };
-            
-        default: return initialState;
+        default: return state;
     }
+}
 
+export function modules(state) {
+   return state.modules 
 }
