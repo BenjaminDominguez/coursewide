@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'courses',
     'users',
-    'knox'
+    'tokens',
+    'knox',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +91,12 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = "users.User" 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTTokenUserAuthentication',
+    ],
+}
 
 
 # Password validation

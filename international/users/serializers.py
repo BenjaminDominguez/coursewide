@@ -4,9 +4,12 @@ from courses.models import Course
 import os
 
 class LoginUserSerializer(serializers.Serializer):
-    """Seperate serializer for login purposes"""
+    """Seperate serializer for login purposes,
+    no longer using emails to log in users, too complicated.
+    Will be using usernames
+    """
 
-    email, password = serializers.CharField(), serializers.CharField()
+    username, password = serializers.CharField(), serializers.CharField()
 
     def validate(self, data):
         

@@ -7,6 +7,7 @@ from rest_framework.decorators import action
 from django.shortcuts import get_object_or_404
 from .serializers import StudentSerializer, TeacherSerializer, UserSerializer, LoginUserSerializer
 
+
 class StudentViewSet(viewsets.ModelViewSet):
 
     queryset = Student.objects.all()
@@ -48,10 +49,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
     serializer_class = UserSerializer
 
-    def get_object(self):
-        pass
-
-
     #api/users/check_email/?email="bendominguez"
     #This should be changed to validate all of the credentials
     @action(detail=False, methods=['POST'])
@@ -60,21 +57,29 @@ class UserViewSet(viewsets.ModelViewSet):
         email_exists = User.objects.filter(email=email_posted).count()
         return Response({"email_exists": email_exists is not 0})
 
-    @action(detail=False, methods=['POST'])
-    def login_user(self, request):
-        """ In the frontend, we first ask the user to give a username and password 
-        but later give them the option to use a username or password to sign in
-        assuming most users would use an email, we can achieve this by searching for a user based off the email provided """
 
-        serializer = LoginUserSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+    """
 
-        #calls the validate method, I'm assuming
-        user = serializer.validated_data
+    Commenting out login user route because 
+    trying out switch to JWT token based authentication
 
-        instance, token = AuthToken.objects.create(user)
+    """
+    # @action(detail=False, methods=['POST'])
+    # def login_user(self, request):
+    #     """ In the frontend, we first ask the user to give a username and password 
+    #     but later give them the option to use a username or password to sign in
+    #     assuming most users would use an email, we can achieve this by searching for a user based off the email provided """
 
-        return Response({
-            "user": UserSerializer(user).data,
-            "token": token
-        })
+    #     serializer = LoginUserSerializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+
+    #     #calls the validate method, I'm assuming
+    #     user = serializer.validated_data
+
+    #     instance, token = AuthToken.objects.create(user)
+
+    #     return Response({
+    #         "user": UserSerializer(user).data,
+    #         "token": token
+    #     })
+
