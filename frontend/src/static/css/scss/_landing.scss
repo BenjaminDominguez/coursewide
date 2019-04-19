@@ -40,3 +40,24 @@
         }
     }
 }
+
+.landing-info {
+    width: 90%;
+    margin: 20px auto 0 auto;
+    &-heading{
+        text-align: center;
+        color: $secondary-color;
+    }
+    &-ul{
+        list-style-type: none;
+        li{
+            padding: 20px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            cursor: pointer;
+            &:hover{
+                background: rgba($secondary-color, 0.2);
+            }
+        }
+    }
+}

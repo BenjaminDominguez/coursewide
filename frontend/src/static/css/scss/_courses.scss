@@ -1,11 +1,30 @@
+.courses-heading {
+    text-align: center;
+    color: $secondary-color;
+    margin-bottom: 30px;
+}
+
+
+.course-items{
+    margin-top: 100px;
+}
+
+.courses-bg-overlay{
+    background: rgba($secondary-color, 0.1);
+    height: 100%;
+    padding: 10px;
+}
 
 .courseItem{
     margin-bottom: 20px;
     padding: 2rem;
     border-radius: 10px;
+    border: 4px solid white;
+    background: rgba(white, 0.8);
     
     &:hover{
         cursor: pointer;
+        transition: background-color 0.2s ease-in;
         background: rgba(#999, 0.15);
     }
     .course-description {

@@ -39,10 +39,14 @@ class Courses extends Component {
     <div>
     <Topbar />
     <Navbar />
+      <div className="courses-bg-overlay">
       <div className="courses-container">
-        <h1> Check out some of our available courses </h1>
+        <h1 className="courses-heading"> Our available courses </h1>
         <Search handleSearch={this.handleSearch} />
-        { this.state.courses }
+          <div className="course-items">
+          { this.state.courses }
+          </div>
+      </div>
       </div>
     </div>
     )

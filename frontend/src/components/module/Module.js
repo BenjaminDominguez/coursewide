@@ -8,8 +8,14 @@ class Module extends Component {
 
   constructor(props) {
     super(props);
-    this.order = this.props.match.params.order
-    this.state = {}
+    this.state = {
+      order: this.props.match.params.order
+    }
+  }
+
+  handleModuleRedirect = (url, order) => {
+    this.props.history.push(url)
+    this.setState({order})
   }
 
   render() {
@@ -25,7 +31,7 @@ class Module extends Component {
       <div>
           { header }
         <div className="moduleContainer">
-          { <ModuleList order={this.order}/> }
+          { <ModuleList order={this.state.order} handleModuleRedirect={this.handleModuleRedirect} courseID={this.props.match.params.id}/> }
           <div className="moduleVideoContainer">
             <ReactPlayer
               width="900px"

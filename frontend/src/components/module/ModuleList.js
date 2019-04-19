@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCourseInfo } from '../../actions/courseActions';
+import ModuleListItem from './ModuleListItem';
 
 class ModuleList extends Component {
 
     componentDidMount = () => {
-        if (!this.props.modules) {
-            this.props.getCourseInfo(this.props.match.params.id)
-            this.props.modules = this.state.course.modules
+      //If the user visited the page before the course page
+      //For example, in their browser history
+        if (this.props.modules.length === 0) {
+            this.props.getCourseInfo(this.props.courseID)
         }
     }
 
@@ -16,7 +18,7 @@ class ModuleList extends Component {
     return (
     <div>
       <ul className="modules-ul">
-        {this.props.modules.map((module) => (<li className={module.order === parseInt(this.props.order, 10) ? "module-list-item active" : "module-list-item"}> { module.name } </li> ) ) }
+        {this.props.modules.map((module) => <ModuleListItem handleModuleRedirect={this.props.handleModuleRedirect} moduleURL={`/courses/${this.props.courseID}/modules/${module.order}`} name={module.name} activeOrder={this.props.order} order={module.order} /> ) }
       </ul>
     </div>
     )

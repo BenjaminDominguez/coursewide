@@ -8,12 +8,17 @@ form.register-form{
     border-radius: 0 0 5px 5px;
     border-top: 10px solid rgba($secondary-color, 1);
     padding: 10px;
-    background: rgba(white, 0.8);
+    background: white;
 
     .form-control,
     .form-heading,
     .form-subheading{
         margin: 10px auto;
+    }
+
+    .form-heading {
+        color: $secondary-color;
+        margin-bottom: 10px;
     }
 
     .form-subheading{
@@ -24,13 +29,12 @@ form.register-form{
         .form-input {
             width: 300px;
             height: 30px;
-            border-radius: 10px;
-            border: 0.5px solid rgba(#999, 0.5);
+            border: 1px solid rgba(#999, 0.5);
             outline: none;
             padding: 10px;
             font-size: 1rem;
             &:focus{
-                box-shadow: -1px 1px 5px $secondary-color;
+                box-shadow: -1px 1px 10px $secondary-color;
                 border: 1px solid $secondary-color;
                 transition: box-shadow 0.3s ease-in;
             }
@@ -183,21 +187,30 @@ form.module-form {
 
 form.courses-search-form{
     position: relative;
+    margin-bottom: 10px;
     input.courses-search-input{
-        width: 300px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 350px;
         height: 40px;
-        margin: 20px 20px 20px 40px;
         font-size: 1rem;
         padding: 0 5px;
         outline: none;
         border: none;
-        border-bottom: 1.5px solid $secondary-color;
-        box-shadow: -1px 0px 3px $secondary-color;
+        border-radius: 10px;
+        box-shadow: -1px 1px 5px #999;
+        
+        &:focus{
+            transition: box-shadow 0.3s ease-in;
+            box-shadow: -1px 1px 15px rgba($secondary-color, 0.8);
+        }
     }
     i{
         position: absolute;
-        top: 32px;
-        left: 310px;
+        top: 12px;
+        left: 670px;
         color: #999;
     }
 }

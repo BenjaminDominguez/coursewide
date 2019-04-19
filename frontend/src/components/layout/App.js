@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
 import Topbar from './Topbar';
-import CourseCarousel from '../carousel/CourseCarousel';
+import CoursesAvail from './landing/CoursesAvail';
 import Showcase from './Showcase';
 
 
@@ -12,7 +12,7 @@ class App extends Component {
         <Topbar />
         <Navbar />
         <Showcase />
-        <CourseCarousel />
+        <CoursesAvail />
       </div>
     );
   }

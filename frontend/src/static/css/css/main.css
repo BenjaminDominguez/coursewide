@@ -228,12 +228,28 @@ nav.navbar {
     .courseCarousel .courseBox .taughtBy {
       text-align: center; }
 
+.courses-heading {
+  text-align: center;
+  color: #66a6ff;
+  margin-bottom: 30px; }
+
+.course-items {
+  margin-top: 100px; }
+
+.courses-bg-overlay {
+  background: rgba(102, 166, 255, 0.1);
+  height: 100%;
+  padding: 10px; }
+
 .courseItem {
   margin-bottom: 20px;
   padding: 2rem;
-  border-radius: 10px; }
+  border-radius: 10px;
+  border: 4px solid white;
+  background: rgba(255, 255, 255, 0.8); }
   .courseItem:hover {
     cursor: pointer;
+    transition: background-color 0.2s ease-in;
     background: rgba(153, 153, 153, 0.15); }
   .courseItem .course-description {
     font-weight: 600; }
@@ -264,23 +280,25 @@ form.register-form {
   border-radius: 0 0 5px 5px;
   border-top: 10px solid #66a6ff;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.8); }
+  background: white; }
   form.register-form .form-control,
   form.register-form .form-heading,
   form.register-form .form-subheading {
     margin: 10px auto; }
+  form.register-form .form-heading {
+    color: #66a6ff;
+    margin-bottom: 10px; }
   form.register-form .form-subheading {
     color: rgba(153, 153, 153, 0.9); }
   form.register-form .form-control .form-input {
     width: 300px;
     height: 30px;
-    border-radius: 10px;
-    border: 0.5px solid rgba(153, 153, 153, 0.5);
+    border: 1px solid rgba(153, 153, 153, 0.5);
     outline: none;
     padding: 10px;
     font-size: 1rem; }
     form.register-form .form-control .form-input:focus {
-      box-shadow: -1px 1px 5px #66a6ff;
+      box-shadow: -1px 1px 10px #66a6ff;
       border: 1px solid #66a6ff;
       transition: box-shadow 0.3s ease-in; }
   form.register-form#login-form {
@@ -389,21 +407,28 @@ form.module-form {
       transition: box-shadow 0.1s ease-in; }
 
 form.courses-search-form {
-  position: relative; }
+  position: relative;
+  margin-bottom: 10px; }
   form.courses-search-form input.courses-search-input {
-    width: 300px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 350px;
     height: 40px;
-    margin: 20px 20px 20px 40px;
     font-size: 1rem;
     padding: 0 5px;
     outline: none;
     border: none;
-    border-bottom: 1.5px solid #66a6ff;
-    box-shadow: -1px 0px 3px #66a6ff; }
+    border-radius: 10px;
+    box-shadow: -1px 1px 5px #999; }
+    form.courses-search-form input.courses-search-input:focus {
+      transition: box-shadow 0.3s ease-in;
+      box-shadow: -1px 1px 15px rgba(102, 166, 255, 0.8); }
   form.courses-search-form i {
     position: absolute;
-    top: 32px;
-    left: 310px;
+    top: 12px;
+    left: 670px;
     color: #999; }
 
 .bg-showcase {
@@ -438,6 +463,22 @@ form.courses-search-form {
     background: white;
     color: #66a6ff;
     border: 1px solid #999; }
+
+.landing-info {
+  width: 90%;
+  margin: 20px auto 0 auto; }
+  .landing-info-heading {
+    text-align: center;
+    color: #66a6ff; }
+  .landing-info-ul {
+    list-style-type: none; }
+    .landing-info-ul li {
+      padding: 20px;
+      font-weight: 700;
+      font-size: 1.5rem;
+      cursor: pointer; }
+      .landing-info-ul li:hover {
+        background: rgba(102, 166, 255, 0.2); }
 
 #course-info {
   display: flex;
@@ -491,15 +532,25 @@ form.courses-search-form {
 .moduleContainer {
   padding: 2rem 5rem 1rem 7rem;
   display: flex; }
+  .moduleContainer ::-webkit-scrollbar {
+    width: 10px;
+    background-color: #fff;
+    cursor: pointer; }
+  .moduleContainer ::-webkit-scrollbar-thumb {
+    background-color: rgba(153, 153, 153, 0.4); }
   .moduleContainer .modules-ul {
     list-style-type: none;
     padding: 0;
-    border: 1px solid rgba(153, 153, 153, 0.2); }
+    height: 500px;
+    overflow-y: scroll; }
     .moduleContainer .modules-ul .module-list-item {
       cursor: pointer;
-      padding: 20px; }
+      padding: 20px;
+      font-weight: 550; }
+      .moduleContainer .modules-ul .module-list-item .module-order {
+        margin-right: 20px; }
       .moduleContainer .modules-ul .module-list-item:hover, .moduleContainer .modules-ul .module-list-item.active {
-        background: rgba(153, 153, 153, 0.4); }
+        background: rgba(102, 166, 255, 0.2); }
   .moduleContainer .moduleVideoContainer {
     margin-top: 15px;
     margin-left: 50px; }

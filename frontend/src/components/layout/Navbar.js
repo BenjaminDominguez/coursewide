@@ -18,7 +18,6 @@ class Navbar extends Component {
                 <li className = "nav-link" id="nav-brand">CourseWide</li>
                 <Link to = "/" className = "link"><li className="nav-link"> Home</li></Link>
                 <Link to = "/courses" className="link"><li className = "nav-link">Courses</li></Link>
-                <Link to = "/languages" className="link"><li className="nav-link">Languages</li></Link>
                 <Link className="link"><li className="nav-link">Prospective Instructors</li></Link>
                 {
                 this.props.isAuthenticated ? (<Logout />) :  
