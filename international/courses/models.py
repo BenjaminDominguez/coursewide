@@ -1,21 +1,19 @@
 from django.db import models
 
 """
-Courses have many modules and modules have many lessons.z
+Courses have many modules
 
 """
-
-class Language(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
 
 class Course(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
+    bio = models.CharField(max_length=10000)
+    image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
+    teacher = models.ForeignKey('users.Teacher', related_name='courses_teaching', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    languages_supported = models.ManyToManyField(Language, blank=True)
+    #modules relationship described under Module class
+    #students relationship described under Student class
 
     def add_language(self, language_obj):
         self.languages_supported.add(language_obj)

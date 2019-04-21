@@ -76,11 +76,6 @@ class StudentSerializer(serializers.ModelSerializer):
 class TeacherSerializer(serializers.ModelSerializer):
 
     user = UserSerializer()
-    courses_instructing = serializers.HyperlinkedRelatedField(
-        many=True,
-        view_name='course-detail',
-        queryset=Course.objects.all()
-    )
 
     class Meta:
         model = Teacher

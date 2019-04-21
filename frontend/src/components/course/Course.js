@@ -6,6 +6,8 @@ import EditCourse from './EditCourse';
 import CourseModules from './CourseModules';
 import { getCourseInfo } from '../../actions/courseActions';
 import { connect } from 'react-redux';
+import CourseBio from './CourseBio';
+import CourseNav from './CourseNav';
 
 /*
 Course will not be included in the redux store.
@@ -20,7 +22,8 @@ class Course extends Component {
       editContent: {
         toggleEdit: false,
         newModuleName: ''
-      }
+      },
+      showModules: true
     }
   };
 
@@ -66,6 +69,12 @@ class Course extends Component {
     .then((module) => console.log(module))
   }
 
+  handleNav = (location) => {
+    location === 'info' ? 
+    this.setState({showModules: false}) 
+    : this.setState({showModules: true})
+  }
+
 
   render() {
     // Save topbar and Navbar as header for reuse
@@ -80,25 +89,23 @@ class Course extends Component {
       name={ this.props.courseName } 
       description={ this.props.courseDescription }
       />
+      <CourseNav infoActive={!this.state.showModules} modulesActive={this.state.showModules} handleNav={this.handleNav} />
     </div>
     )
 
-    switch(this.state.editContent.toggleEdit){
-      case(false):  
+    switch(this.state.showModules){
+      case(true):  
         return (
           <div>
             { header }
             <CourseModules courseID={this.props.match.params.id} modules={ this.props.modules } />
           </div>
       )
-      case(true):
+      case(false):
           return (
             <div>
               { header }
-              <EditCourse handleSubmit={this.handleSubmit}
-              handleEditChange={this.handleEditChange}
-              modules={ this.props.modules } 
-              />
+              <CourseBio />
             </div>
           )
         }

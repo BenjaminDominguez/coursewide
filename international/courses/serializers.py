@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from courses.models import Course, Module, Language
+from courses.models import Course, Module
+from users.models import User, Teacher
+from django.shortcuts import get_object_or_404
 
 class ModuleSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,17 +10,10 @@ class ModuleSerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
 
-    modules = ModuleSerializer(many=True)
-
-    languages_supported = serializers.StringRelatedField(
-        many=True
-    )
+    modules = ModuleSerializer(many=True, read_only=True)
 
     class Meta:
         model = Course
-        fields = '__all__'
+        fields = ['name', 'description', 'bio', 'modules']
 
-class LanguageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Language
-        fields = '__all__'
+

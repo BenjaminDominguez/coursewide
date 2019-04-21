@@ -11,7 +11,7 @@ class ModuleListItem extends Component {
       <div>
         <li 
         onClick={() =>  handleModuleRedirect(moduleURL,  order)} 
-        className={ order === parseInt( activeOrder) ? "module-list-item active" : "module-list-item"}> 
+        className={ order === parseInt(activeOrder, 10) ? "module-list-item active" : "module-list-item"}> 
         { order }{"  "}{ name }
         </li>
       </div>

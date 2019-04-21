@@ -102,14 +102,17 @@ nav.topbar {
 
 nav.navbar {
   margin: 0;
-  padding: 5px 0;
+  padding: 10px 0 15px 0;
   position: relative;
   box-sizing: border-box;
   width: 100%;
   max-height: 500px;
   overflow: hidden;
   background: rgba(153, 153, 153, 0.1);
-  border-bottom: 1px solid white; }
+  border-bottom: 1px solid white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end; }
   nav.navbar .hamburger {
     position: absolute;
     margin: 28px 10px 5px 10px;
@@ -125,32 +128,52 @@ nav.navbar {
       display: block; }
     nav.navbar .hamburger.hamburger-hidden {
       display: none; }
-  nav.navbar ul.nav-ul-link {
+  nav.navbar #nav-brand {
+    display: inline;
+    font-size: 2rem;
+    color: #66a6ff;
+    margin: 10px 30px 0 50px; }
+  nav.navbar .navbar-search-form {
+    margin: 10px 15px 0 15px; }
+    nav.navbar .navbar-search-form .navbar-search-input {
+      width: 300px;
+      height: 20px;
+      padding: 10px;
+      outline: none;
+      border: none;
+      font: inherit;
+      background: rgba(153, 153, 153, 0.02);
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1.2px solid rgba(102, 166, 255, 0.7);
+      color: #66a6ff; }
+  nav.navbar .nav-links {
     list-style-type: none;
     margin: 2px 30px 0 0;
     padding: 0;
     width: 100%;
     display: flex;
-    align-items: center; }
-    nav.navbar ul.nav-ul-link .link {
+    align-items: center;
+    justify-content: flex-end; }
+    nav.navbar .nav-links .link {
       color: #66a6ff;
       text-decoration: none;
       margin: 1rem;
       font-weight: 500; }
-      nav.navbar ul.nav-ul-link .link:hover {
+      nav.navbar .nav-links .link:hover {
         transition: color 0.1s ease-in;
         color: #0055cc;
         cursor: pointer; }
-    nav.navbar ul.nav-ul-link .nav-link {
+    nav.navbar .nav-links .nav-link {
       margin: 10px 20px;
       display: inline;
       font-size: 1.2rem; }
-      nav.navbar ul.nav-ul-link .nav-link#nav-brand {
+      nav.navbar .nav-links .nav-link#nav-brand {
         font-size: 2rem;
         margin-left: auto;
         padding-right: 30px;
         color: #66a6ff; }
-      nav.navbar ul.nav-ul-link .nav-link.nav-link-login {
+      nav.navbar .nav-links .nav-link.nav-link-login {
         padding: 12px 50px;
         font-size: 1rem;
         border-radius: 5px;
@@ -160,14 +183,14 @@ nav.navbar {
         border: none;
         outline: none;
         box-shadow: -1px 1px 5px #66a6ff; }
-        nav.navbar ul.nav-ul-link .nav-link.nav-link-login .link {
+        nav.navbar .nav-links .nav-link.nav-link-login .link {
           color: black; }
-          nav.navbar ul.nav-ul-link .nav-link.nav-link-login .link:hover {
+          nav.navbar .nav-links .nav-link.nav-link-login .link:hover {
             color: black; }
-    nav.navbar ul.nav-ul-link .nav-hamburger-toggle {
+    nav.navbar .nav-links .nav-hamburger-toggle {
       transition: max-height 0.8s ease-in;
       max-height: 1000px; }
-      nav.navbar ul.nav-ul-link .nav-hamburger-toggle.nav-hamburger-toggle-hidden {
+      nav.navbar .nav-links .nav-hamburger-toggle.nav-hamburger-toggle-hidden {
         max-height: 0px;
         transition: max-height 0.8s ease-out; }
   @media (max-width: 900px) {
@@ -428,7 +451,7 @@ form.courses-search-form {
   form.courses-search-form i {
     position: absolute;
     top: 12px;
-    left: 670px;
+    left: 650px;
     color: #999; }
 
 .bg-showcase {
@@ -480,24 +503,67 @@ form.courses-search-form {
       .landing-info-ul li:hover {
         background: rgba(102, 166, 255, 0.2); }
 
+.course-container {
+  display: flex;
+  margin-bottom: 2rem;
+  padding-top: 3rem; }
+  .course-container .course-image {
+    width: 300px;
+    height: 190px;
+    box-shadow: -1px 1px 5px #999;
+    margin-right: 60px; }
+
+ul.course-navigation {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  overflow: hidden;
+  justify-content: center; }
+  ul.course-navigation li {
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #66a6ff;
+    width: 30%;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    margin-right: 5px; }
+    ul.course-navigation li:hover {
+      background: rgba(102, 166, 255, 0.1);
+      transition: background-color 0.2s ease-in; }
+    ul.course-navigation li.active {
+      background: rgba(102, 166, 255, 0.15);
+      transition: background-color 0.2s ease-in; }
+
 #course-info {
   display: flex;
   flex-direction: column;
   margin-top: 0;
-  padding-top: 2rem;
-  background: rgba(153, 153, 153, 0.1);
-  height: 300px;
-  border-radius: 5px;
-  overflow: hidden; }
+  height: 220px;
+  padding: 0 10px;
+  justify-content: space-between; }
   #course-info h1, #course-info p {
     margin: 0;
     padding: 0;
     color: #66a6ff; }
   #course-info h1 {
-    margin-top: 40px; }
+    margin: 0 0 20px 0; }
   #course-info p {
-    margin: 20px 0;
+    margin: 0 0 20px 0;
     font-size: 1.5rem; }
+    #course-info p.course-instructor {
+      color: #999;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 10px; }
+  #course-info .course-location, #course-info .course-location p {
+    color: #999;
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline;
+    margin-bottom: 20px; }
   #course-info .course-edit {
     font-size: 1rem;
     padding: 0;
@@ -508,26 +574,32 @@ form.courses-search-form {
   #course-info .language {
     padding: 7px;
     cursor: pointer;
-    border-radius: 10px;
     max-width: 80px;
-    box-shadow: -1px 1px 10px #66a6ff; }
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: -1px 1px 5px #66a6ff; }
     #course-info .language p {
       margin: 0;
       padding: 0;
       color: #66a6ff;
       font-size: 1rem;
-      text-align: center; }
+      text-align: center;
+      font-weight: 700; }
 
-.module-item {
-  max-width: 1000px;
-  padding: 10px;
-  max-height: 20rem;
-  color: #66a6ff;
-  font-size: 1rem;
-  cursor: pointer;
-  border-left: 5px solid #66a6ff; }
-  .module-item:hover {
-    background: rgba(153, 153, 153, 0.1); }
+.modules {
+  display: flex;
+  flex-direction: column;
+  width: 100%; }
+  .modules .module-item {
+    max-width: 1000px;
+    padding: 10px;
+    max-height: 20rem;
+    color: #66a6ff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+    box-shadow: -1px 1px 10px rgba(153, 153, 153, 0.3); }
+    .modules .module-item:hover {
+      background: rgba(153, 153, 153, 0.1); }
 
 .moduleContainer {
   padding: 2rem 5rem 1rem 7rem;

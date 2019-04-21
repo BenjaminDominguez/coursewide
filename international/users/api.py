@@ -18,7 +18,9 @@ class StudentViewSet(viewsets.ModelViewSet):
 
     serializer_class = StudentSerializer
 
-    #create route '/api/students/{pk}/add_course/?course_id=10
+    #create route '/api/students/{pk}/add_course/
+    #Content-type: application/json
+    #{course_id: 10}
     @action(detail=True, methods=['post'])
     def add_course(self, request, pk=None):
         student = self.get_object()

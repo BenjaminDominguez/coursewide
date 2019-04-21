@@ -15,7 +15,6 @@ class ModuleItem extends Component {
     return (
       <div className="module-item" onClick={ this.handleRedirect }>
         <h1 className="module-name"> { name } </h1>
-        <p className="module-edit"> Create  or edit module content </p>
       </div>
     )
   }

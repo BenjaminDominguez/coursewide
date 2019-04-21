@@ -1,8 +1,8 @@
-from courses.models import Course, Module, Language
+from courses.models import Course, Module
 from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .serializers import CourseSerializer, ModuleSerializer, LanguageSerializer
+from .serializers import CourseSerializer, ModuleSerializer
 from django.shortcuts import get_object_or_404
 
 #viewsets go here
