@@ -1,7 +1,7 @@
 export const COURSE_INFO_REQUEST = 'COURSE_INFO_REQUEST'
 
 export const getCourseInfo = (courseID) => dispatch => {
-    fetch(`http://localhost:8000/api/courses/${courseID}`)
+    fetch(`/api/courses/${courseID}`)
     .then((res) => res.json())
     .then((course) => {
         console.log('dispatching...')

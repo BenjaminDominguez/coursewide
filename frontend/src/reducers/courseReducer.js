@@ -12,8 +12,9 @@ export default (state=initialState, action) => {
         case course.COURSE_INFO_REQUEST:
             console.log('COURSE_INFO_REQUEST ran')
             return {
-                courseName: action.payload.name,
-                courseDescription: action.payload.description,
+                courseName: action.payload.course_info.name,
+                courseDescription: action.payload.course_info.description,
+                instructorName: action.payload.course_info.teacher.name,
                 modules: action.payload.modules
                 }
         default: return state;

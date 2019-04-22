@@ -25,8 +25,10 @@ class LoginForm extends Component {
       <div>
         <div className="container form-container">
             <form onSubmit={ this.handleSubmit } id="login-form" className="register-form">
+                  <div className="form-heading-bg">
                     <h1 className="form-heading"> Welcome back! </h1>
                     <p className="form-subheading">Enter your username and password below to get started. </p>
+                  </div>
                     <div className="form-control">
                       <input onChange={ this.handleChange } name="username" className="form-input" type="text" placeholder="Enter a username" />
                     </div>

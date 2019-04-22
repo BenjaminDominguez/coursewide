@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class CourseItem extends Component {
 
@@ -10,13 +10,15 @@ class CourseItem extends Component {
 
   render() {
     const { name, description } = this.props.info;
+    const { instructor, numModules } = this.props;
+
 
     return (
       <div className="courseItem" onClick={this.handleClick}>
         <h1 className="course-title">{name}</h1>
         <p className="course-description">{description}</p>
-        <p className="course-instructor">Taught by Ben Dominguez</p>
-        <p className="course-lessons">140 lessons</p>
+        <p className="course-instructor">Taught by { instructor }</p>
+        <p className="course-lessons">{ numModules } modules</p>
         <button className="course-language">Spanish</button>
         <button className="course-language">Korean</button>
       </div>

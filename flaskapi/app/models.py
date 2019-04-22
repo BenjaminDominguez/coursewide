@@ -19,6 +19,9 @@ class TokenBlacklist(db.Model):
             "expires": self.expires
         }
 
+    def __repr__(self):
+        return '<Token {0}, {1}>'.format(self.id, ('revoked' if self.revoked else 'active'))
+
 
 student_course = db.Table('user_course',
     db.Column('student_id', db.Integer, db.ForeignKey('student.id'), primary_key=True),

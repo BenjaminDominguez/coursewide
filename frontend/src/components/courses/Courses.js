@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 class Courses extends Component {
     constructor() {
         super();
-        this.courseURL = 'http://localhost:8000/api/courses'
+        this.courseURL = '/api/courses'
         this.state = {
             courses: [],
             query: ''
@@ -26,13 +26,21 @@ class Courses extends Component {
         fetch(this.courseURL)
             .then((res) => res.json())
                 .then((data) => {
+                    console.log(data)
                     let courses = data.map((course) => {
-                        return <CourseItem key={course.id} info={course} redirectPath={`/courses/${course.id}`}/>
+                        const { course_info, modules } = course;
+                        return <CourseItem 
+                        key={course_info.id} 
+                        info={course_info} 
+                        redirectPath={`/courses/${course_info.id}`}
+                        instructor={course_info.teacher.name}
+                        numModules={ modules.length }
+                        />
                     })
                     this.setState({courses: courses})
                     console.log(this.state.courses)
-                })
-    }
+              })
+            }
 
   render() {
     return (

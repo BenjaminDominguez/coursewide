@@ -12,7 +12,6 @@ class Register extends Component {
     this.state = {
       step: 1,
       email: null,
-      username: null,
       password: null,
       fullName: null,
       language: null,

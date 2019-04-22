@@ -88,6 +88,7 @@ class Course extends Component {
       handleToggle={this.handleToggle}
       name={ this.props.courseName } 
       description={ this.props.courseDescription }
+      instructorName={ this.props.instructorName }
       />
       <CourseNav infoActive={!this.state.showModules} modulesActive={this.state.showModules} handleNav={this.handleNav} />
     </div>
@@ -115,7 +116,8 @@ class Course extends Component {
 const mapStateToProps = (state) => ({
   courseName: state.course.courseName,
   courseDescription: state.course.courseDescription,
-  modules: state.course.modules
+  modules: state.course.modules,
+  instructorName: state.course.instructorName
 })
 
 export default connect(mapStateToProps, { getCourseInfo })(Course);

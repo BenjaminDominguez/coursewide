@@ -15,9 +15,8 @@ class EmailPassword extends Component {
         <Navbar />
         <div className="container form-container">
             <form className="register-form">
-                    <h1 className="form-heading"> Register </h1>
-                    <div className="form-control">
-                      <input onChange={handleChange} value={state.username} name="username" className="form-input" type="text" placeholder="Enter a username" />
+                    <div className="form-heading-bg">
+                      <h1 className="form-heading"> Register </h1>
                     </div>
                     <div className="form-control">
                         <input onChange={handleChange} value={state.email} name="email" className="form-input" type="text" placeholder="Email" />
