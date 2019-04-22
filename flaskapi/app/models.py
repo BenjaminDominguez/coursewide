@@ -49,6 +49,7 @@ class User(db.Model):
     def token_response(self):
         data = self.json_response()
         data['user_details'].pop('password')
+        data['user_details'].pop('id')
         return data
 
     def json_response(self):

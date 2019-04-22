@@ -22,7 +22,7 @@ def add_token_to_database(encoded_token, identity_claim):
         'jti': decoded_token['jti'],
         'token_type': decoded_token['type'],
         'user_identity': decoded_token[identity_claim],
-        'expires': epoch_utc_to_datetime(decoded_token['exp'])
+        'expires': epoch_utc_to_datetime(decoded_token['exp']),
         'revoked': False
     }
 
