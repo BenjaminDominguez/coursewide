@@ -9,6 +9,23 @@ import { authErrors, isAuthenticated } from '../../reducers';
 
 class Login extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.onSubmit(this.state.email, this.state.password)
+  }
+
   render() {
     const header = (
     <React.Fragment>
@@ -25,7 +42,7 @@ class Login extends Component {
         return (
           <div>
               { header }
-            <LoginForm handleChange={ this.handleChange } {...this.props} />
+            <LoginForm handleChange={ this.handleChange } handleSubmit={ this.handleSubmit } />
           </div>
         )  
       }  
@@ -38,7 +55,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (username, password) => {dispatch(login(username, password))}
+  onSubmit: (email, password) => {dispatch(login(email, password))}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

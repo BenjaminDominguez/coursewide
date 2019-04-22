@@ -13,10 +13,11 @@ class EmailPassword extends Component {
       <div>
         <Topbar />
         <Navbar />
-        <div className="container form-container">
+        <div className="form-container">
             <form className="register-form">
                     <div className="form-heading-bg">
                       <h1 className="form-heading"> Register </h1>
+                      <p className="form-subheading">Enter your email and a password to get started with CourseWide today!</p>
                     </div>
                     <div className="form-control">
                         <input onChange={handleChange} value={state.email} name="email" className="form-input" type="text" placeholder="Email" />

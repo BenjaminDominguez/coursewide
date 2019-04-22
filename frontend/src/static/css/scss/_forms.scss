@@ -1,12 +1,19 @@
+form {
+    input{
+        font: inherit;
+    }
+}
+
 form.register-form{
     display: flex;
     flex-direction: column;
-    width: 400px;
+    max-width: 400px;
     margin: 40px auto;
     height: auto;
-    box-shadow: -1px 1px 10px #999;
+    box-shadow: -1px 1px 5px #999;
     border-radius: 0 0 5px 5px;
     background: white;
+    padding-bottom: 10px;
 
     .form-heading-bg{
         width: 100%;
@@ -22,14 +29,14 @@ form.register-form{
     }
 
     .form-heading {
+        padding: 2rem 2rem 1rem 2rem;
         color: white;
-        padding: 20px;
-        font-weight: 600;
-        font-size: 2rem;
     }
 
     .form-subheading{
-        color: rgba(#999, 0.9);
+        color: white;
+        padding: 0 2rem 1rem 2rem;
+        margin-bottom: 1rem;
     }
 
     .form-control {
@@ -38,6 +45,7 @@ form.register-form{
             height: 30px;
             border: 1px solid rgba(#999, 0.5);
             outline: none;
+            margin: 0 10px;
             padding: 10px;
             font-size: 1rem;
             &:focus{
@@ -53,20 +61,6 @@ form.register-form{
     &#login-form{
         height: auto;
         width: 375px;
-
-        .form-heading-bg{
-        }
-
-        .form-heading{
-            padding: 2rem 2rem 1rem 2rem;
-            color: white;
-        }
-
-        .form-subheading{
-            color: white;
-            padding: 0 2rem 1rem 2rem;
-            margin-bottom: 1rem;
-        }
     }
  
 }
@@ -77,7 +71,7 @@ form.register-form{
 }
 
 .step-button {
-    margin: 10px auto 30px auto;
+    margin: 10px auto 0 auto;
     display: inline;
 
     .button-continue {
@@ -99,12 +93,18 @@ form.register-form{
             color: white;
             font-weight: 500;
             background: darken(#ABEBC6, 20);
+
+            &:hover {
+            opacity: 1;
+            transition: opacity 0.2s ease-in;
+            box-shadow: -1px 1px 10px #abebc6;
+        }
         }
 
         &:hover {
             opacity: 1;
             transition: opacity 0.2s ease-in;
-            box-shadow: -1px 1px 10px #abebc6;
+            box-shadow: -1px 1px 10px $secondary-color;
         }
     }
 

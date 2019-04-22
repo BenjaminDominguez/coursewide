@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
-import { username, isAuthenticated } from '../../reducers';
+import { fullName, isAuthenticated } from '../../reducers';
 import TopbarDropdown from './TopbarDropdown';
 
 class Topbar extends Component {
@@ -21,7 +21,7 @@ class Topbar extends Component {
       <nav className="topbar">
         { this.props.isAuthenticated ? (
           <div className="username"> 
-          <p onClick={this.handleClick} >{ this.props.username }
+          <p onClick={this.handleClick} >{ this.props.fullName }
           { this.state.showCourses ? 
           (
             <TopbarDropdown />
@@ -53,7 +53,7 @@ class Topbar extends Component {
 const mapStateToProps = state => (
   {
     isAuthenticated: isAuthenticated(state),
-    username: username(state)
+    fullName: fullName(state)
   }
 )
 

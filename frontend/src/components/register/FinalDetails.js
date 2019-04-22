@@ -9,9 +9,11 @@ class FinalDetails extends Component {
         <div>
             <Topbar />
             <Navbar />
-            <div className="container form-container">
+            <div className="form-container">
                 <form className="register-form">
+                    <div className="form-heading-bg">
                     <h1 className="form-heading"> Register </h1>
+                    </div>
                     <div className="form-control">
                         <input name="fullName" onChange={handleChange} value={state.fullName} className="form-input" type="text" placeholder="Full Name" />
                     </div>

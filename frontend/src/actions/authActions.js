@@ -11,13 +11,15 @@ export const TOKEN_RECEIVED = '@@auth/TOKEN_RECEIVED'
 export const TOKEN_FAILURE = '@@auth/TOKEN_FAILURE'
 
 export const LOGOUT_REQUEST = '@@auth/LOGOUT_REQUEST'
+export const LOGOUT_SUCCESS = '@@auth/LOGOUT_SUCCESS'
+export const LOGOUT_FAILURE = '@@auth/LOGOUT_FAILURE'
 
-export const login = (username, password) => (
+export const login = (email, password) => (
     {
         [RSAA]: {
             endpoint: '/api/auth/login',
             method: 'POST',
-            body: JSON.stringify({username, password}),
+            body: JSON.stringify({email, password}),
             headers: { 'Content-Type': 'application/json' },
             types: [
                 LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE

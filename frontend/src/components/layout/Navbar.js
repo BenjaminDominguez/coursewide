@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { isAuthenticated, userID, username } from '../../reducers';
+import { isAuthenticated, userID } from '../../reducers';
 import { connect } from 'react-redux';
 import Logout from '../login/Logout';
 
@@ -34,8 +34,7 @@ class Navbar extends Component {
 
 const mapStateToProps = (state) => ({
     isAuthenticated: isAuthenticated(state),
-    userID: userID(state), 
-    username: username(state)
+    userID: userID(state)
 })
 
 export default connect(mapStateToProps)(Navbar);

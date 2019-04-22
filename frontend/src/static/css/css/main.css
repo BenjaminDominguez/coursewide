@@ -293,15 +293,19 @@ nav.navbar {
     border-radius: 10px;
     cursor: pointer; }
 
+form input {
+  font: inherit; }
+
 form.register-form {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  max-width: 400px;
   margin: 40px auto;
   height: auto;
-  box-shadow: -1px 1px 10px #999;
+  box-shadow: -1px 1px 5px #999;
   border-radius: 0 0 5px 5px;
-  background: white; }
+  background: white;
+  padding-bottom: 10px; }
   form.register-form .form-heading-bg {
     width: 100%;
     text-align: center;
@@ -312,17 +316,18 @@ form.register-form {
   form.register-form .form-subheading {
     margin: 10px auto; }
   form.register-form .form-heading {
-    color: white;
-    padding: 20px;
-    font-weight: 600;
-    font-size: 2rem; }
+    padding: 2rem 2rem 1rem 2rem;
+    color: white; }
   form.register-form .form-subheading {
-    color: rgba(153, 153, 153, 0.9); }
+    color: white;
+    padding: 0 2rem 1rem 2rem;
+    margin-bottom: 1rem; }
   form.register-form .form-control .form-input {
     width: 300px;
     height: 30px;
     border: 1px solid rgba(153, 153, 153, 0.5);
     outline: none;
+    margin: 0 10px;
     padding: 10px;
     font-size: 1rem; }
     form.register-form .form-control .form-input:focus {
@@ -332,20 +337,13 @@ form.register-form {
   form.register-form#login-form {
     height: auto;
     width: 375px; }
-    form.register-form#login-form .form-heading {
-      padding: 2rem 2rem 1rem 2rem;
-      color: white; }
-    form.register-form#login-form .form-subheading {
-      color: white;
-      padding: 0 2rem 1rem 2rem;
-      margin-bottom: 1rem; }
 
 .buttons {
   margin: auto;
   padding: auto; }
 
 .step-button {
-  margin: 10px auto 30px auto;
+  margin: 10px auto 0 auto;
   display: inline; }
   .step-button .button-continue {
     cursor: pointer;
@@ -364,10 +362,14 @@ form.register-form {
       color: white;
       font-weight: 500;
       background: #59d78e; }
+      .step-button .button-continue.last-step:hover {
+        opacity: 1;
+        transition: opacity 0.2s ease-in;
+        box-shadow: -1px 1px 10px #abebc6; }
     .step-button .button-continue:hover {
       opacity: 1;
       transition: opacity 0.2s ease-in;
-      box-shadow: -1px 1px 10px #abebc6; }
+      box-shadow: -1px 1px 10px #66a6ff; }
   .step-button .button-back {
     margin: 10px auto;
     display: inline;
@@ -670,6 +672,10 @@ ul.course-navigation {
 .languages-container {
   margin: 4rem auto 0 auto;
   width: 70%; }
+
+.form-container {
+  background: rgba(153, 153, 153, 0.1);
+  padding: 50px; }
 
 body {
   margin: 0;

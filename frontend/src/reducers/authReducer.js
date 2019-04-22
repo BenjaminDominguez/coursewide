@@ -94,8 +94,8 @@ export function userID(state) {
     }
 }
 
-export function username(state) {
+export function fullName(state) {
     if (state.access) {
-        return state.access.username
+        return state.access.user_claims.user_details.name
     }
 }

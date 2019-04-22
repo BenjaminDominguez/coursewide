@@ -38,7 +38,7 @@ formattedState = () => Object.keys(this.props.state).map((field) => {
     <div>
     <Topbar />
     <Navbar />
-      <div className="container form-container">
+      <div className="form-container">
       <div className="confirm-register">
             <FlashedMessages flashClass={this.state.flashClass} message={this.state.flashedMessages} />
             {this.formattedState() }
