@@ -1,4 +1,4 @@
-from app.tokens import bp as api
+from app.auth import bp as api
 from app.models import User, TokenBlacklist
 from app import jwt
 from flask import jsonify, request, current_app
@@ -6,7 +6,7 @@ from flask_jwt_extended import (
     create_access_token, create_refresh_token,
     jwt_required, get_jwt_identity, jwt_refresh_token_required
 )
-from app.tokens.helpers import (
+from app.auth.helpers import (
     add_token_to_database, is_token_revoked,
     get_user_tokens, revoke_token, unrevoke_token, TokenNotFound
 )
@@ -28,6 +28,25 @@ def login():
     tokens = {
         "access": create_access_token(identity=user.id, user_claims=user.token_response()),
         "refresh": create_refresh_token(identity=user.id, user_claims=user.token_response())
+    }
+
+    add_token_to_database(tokens["access"], current_app.config['JWT_IDENTITY_CLAIM'])
+    add_token_to_database(tokens["refresh"], current_app.config['JWT_IDENTITY_CLAIM'])
+
+    return jsonify(tokens), 200
+
+@api.route('/auth/register', methods=['POST'])
+def register():
+
+    data = request.get_json()
+    
+    new_user = User(**data)
+    db.session.add(new_user)
+    db.session.commit()
+
+    tokens = {
+        "access": create_access_token(identity=new_user.id, user_claims=new_user.token_response()),
+        "refresh": create_refresh_token(identity=new_user.id, user_claims=new_user.token_response())
     }
 
     add_token_to_database(tokens["access"], current_app.config['JWT_IDENTITY_CLAIM'])

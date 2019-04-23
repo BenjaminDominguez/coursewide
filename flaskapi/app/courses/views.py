@@ -20,21 +20,21 @@ def get_course(id):
 @api.route('/courses', methods=['POST'])
 def create_new_course():
     data = request.get_json()
-    teacher = None
-    if data['teacher_id']:
-        teacher_id = data.pop('teacher_id')
 
+    teacher = None
+    teacher_id = data.get('teacher_id', None)
+    new_course = Course(**data)
+    db.session.add(new_course)
+
+    if teacher_id:
         user = User.query.get(teacher_id)
         if user is None:
             return jsonify({'error': 'Could not find teacher in DB'}, 500)
 
         teacher = user.teacher
-
-    new_course = Course(**data)
-
-    teacher.courses_teaching.append(new_course)
-
-    db.session.add_all([teacher, new_course])
+        teacher.courses_teaching.append(new_course)
+        db.session.add(teacher)
+    
     db.session.commit()
     
     return jsonify(new_course.json_response()), 201

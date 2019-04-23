@@ -27,7 +27,7 @@ def register_dependencies(app):
 def register_blueprints(app, url_prefix='/api'):
     from app.users import bp as users_bp
     from app.courses import bp as courses_bp
-    from app.tokens import bp as tokens_bp
+    from app.auth import bp as auth_bp
     app.register_blueprint(users_bp, url_prefix=url_prefix)
     app.register_blueprint(courses_bp, url_prefix=url_prefix)
-    app.register_blueprint(tokens_bp, url_prefix=url_prefix)
+    app.register_blueprint(auth_bp, url_prefix=url_prefix)
