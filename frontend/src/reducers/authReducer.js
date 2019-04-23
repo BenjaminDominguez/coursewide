@@ -10,6 +10,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case auth.REGISTER_SUCCESS:
         case auth.LOGIN_SUCCESS:
             return {
                 access: {
@@ -34,6 +35,7 @@ export default (state = initialState, action) => {
                     ...jwtDecode(action.payload.access)
                 }
             }
+        case auth.REGISTER_FAILURE:
         case auth.LOGIN_FAILURE:
         case auth.TOKEN_FAILURE:
             return {

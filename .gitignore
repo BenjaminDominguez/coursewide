@@ -5,6 +5,10 @@ __pycache__
 /frontend/node_modules
 /.pnp
 .pnp.js
+*.pyc
+serviceWorker.js
+package-lock.json
+main.css
 
 /frontend/src/static/svg
 

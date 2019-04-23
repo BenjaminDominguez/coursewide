@@ -14,6 +14,24 @@ export const LOGOUT_REQUEST = '@@auth/LOGOUT_REQUEST'
 export const LOGOUT_SUCCESS = '@@auth/LOGOUT_SUCCESS'
 export const LOGOUT_FAILURE = '@@auth/LOGOUT_FAILURE'
 
+export const REGISTER_REQUEST = '@@auth/REGISTER_REQUEST'
+export const REGISTER_SUCCESS = '@@auth/REGISTER_SUCCESS'
+export const REGISTER_FAILURE = '@@auth/REGISTER_FAILURE'
+
+export const register = (userDetails) => (
+    {
+        [RSAA]: {
+            endpoint: '/api/auth/register',
+            method: 'POST',
+            body: JSON.stringify(userDetails),
+            headers: { 'Content-Type': 'application/json' },
+            types: [
+                REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE
+            ]
+        }
+    }
+)
+
 export const login = (email, password) => (
     {
         [RSAA]: {

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 class EmailPassword extends Component {
 
   render() {
-    const { state, handleChange, increment } = this.props;
+    const { state, handleChange, handlePassword, increment, showPassword } = this.props;
     return (
       <div>
         <Topbar />
@@ -23,7 +23,10 @@ class EmailPassword extends Component {
                         <input onChange={handleChange} value={state.email} name="email" className="form-input" type="text" placeholder="Email" />
                     </div>
                     <div className="form-control">
-                        <input onChange={handleChange} value={state.password} name="password" className="form-input" type="password" placeholder="Password" />
+                        <input onChange={handleChange} value={state.password} name="password" className="form-input" type={showPassword ? "text" : "password"} placeholder="Password" />
+                    </div>
+                    <div className="form-control">
+                        <input onClick={handlePassword} className="password-checkbox" name="checkbox" type="checkbox"/><label for="checkbox">Show password</label>
                     </div>
                     <div className="step-button">
                         <button onClick={increment} className="button-continue" type="submit">Continue</button>
