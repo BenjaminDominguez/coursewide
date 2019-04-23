@@ -33,7 +33,7 @@ class EmailPassword extends Component {
                     </div>
                 </form>
             </div>
-        </div>
+      </div>
     )
   }
 }

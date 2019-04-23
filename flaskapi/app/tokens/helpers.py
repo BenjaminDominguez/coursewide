@@ -44,13 +44,15 @@ def is_token_revoked(decoded_token):
 def get_user_tokens(user_identity):
     return TokenBlacklist.query.filter_by(user_identity=user_identity).all()
 
-def revoke_token(token_id, user):
-    token = TokenBlacklist.query.filter_by(id=token_id, user_identity=user_identity).first()
+def revoke_token(user):
+    tokens = get_user_tokens(user)
 
-    if token is None:
-        raise TokenNotFound('Could not find the given token {0}'.format(token_id))
+    if len(tokens) is 0:
+        raise TokenNotFound('Could not find the given token {0}'.format(jti))
 
-    token.revoked = True
+    for token in tokens:
+        token.revoked = True
+        
     db.session.commit()
 
 def unrevoke_token(token_id, user):

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ModuleItem from './ModuleItem';
+import { connect } from 'react-redux';
 
 class CourseModules extends Component {
 
@@ -19,7 +20,7 @@ class CourseModules extends Component {
             return <ModuleItem 
             key = { index } 
             module = { module } 
-            moduleURL={ baseURL + `/${module.id}` }
+            moduleURL={ baseURL + `/${module.order}` }
             modules={ this.props.modules } />
           })}
       </div>
@@ -28,4 +29,9 @@ class CourseModules extends Component {
   }
 }
 
-export default CourseModules;
+const mapStateToProps = state => ({
+  modules: state.course.modules,
+  courseID: state.course.courseID
+})
+
+export default connect(mapStateToProps)(CourseModules);

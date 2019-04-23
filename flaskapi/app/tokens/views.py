@@ -8,7 +8,7 @@ from flask_jwt_extended import (
 )
 from app.tokens.helpers import (
     add_token_to_database, is_token_revoked,
-    get_user_tokens, revoke_token, unrevoke_token 
+    get_user_tokens, revoke_token, unrevoke_token, TokenNotFound
 )
 
 @jwt.token_in_blacklist_loader
@@ -59,12 +59,15 @@ def refresh():
 
     return jsonify({'access_token': access_token}), 201
 
-@api.route('/auth/logout/<int:token_id>', methods=['POST'])
-@jwt_required
-def logout(token_id):
+@api.route('/auth/logout', methods=['POST'])
+@jwt_refresh_token_required #refresh lasts longer than access
+def logout():
     #user must provide JWT in authorization
     user_identity = get_jwt_identity()
-    revoke_token(token_id, user_identity)
+    try:
+        revoke_token(user_identity)
+    except TokenNotFound:
+        return jsonify({'msg': 'No such token'}), 400
     return jsonify({'msg': 'Successfully logged out and revoked token'}), 200
 
 

@@ -1,6 +1,7 @@
 import * as course from '../actions/courseActions';
 
 const initialState = {
+    courseID: null,
     courseName: null,
     courseDescription: null,
     instructorName: null,
@@ -12,6 +13,7 @@ export default (state=initialState, action) => {
         case course.COURSE_INFO_REQUEST:
             console.log('COURSE_INFO_REQUEST ran')
             return {
+                courseID: action.payload.course_info.id,
                 courseName: action.payload.course_info.name,
                 courseDescription: action.payload.course_info.description,
                 instructorName: action.payload.course_info.teacher.name,

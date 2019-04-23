@@ -28,9 +28,21 @@ export const login = (email, password) => (
     }
 )
 
-export const logout = () => ({
-    type: LOGOUT_REQUEST
-})
+export const logout = (token) => (
+    {
+        [RSAA]: {
+            endpoint: `/api/auth/logout`,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            types: [
+                LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE
+            ]
+        }
+    }
+)
 
 export const refreshAccessToken = (token) => (
     {

@@ -42,7 +42,7 @@ export default (state = initialState, action) => {
                 userDetails: undefined,
                 errors: action.payload.response || { 'non_field_errors': action.payload.statusText }
             }
-        case auth.LOGOUT_REQUEST:
+        case auth.LOGOUT_SUCCESS:
             return {
                 access: undefined,
                 refresh: undefined,
@@ -63,6 +63,12 @@ export function accessToken(state) {
 export function refreshToken(state) {
     if (state.refresh) {
         return state.refresh.token
+    }
+}
+
+export function JTI(state) {
+    if (state.refresh) {
+        return state.refresh.jti
     }
 }
 

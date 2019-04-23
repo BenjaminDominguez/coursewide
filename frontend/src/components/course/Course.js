@@ -86,9 +86,6 @@ class Course extends Component {
       <CourseDetails 
       editState={this.state.editContent.toggleEdit} 
       handleToggle={this.handleToggle}
-      name={ this.props.courseName } 
-      description={ this.props.courseDescription }
-      instructorName={ this.props.instructorName }
       />
       <CourseNav infoActive={!this.state.showModules} modulesActive={this.state.showModules} handleNav={this.handleNav} />
     </div>
@@ -99,7 +96,7 @@ class Course extends Component {
         return (
           <div>
             { header }
-            <CourseModules courseID={this.props.match.params.id} modules={ this.props.modules } />
+            <CourseModules />
           </div>
       )
       case(false):
@@ -113,11 +110,5 @@ class Course extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-  courseName: state.course.courseName,
-  courseDescription: state.course.courseDescription,
-  modules: state.course.modules,
-  instructorName: state.course.instructorName
-})
 
-export default connect(mapStateToProps, { getCourseInfo })(Course);
+export default connect(null, { getCourseInfo })(Course);

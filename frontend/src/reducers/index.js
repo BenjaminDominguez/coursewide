@@ -15,5 +15,5 @@ export const isRefreshTokenExpired = state => fromAuth.isRefreshTokenExpired(sta
 export const authErrors = state => fromAuth.errors(state.auth)
 export const userID = state => fromAuth.userID(state.auth)
 export const fullName = state => fromAuth.fullName(state.auth)
-
 export const modules = state => fromCourse.modules(state.course)
+export const JTI = state => fromAuth.JTI(state.auth)
