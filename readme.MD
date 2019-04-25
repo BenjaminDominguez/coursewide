@@ -1,4 +1,9 @@
 # International project
 
-To enable virtualenvironment, run: venv\Scripts\activate
-To disable, run command: deactivate
+The backend server is under /flaskapi
+
+To run the server,
+
+    $ source venv/Scripts/activate
+    $ cd flaskapi
+    $ flask run
