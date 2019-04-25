@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
 import Topbar from './Topbar';
-import CoursesAvail from './landing/CoursesAvail';
 import Showcase from './Showcase';
+import Footer from './landing/Footer';
 
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <Topbar />
         <Navbar />
         <Showcase />
-        <CoursesAvail />
+        <Footer />
       </div>
     );
   }

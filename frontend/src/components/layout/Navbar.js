@@ -14,17 +14,17 @@ class Navbar extends Component {
                 <div className ="line"></div> 
                 <div className ="line"></div> 
             </div>
-            <span id="nav-brand">CourseWide</span>
-            <form className="navbar-search-form">
-                <input className="navbar-search-input" placeholder="Search for anything you want." type="text" />
-            </form>
             <div className="nav-links">
+                <span id="nav-brand">CourseWide</span>
                 <Link to = "/" className = "link"><span className="nav-link"> Home</span></Link>
                 <Link to = "/courses" className="link"><span className = "nav-link">Courses</span></Link>
                 <Link className="link"><span className="nav-link">Prospective Instructors</span></Link>
                 {
                 this.props.isAuthenticated ? (<Logout />) :  
-                (<Link to="/register" className="link"> <span className="nav-link nav-link-login">Register </span></Link>)
+                (<div>
+                <Link to="/register" className="link login-link"> <span id="login-link" className="nav-link nav-link-login">Login </span></Link>
+                <Link to="/register" className="link"> <span className="nav-link nav-link-login">Register </span></Link>
+                </div>)
                 }
             </div>
         </nav>

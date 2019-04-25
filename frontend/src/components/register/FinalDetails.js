@@ -7,8 +7,6 @@ class FinalDetails extends Component {
     const { increment, decrement, handleChange, state } = this.props;
     return (
         <div>
-            <Topbar />
-            <Navbar />
             <div className="form-container">
                 <form className="register-form">
                     <div className="form-heading-bg">

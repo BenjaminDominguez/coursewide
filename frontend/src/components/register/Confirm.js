@@ -36,8 +36,6 @@ formattedState = () => Object.keys(this.props.state).map((field) => {
     const { decrement, increment } = this.props;
     return (
     <div>
-    <Topbar />
-    <Navbar />
       <div className="form-container">
       <div className="confirm-register">
             <FlashedMessages flashClass={this.state.flashClass} message={this.state.flashedMessages} />

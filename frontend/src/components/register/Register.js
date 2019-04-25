@@ -12,10 +12,10 @@ class Register extends Component {
     super();
     this.state = {
       step: 1,
-      email: null,
-      password: null,
-      fullName: null,
-      country: null,
+      email: '',
+      password: '',
+      fullName: '',
+      country: '',
 
       showPassword: false,
 
@@ -28,8 +28,7 @@ class Register extends Component {
     }
   }
 
-  incrementStep = (e) =>{
-    e.preventDefault()
+  incrementStep = () =>{
     const step = this.state.step
     this.setState({step: step + 1})
   }
@@ -50,6 +49,8 @@ class Register extends Component {
     this.setState({showPassword: !this.state.showPassword})
   }
 
+  validateLength = (value, minLength) => (value.toString().length > minLength);
+
   handleSubmit = (e) => {
     e.preventDefault();
     const userDetails = {
@@ -64,7 +65,15 @@ class Register extends Component {
   render() {
     switch(this.state.step){
       case 1:
-        return <EmailPassword state={this.state} showPassword={this.state.showPassword} handlePassword={this.handlePassword} handleChange={this.handleChange} increment={this.incrementStep}/>
+        return <EmailPassword 
+        email={this.state.email}
+        password={this.state.password} 
+        showPassword={this.state.showPassword} 
+        handlePassword={this.handlePassword} 
+        handleChange={this.handleChange} 
+        increment={this.incrementStep}
+        validateLength={this.validateLength}
+        />
       case 2:
         return <FinalDetails state={this.state} handleChange={this.handleChange} increment={this.incrementStep} decrement={this.decrementStep} />
       case 3:
@@ -73,8 +82,6 @@ class Register extends Component {
         this.handleSubmit();
         return (
           <div>
-            <Topbar/>
-            <Navbar/>
             <div className="container">
               <h1>Succesfully registered!</h1>
             </div>

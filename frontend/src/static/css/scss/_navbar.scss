@@ -6,7 +6,6 @@ nav.navbar {
     width: 100%;
     max-height: 500px;
     overflow: hidden;
-    background: rgba(#999, 0.1);
     border-bottom: 1px solid white;
     //box-shadow: -1px 1px 10px #999;
     display: flex;
@@ -38,7 +37,7 @@ nav.navbar {
         display: inline;
         font-size: 2rem;
         color: $secondary-color;
-        margin: 10px 30px 0 50px;
+        margin: 10px 30px 5px 50px;
     }
 
     .navbar-search-form{
@@ -75,6 +74,10 @@ nav.navbar {
             margin: 1rem;
             font-weight: 500;
 
+            &.login-link{
+                margin: 0;
+            }
+
             &:hover {
                 transition: color 0.1s ease-in;
                 color: darken($secondary-color, 30);
@@ -85,30 +88,38 @@ nav.navbar {
         .nav-link{
             margin: 10px 20px;
             display: inline;
-            font-size: 1.2rem;
-            
-            &#nav-brand{
-                font-size: 2rem;
-                margin-left: auto;
-                padding-right: 30px;
-                color: $secondary-color;
+            font-size: 1.6rem;
+
+            &#login-link{
+                padding: 15px;
+                margin: 0;
+                margin-left: 40px;
+                border: none;
             }
 
             &.nav-link-login{
-                padding: 12px 50px;
-                font-size: 1rem;
+                padding: 15px;
+                max-width: 50px;
+                font-size: 1.3rem;
                 border-radius: 5px;
                 width: auto;
                 color: black;
                 cursor: pointer;
-                border: none;
+                border: 1px solid $secondary-color;
                 outline: none;
-                box-shadow: -1px 1px 5px $secondary-color;
+                color: $secondary-color;
+                box-sizing: border-box;
+
+                &:hover{
+                color: darken($secondary-color, 20);
+                transition: color 0.3s ease;
+                }
 
                 .link {
                     color: black;
+                    font-weight: 800;
                     &:hover{
-                        color: black;
+                        color: darken($secondary-color, 30%);
                     }
                 }
             }

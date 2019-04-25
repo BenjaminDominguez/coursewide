@@ -10,7 +10,6 @@
 }
 
 .courses-bg-overlay{
-    background: rgba($secondary-color, 0.1);
     height: 100%;
     padding: 10px;
 }
@@ -25,7 +24,7 @@
     &:hover{
         cursor: pointer;
         transition: background-color 0.2s ease-in;
-        background: rgba(#999, 0.15);
+        background: rgba($secondary-color, 0.1);
     }
     .course-description {
         font-weight: 600;

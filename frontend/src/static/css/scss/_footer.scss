@@ -1,0 +1,101 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    padding: 50px 100px;
+    background-color: rgba($secondary-color, 0.9);
+    color: white;
+
+    .courses-available {
+        display: flex;
+        flex-direction: column;
+        margin-right: 30px;
+        .courses-available-link{
+            margin: 10px 0;
+            font-size: 1.6rem;
+        }
+    }
+
+    .supported-languages{
+        display: flex;
+        flex-direction: column;
+
+        .supported-languages-link{
+            margin: 10px 0;
+            font-size: 1.6rem;
+        }
+    }
+
+    .right-side-footer{
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+        .other-info{
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            margin: 40px;
+
+            .other-info-child{
+                margin: 5px;
+                font-size: 1.3rem;
+            }
+            i {
+                margin-right: 10px;
+            }
+        }
+
+        .footer-icons {
+            display: flex;
+            i{
+                margin: auto;
+
+            &.fa-twitter {
+            
+            &:hover {
+                color: rgba($secondary-color, 0.9);
+                cursor: pointer;
+                transition: color 0.3s ease-in;
+                
+            }
+        }
+
+        &.fa-facebook-square {
+            &:hover {
+                color: #3C5A99;
+                cursor: pointer;
+                transition: color 0.3s ease-in;
+                
+            }
+        }
+
+        &.fa-instagram {
+            &:hover {
+                color: lighten(#e1306c, 10);
+                cursor: pointer;
+                transition: color 0.3s ease-in;
+                
+            }
+        }
+
+        &.fa-linkedin-in { 
+            &:hover {
+                color: lighten(#0077b5, 10);
+                cursor: pointer;
+                transition: color 0.3s ease-in;
+                    }
+                }
+
+        &.fa-github-alt{
+            &:hover {
+                color: #333;
+                cursor: pointer;
+                transition: color 0.3s ease-in;
+                    }
+        }
+            }
+        }
+    }
+}

@@ -8,10 +8,9 @@ form.register-form{
     display: flex;
     flex-direction: column;
     max-width: 400px;
-    margin: 40px auto;
+    margin: 0 auto;
     height: auto;
-    box-shadow: -1px 1px 5px #999;
-    border-radius: 0 0 5px 5px;
+    border-radius: 10px 10px 5px 5px;
     background: white;
     padding-bottom: 10px;
 
@@ -19,7 +18,10 @@ form.register-form{
         width: 100%;
         text-align: center;
         margin: 0 0 10px 0;
-        background: linear-gradient($primary-color, $secondary-color);
+        
+        h1, p{
+            color: $secondary-color;
+        }
     }
 
     .form-control,
@@ -40,6 +42,14 @@ form.register-form{
     }
 
     .form-control {
+
+        .flashed-form-message{
+            padding: 0;
+            margin: 5px;
+            text-align: center;
+            color: #E74C3C;
+        }
+
         .form-input {
             width: 300px;
             height: 30px;
@@ -48,10 +58,13 @@ form.register-form{
             margin: 0 10px;
             padding: 10px;
             font-size: 1rem;
-            &:focus{
-                box-shadow: -1px 1px 10px $secondary-color;
-                border: 1px solid $secondary-color;
-                transition: box-shadow 0.1s ease-in;
+            border-radius: 10px;
+
+            &.invalid {
+                box-shadow: -1px 1px 8px #E74C3C;
+            }
+            &.valid {
+                box-shadow: -1px 1px 8px #2ECC71;
             }
         }
 
