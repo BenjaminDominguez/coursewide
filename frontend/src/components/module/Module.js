@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../layout/Navbar';
-import Topbar from '../layout/Topbar';
+import Header from '../layout/header/Header';
 import ModuleList from './ModuleList';
 import ReactPlayer from 'react-player';
 
@@ -20,16 +19,9 @@ class Module extends Component {
 
   render() {
 
-    const header = (
-      <React.Fragment>
-        <Topbar />
-        <Navbar />
-      </React.Fragment>
-    )
-
     return (
       <div>
-          { header }
+        <Header />
         <div className="moduleContainer">
           { <ModuleList order={this.state.order} handleModuleRedirect={this.handleModuleRedirect} courseID={this.props.match.params.id}/> }
           <div className="moduleVideoContainer">

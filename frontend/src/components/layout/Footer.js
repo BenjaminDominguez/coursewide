@@ -4,6 +4,7 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">
+      <div className="first-row">
         <div className="courses-available">
             <h1>Courses</h1>
             <a className="courses-available-link">HTML for beginners</a>
@@ -30,6 +31,11 @@ class Footer extends Component {
             <div className="location other-info-child">Miami, Florida</div>
             </div>
         </div>
+      </div>
+      <div className="second-row">
+        <div className="flag" id="spanish"></div>
+        <div className="flag" id="america"></div>
+      </div>
       </div>
     )
   }

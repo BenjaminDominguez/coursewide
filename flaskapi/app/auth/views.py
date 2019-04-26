@@ -1,6 +1,6 @@
 from app.auth import bp as api
 from app.models import User, TokenBlacklist
-from app import jwt
+from app import jwt, db
 from flask import jsonify, request, current_app
 from flask_jwt_extended import (
     create_access_token, create_refresh_token,

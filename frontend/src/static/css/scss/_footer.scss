@@ -1,11 +1,15 @@
 .footer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: auto;
-    padding: 50px 100px;
-    background-color: rgba($secondary-color, 0.9);
+    padding: 10px 100px 40px 100px;
+    background-color: rgba($primary-color, 0.9);
     color: white;
 
+    .first-row,
+    .second-row {
+        display: flex;
+    }
     .courses-available {
         display: flex;
         flex-direction: column;
@@ -30,13 +34,14 @@
         padding: 30px;
         display: flex;
         flex-direction: column;
-        width: 50%;
+        width: 60%;
 
         .other-info{
             display: flex;
             flex-direction: column;
             text-align: right;
             margin: 40px;
+            margin-right: 0;
 
             .other-info-child{
                 margin: 5px;
@@ -51,6 +56,10 @@
             display: flex;
             i{
                 margin: auto;
+                &:last-child{
+                    margin: 0;
+                    margin-left: auto;
+                }
 
             &.fa-twitter {
             
@@ -97,5 +106,26 @@
         }
             }
         }
+    }
+
+    .second-row{
+        justify-content: flex-start;
+        background-size: cover;
+        .flag{
+            margin: 0 15px;
+            &:last-child{
+                margin-right: 25px;
+            }
+            height: 40px;
+            width: 40px;
+        }
+    }
+
+    #spanish{
+        background-image: url(../../svg/spain.svg);
+    }
+
+    #america{
+        background-image: url(../../svg/united-states-of-america.svg);
     }
 }

@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import EmailPassword from './EmailPassword';
 import FinalDetails from './FinalDetails';
 import Confirm from './Confirm';
-import Topbar from '../layout/Topbar';
-import Navbar from '../layout/Navbar';
 import { register } from '../../actions/authActions';
 import { connect } from 'react-redux';
+import Validator from './Validator';
+import FlashedMessages from './FlashedMessages';
+import { Redirect } from 'react-router-dom';
 
 class Register extends Component {
   constructor() {
     super();
+    this.validator = new Validator();
+    this.passwordMsg = 'Password must be at least 10 characters long. Go back and change.'
     this.state = {
       step: 1,
       email: '',
@@ -19,23 +22,45 @@ class Register extends Component {
 
       showPassword: false,
 
-      validation: {
-        emailValid: false,
-        passwordValid: false,
-        fullNameValid: false,
-        countryValid: false
-      }
+      flashedMessages: []
     }
   }
 
+  validateAndIncrement = (e) => {
+    e.preventDefault();
+    const { email, password, fullName, country } = this.state;
+    const values = [email, fullName, country]
+
+    let flashedMessages = [];
+
+    const validatePassword = this.validator.validateLength(password, 10);
+    if (!validatePassword) {
+      flashedMessages.push(<FlashedMessages flashClass="red" text={this.passwordMsg} />) 
+    } else {
+      values.forEach(value => {
+        if (!this.validator.validateLength(value, 0)){
+          flashedMessages.push(<FlashedMessages flashClass="red" text="Please fill in all fields" />)
+        }
+      })
+    }
+
+    if (flashedMessages.length === 0){
+      this.incrementStep();
+    } else {
+      this.setState({flashedMessages: flashedMessages})
+    }
+  }
+
+
   incrementStep = () =>{
     const step = this.state.step
-    this.setState({step: step + 1})
+    this.setState({step: step+1})
   }
 
   decrementStep = (e) =>{
     e.preventDefault()
     const step = this.state.step
+    this.setState({flashedMessages: []})
     this.setState({step: step - 1})
   }
 
@@ -45,11 +70,9 @@ class Register extends Component {
     this.setState({[name]: value})
   }
 
-  handlePassword = () => {
+  handlePasswordToggle = () => {
     this.setState({showPassword: !this.state.showPassword})
   }
-
-  validateLength = (value, minLength) => (value.toString().length > minLength);
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -69,24 +92,30 @@ class Register extends Component {
         email={this.state.email}
         password={this.state.password} 
         showPassword={this.state.showPassword} 
-        handlePassword={this.handlePassword} 
+        handlePasswordToggle={this.handlePasswordToggle} 
         handleChange={this.handleChange} 
         increment={this.incrementStep}
-        validateLength={this.validateLength}
         />
       case 2:
-        return <FinalDetails state={this.state} handleChange={this.handleChange} increment={this.incrementStep} decrement={this.decrementStep} />
+        return <FinalDetails 
+        state={this.state} 
+        handleChange={this.handleChange} 
+        increment={this.incrementStep} 
+        decrement={this.decrementStep} />
       case 3:
-        return <Confirm state={this.state} increment={this.incrementStep} decrement={this.decrementStep} />
+        return <Confirm 
+        state={{email: this.state.email, fullName: this.state.fullName, country: this.state.country}}
+        increment={this.validateAndIncrement} 
+        decrement={this.decrementStep}
+        flashedMessages={this.state.flashedMessages} />
       case 4:
-        this.handleSubmit();
-        return (
-          <div>
-            <div className="container">
-              <h1>Succesfully registered!</h1>
-            </div>
-          </div>
-        )
+        //Register and log the user in
+        this.props.handleRegister({
+          email: this.state.email,
+          password: this.state.password
+        })
+
+        return <Redirect to="/" />
     }
   }
 }

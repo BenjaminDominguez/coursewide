@@ -9,6 +9,7 @@ nav.topbar {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
+    background: rgba($primary-color, 0.9);
 
     .username {
         display: flex;
@@ -31,7 +32,7 @@ nav.topbar {
             position: absolute;
             top: 0;
             right: 0;
-            border: 1px solid white;
+            border: 0.05rem solid $secondary-color;
 
             &.ball-green{
                 background: rgba(#2ECC71, 0.9);

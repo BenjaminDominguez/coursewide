@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import CourseItem from './CourseItem';
 import Search from './Search';
-import Navbar from '../layout/Navbar';
-import Topbar from '../layout/Topbar';
+import Header from '../layout/header/Header';
 import { Redirect } from 'react-router-dom';
 
 
@@ -45,8 +44,7 @@ class Courses extends Component {
   render() {
     return (
     <div>
-    <Topbar />
-    <Navbar />
+    <Header />
       <div className="courses-bg-overlay">
       <div className="courses-container">
         <h1 className="courses-heading"> Our available courses </h1>

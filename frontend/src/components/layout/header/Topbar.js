@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
-import { fullName, isAuthenticated } from '../../reducers';
-import TopbarDropdown from './TopbarDropdown';
+import { fullName, isAuthenticated } from '../../../reducers';
+import TopbarDropdown from '../TopbarDropdown';
 
 class Topbar extends Component {
 

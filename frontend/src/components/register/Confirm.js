@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Topbar from '../layout/Topbar';
-import Navbar from '../layout/Navbar';
-import FlashedMessages from './FlashedMessages';
+import Header from '../layout/header/Header';
+import Footer from '../layout/Footer';
 
 class Confirm extends Component {
     constructor() {
@@ -36,9 +35,10 @@ formattedState = () => Object.keys(this.props.state).map((field) => {
     const { decrement, increment } = this.props;
     return (
     <div>
+        <Header />
       <div className="form-container">
       <div className="confirm-register">
-            <FlashedMessages flashClass={this.state.flashClass} message={this.state.flashedMessages} />
+            { this.props.flashedMessages }
             {this.formattedState() }
         <div className="buttons">
             <div className="step-button">
@@ -50,6 +50,7 @@ formattedState = () => Object.keys(this.props.state).map((field) => {
         </div>
         </div>
       </div>
+      <Footer />
     </div>
     )
   }

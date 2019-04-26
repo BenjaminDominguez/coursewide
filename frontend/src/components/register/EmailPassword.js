@@ -1,75 +1,40 @@
 import React, { Component } from 'react';
-import Topbar from '../layout/Topbar';
-import Navbar from '../layout/Navbar';
+import Header from '../layout/header/Header';
 import { Link } from 'react-router-dom';
-
-
+import Footer from '../layout/Footer';
 
 class EmailPassword extends Component {
 
-  constructor(props){
-    super(props);
-
-    this.passwordLength = 10
-    this.emailLength = 0
-
-    this.state = {
-      emailValid: null,
-      emailMsg: 'This field is required',
-      passwordValid: null,
-      passwordMsg: 'Must be at least 10 characters'
-    }
-  }
-
-  handleValidation = (e, field, fieldRequirement, fieldValid, onChange=false) => {
-    this.props.validateLength(field, fieldRequirement) ? this.setState({[fieldValid]: true}) : this.setState({[fieldValid]: false})
-    if (onChange) {
-      this.props.handleChange(e)
-    }
-  }
-
-  handleIncrement = (e) => {
-    //form validation
-    e.preventDefault()
-    const { increment, email, password } = this.props;
-
-    this.handleValidation(e, email, this.emailLength, 'emailValid')
-    this.handleValidation(e, password, this.passwordLength, 'passwordLength')
-
-    if (this.state.emailValid && this.state.passwordValid){
-      increment();
-  }
-}
 
   render() {
-    const { email, password, handlePassword, showPassword } = this.props;
+    const { email, increment, password, handleChange, handlePasswordToggle, showPassword } = this.props;
     return (
       <div>
+        <Header />
         <div className="form-container">
             <form className="register-form">
                     <div className="form-heading-bg">
-                      <h1 className="form-heading"> Register </h1>
-                      <p className="form-subheading">Enter your email and a password to get started with CourseWide today!</p>
+                      <h1 className="form-heading"> Sign up for coursewide. </h1>
+                      <p className="form-subheading">Enter your email and a password to get started with coursewide today.</p>
                     </div>
                     <div className="form-control">
-                        { this.state.emailValid === false ? <p className="flashed-form-message"> { this.state.emailMsg } </p> : null }
-                        <input onChange={e => this.handleValidation(e, email, this.emailLength, 'emailValid', true)} value={email} name="email" className={this.state.emailValid === false ? "form-input invalid" : this.state.emailValid === null ? "form-input" : "form-input valid"} type="text" placeholder="Email" />
+                        <input onChange={handleChange} value={email} name="email" className="form-input" type="text" placeholder="Email" />
                     </div>
                     <div className="form-control">
-                        {this.state.passwordValid === false ? <p className="flashed-form-message"> {this.state.passwordMsg} </p> : null}
-                        <input onChange={e => this.handleValidation(e, password, this.passwordLength, 'passwordValid', true)} value={password} name="password" className={this.state.passwordValid === false ? "form-input invalid" : this.state.passwordValid === null ? "form-input" : "form-input valid"} type={showPassword ? "text" : "password"} placeholder="Password" />
+                        <input onChange={handleChange} type={showPassword ? "text" : "password"} value={password} name="password" className="form-input" placeholder="Password" />
                     </div>
                     <div className="form-control">
-                        <input onClick={handlePassword} className="password-checkbox" name="checkbox" type="checkbox"/><label for="checkbox">Show password</label>
+                        <input onClick={handlePasswordToggle} className="password-checkbox" name="checkbox" type="checkbox"/><label for="checkbox">Show password</label>
                     </div>
                     <div className="step-button">
-                        <button onClick={this.handleIncrement} className="button-continue" type="submit">Continue</button>
+                        <button onClick={increment} className="button-continue first-step" type="submit">Continue</button>
                     </div>
                     <div className="form-control">
                     <p>Already a user? <Link to="/login">Login here</Link></p>
                     </div>
                 </form>
             </div>
+            <Footer />
       </div>
     )
   }

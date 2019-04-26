@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Topbar from '../layout/Topbar';
-import Navbar from '../layout/Navbar';
+import Header from '../layout/header/Header';
 import CourseDetails from './CourseDetails';
 import EditCourse from './EditCourse';
 import CourseModules from './CourseModules';
@@ -80,9 +79,7 @@ class Course extends Component {
     // Save topbar and Navbar as header for reuse
     const header = (
     <div>
-      
-      <Topbar />
-      <Navbar />
+      <Header />
       <CourseDetails 
       editState={this.state.editContent.toggleEdit} 
       handleToggle={this.handleToggle}

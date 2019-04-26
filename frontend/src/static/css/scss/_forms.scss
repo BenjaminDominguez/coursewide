@@ -7,7 +7,7 @@ form {
 form.register-form{
     display: flex;
     flex-direction: column;
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
     height: auto;
     border-radius: 10px 10px 5px 5px;
@@ -37,8 +37,9 @@ form.register-form{
 
     .form-subheading{
         color: white;
-        padding: 0 2rem 1rem 2rem;
+        padding: 0 0 1rem 3.5rem;
         margin-bottom: 1rem;
+        text-align: left;
     }
 
     .form-control {
@@ -51,20 +52,26 @@ form.register-form{
         }
 
         .form-input {
-            width: 300px;
-            height: 30px;
+            width: 330px;
+            height: 40px;
             border: 1px solid rgba(#999, 0.5);
             outline: none;
-            margin: 0 10px;
-            padding: 10px;
+            margin: 2px 10px;
+            padding: 10px 10px 10px 10px;
             font-size: 1rem;
             border-radius: 10px;
 
+            &:focus{
+                box-shadow: -1px 1px 10px $secondary-color;
+                border: none;
+                transition: box-shadow 0.3s ease;
+            }
+
             &.invalid {
-                box-shadow: -1px 1px 8px #E74C3C;
+                border: 2px solid rgba(#e71837, 0.5);
             }
             &.valid {
-                box-shadow: -1px 1px 8px #2ECC71;
+                border: 2px solid rgba(#2ECC71, 0.5);
             }
         }
 
@@ -92,8 +99,8 @@ form.register-form{
         cursor: pointer;
         outline: none;
         border: none;
-        width: 150px;
-        height: 40px;
+        width: 175px;
+        height: 50px;
         padding: 10px;
         border-radius: 5px;
         background: $secondary-color;
@@ -111,7 +118,12 @@ form.register-form{
             opacity: 1;
             transition: opacity 0.2s ease-in;
             box-shadow: -1px 1px 10px #abebc6;
+            }
         }
+
+        &.first-step{
+            width: 350px;
+            height: 50px;
         }
 
         &:hover {
@@ -127,8 +139,8 @@ form.register-form{
         cursor: pointer;
         outline: none;
         border: 0.5px solid rgba(#999, 0.5);
-        width: 150px;
-        height: 40px;
+        width: 175px;
+        height: 50px;
         margin-left: 10px;
         padding: 10px;
         background: white;
@@ -154,13 +166,13 @@ form.register-form{
         width: 400px;
         margin: auto;
         text-align: center;
-        color: white;
+        color: rgba($secondary-color, 0.8);
     }
 }
 
 .flashed-message {
     text-align: center;
-    margin: auto;
+    margin: 5px auto;
     padding: 10px;
     width: 400px;
     font-size: 1.5rem;
@@ -229,18 +241,12 @@ form.courses-search-form{
         padding: 0 5px;
         outline: none;
         border: none;
-        border-radius: 10px;
-        box-shadow: -1px 1px 5px #999;
-        
-        &:focus{
-            transition: box-shadow 0.3s ease-in;
-            box-shadow: -1px 1px 15px rgba($secondary-color, 0.8);
-        }
+        border-bottom: 0.1rem solid #999;
     }
     i{
         position: absolute;
         top: 12px;
-        left: 650px;
+        left: 670px;
         color: #999;
     }
 }

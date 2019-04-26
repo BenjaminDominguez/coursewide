@@ -11,6 +11,7 @@ nav.navbar {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    background: rgba(#111926, 0.9);
 
     .hamburger {
         position: absolute;
@@ -36,7 +37,7 @@ nav.navbar {
     #nav-brand{
         display: inline;
         font-size: 2rem;
-        color: $secondary-color;
+        color: white;
         margin: 10px 30px 5px 50px;
     }
 
@@ -69,7 +70,7 @@ nav.navbar {
         justify-content: flex-end;
 
         .link {
-            color: $secondary-color;
+            color: white;
             text-decoration: none;
             margin: 1rem;
             font-weight: 500;
@@ -80,7 +81,7 @@ nav.navbar {
 
             &:hover {
                 transition: color 0.1s ease-in;
-                color: darken($secondary-color, 30);
+                color: $secondary-color;
                 cursor: pointer;
             }
         }
@@ -105,13 +106,14 @@ nav.navbar {
                 width: auto;
                 color: black;
                 cursor: pointer;
-                border: 1px solid $secondary-color;
                 outline: none;
-                color: $secondary-color;
                 box-sizing: border-box;
+                color: $secondary-color;
+                border: 1px solid;
+                border-color: $secondary-color;
 
                 &:hover{
-                color: darken($secondary-color, 20);
+                color: white;
                 transition: color 0.3s ease;
                 }
 

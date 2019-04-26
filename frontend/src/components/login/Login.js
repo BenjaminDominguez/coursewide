@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import LoginForm from './LoginForm';
-import Topbar from '../layout/Topbar';
-import Navbar from '../layout/Navbar';
+import Header from '../layout/header/Header';
 import { login } from '../../actions/authActions';
 import { authErrors, isAuthenticated } from '../../reducers';
 
@@ -29,8 +28,7 @@ class Login extends Component {
   render() {
     const header = (
     <React.Fragment>
-      <Topbar />
-      <Navbar />
+      <Header />
     </React.Fragment>
     )
     switch(this.props.isAuthenticated){
