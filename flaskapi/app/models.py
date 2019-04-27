@@ -32,8 +32,9 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first = db.Column(db.String(100), default=None)
     last = db.Column(db.String(100), default=None)
-    email = db.Column(db.String(1000), default=None)
+    email = db.Column(db.String(1000), unique=True, default=None)
     password = db.Column(db.String(1000), default=None)
+    location = db.Column(db.String(1000), default=None)
     isStudent = db.Column(db.Boolean, default=False)
     isTeacher = db.Column(db.Boolean, default=False)
 
@@ -98,7 +99,6 @@ class Student(db.Model):
 class Teacher(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    location = db.Column(db.String(100), default=None)
     courses_teaching = db.relationship('Course', backref='teacher', lazy='dynamic')
 
     def json_response(self):
