@@ -1,43 +1,53 @@
+$course-background: #fafbfc;
+
 .course-container{
     display: flex;
-    margin-bottom: 2rem;
-    padding-top: 3rem;
-
+    padding-bottom: 2rem;
+    margin-top: 0;
     .course-image {
-        width: 400px;
+        width: 380px;
         height: 200px;
-        box-shadow: -1px 1px 5px #999;
+        box-shadow: -1px 1px 3px #999;
         margin-right: 60px;
+    }
+
+    &#course-details{
+        background: $course-background;
+        padding-top: 3rem;
     }
 }
 
 ul.course-navigation{
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     list-style-type: none;
     overflow: hidden;
-    justify-content: center;
+    justify-content: flex-start;
+    border-bottom: 1.4px solid #e1e4e8;
+    box-sizing: border-box;
+    background: $course-background;
+    margin: 0 0 20px 0;
 
     li{
         cursor: pointer;
         font-weight: 400;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         color: $secondary-color;
-        width: 30%;
+        width: 200px;
         text-align: center;
         padding: 15px;
-        border-radius: 5px;
+        border-radius: 5px 5px 0 0;
         margin-right: 5px;
-        // box-shadow: -1px 1px 5px $secondary-color;
 
-        &:hover{
-            background: rgba($secondary-color, 0.1);
-            transition: background-color 0.2s ease-in;
+        &:first-child{
+            margin-left: 125px;
         }
+        // box-shadow: -1px 1px 5px $secondary-color
         &.active{
-            background: rgba($secondary-color, 0.15);
-            transition: background-color 0.2s ease-in;
+            border-top: 1.2px solid #e1e4e8;
+            border-left: 1.2px solid #e1e4e8;
+            border-right: 1.2px solid #e1e4e8;
         }
     }
 }
@@ -50,7 +60,6 @@ ul.course-navigation{
     height: 220px;
     padding: 0 10px;
     justify-content: space-between;
-
     h1,p{
         margin: 0;
         padding: 0;
@@ -95,15 +104,14 @@ ul.course-navigation{
         padding: 7px;
         cursor: pointer;
         max-width: 80px;
-        background: rgba(white, 0.8);
-        box-shadow: -1px 1px 5px $secondary-color;
+        background: $secondary-color;
         p{
             margin: 0;
             padding: 0;
-            color: $secondary-color;
+            color: white;
             font-size: 1rem;
             text-align: center;
-            font-weight: 700;
+            font-weight: 400;
             
         }
     }
@@ -118,13 +126,15 @@ ul.course-navigation{
         padding: 10px;
         max-height: 20rem;
         color: $secondary-color;
-        font-size: 1rem;
+        font-size: 0.7rem;
         cursor: pointer;
         margin-bottom: 10px;
-        box-shadow: -1px 1px 10px rgba(#999, 0.3);
+        border-radius: 5px;
+        border: 2px solid #e1e4e8;
 
         &:hover{
-            background: rgba(#999, 0.1);
+            background: rgba(#e1e4e8, 0.5);
+            transition: background-color 0.3s ease;
         }
     }
 }

@@ -4,7 +4,7 @@ import Footer from '../layout/Footer';
 
 class FinalDetails extends Component {
   render() {
-    const { increment, decrement, handleChange, state } = this.props;
+    const { increment, decrement, handleChange, firstName, lastName, country } = this.props;
     return (
         <div>
             <Header />
@@ -15,10 +15,13 @@ class FinalDetails extends Component {
                     <p className="form-subheading">Enter a few more details and then confirm.</p>
                     </div>
                     <div className="form-control">
-                        <input name="fullName" onChange={handleChange} value={state.fullName} className="form-input" type="text" placeholder="Full Name" />
+                        <input onChange={handleChange} name="firstName" value={firstName} className="form-input" type="text" placeholder="First Name" />
                     </div>
                     <div className="form-control">
-                        <input name="country" onChange={handleChange} value={state.country} className="form-input" type="text" placeholder="What country do you currently live in?" />
+                        <input onChange={handleChange} name="lastName" value={lastName} className="form-input" type="text" placeholder="Last Name" />
+                    </div>
+                    <div className="form-control">
+                        <input onChange={handleChange} name="country" value={country} className="form-input" type="text" placeholder="What country do you currently live in?" />
                     </div>
                     <div className="buttons">
                         <div className="step-button">

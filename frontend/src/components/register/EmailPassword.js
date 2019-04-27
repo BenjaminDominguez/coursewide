@@ -23,14 +23,14 @@ class EmailPassword extends Component {
                     <div className="form-control">
                         <input onChange={handleChange} type={showPassword ? "text" : "password"} value={password} name="password" className="form-input" placeholder="Password" />
                     </div>
-                    <div className="form-control">
-                        <input onClick={handlePasswordToggle} className="password-checkbox" name="checkbox" type="checkbox"/><label for="checkbox">Show password</label>
+                    <div className="form-control form-control-checkbox">
+                    <input onClick={handlePasswordToggle} className="password-checkbox" name="checkbox" type="checkbox"/><p>Show password</p>
                     </div>
                     <div className="step-button">
                         <button onClick={increment} className="button-continue first-step" type="submit">Continue</button>
                     </div>
                     <div className="form-control">
-                    <p>Already a user? <Link to="/login">Login here</Link></p>
+                    <p>Already a user? <Link className="login-here" to="/login">Login here</Link></p>
                     </div>
                 </form>
             </div>

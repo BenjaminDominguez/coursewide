@@ -16,8 +16,9 @@ class Register extends Component {
     this.state = {
       step: 1,
       email: '',
+      firstName: '',
+      lastName: '',
       password: '',
-      fullName: '',
       country: '',
 
       showPassword: false,
@@ -28,14 +29,14 @@ class Register extends Component {
 
   validateAndIncrement = (e) => {
     e.preventDefault();
-    const { email, password, fullName, country } = this.state;
-    const values = [email, fullName, country]
+    const { email, password, firstName, lastName, country } = this.state;
+    const values = [email, firstName, lastName, country]
 
     let flashedMessages = [];
 
     const validatePassword = this.validator.validateLength(password, 10);
     if (!validatePassword) {
-      flashedMessages.push(<FlashedMessages flashClass="red" text={this.passwordMsg} />) 
+      flashedMessages.push(<FlashedMessages flashClass="red small" text={this.passwordMsg} />) 
     } else {
       values.forEach(value => {
         if (!this.validator.validateLength(value, 0)){
@@ -79,7 +80,8 @@ class Register extends Component {
     const userDetails = {
       email: this.state.email,
       password: this.state.password,
-      fullName: this.state.fullName,
+      first: this.state.firstName,
+      last: this.state.lastName,
       country: this.state.country
     }
     this.props.handleRegister(userDetails);
@@ -98,13 +100,15 @@ class Register extends Component {
         />
       case 2:
         return <FinalDetails 
-        state={this.state} 
+        firstName={this.state.firstName}
+        lastName={this.state.lastName}
+        country={this.state.country}
         handleChange={this.handleChange} 
         increment={this.incrementStep} 
         decrement={this.decrementStep} />
       case 3:
         return <Confirm 
-        state={{email: this.state.email, fullName: this.state.fullName, country: this.state.country}}
+        state={{email: this.state.email, first: this.state.firstName, last: this.state.lastName, country: this.state.country}}
         increment={this.validateAndIncrement} 
         decrement={this.decrementStep}
         flashedMessages={this.state.flashedMessages} />

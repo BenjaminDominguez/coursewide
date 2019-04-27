@@ -5,6 +5,7 @@ import LoginForm from './LoginForm';
 import Header from '../layout/header/Header';
 import { login } from '../../actions/authActions';
 import { authErrors, isAuthenticated } from '../../reducers';
+import Footer from '../layout/Footer';
 
 class Login extends Component {
 
@@ -26,11 +27,6 @@ class Login extends Component {
   }
 
   render() {
-    const header = (
-    <React.Fragment>
-      <Header />
-    </React.Fragment>
-    )
     switch(this.props.isAuthenticated){
       case(true):
         return (
@@ -39,8 +35,9 @@ class Login extends Component {
       case(false):
         return (
           <div>
-              { header }
+            <Header />
             <LoginForm handleChange={ this.handleChange } handleSubmit={ this.handleSubmit } />
+            <Footer />
           </div>
         )  
       }  
@@ -48,7 +45,6 @@ class Login extends Component {
   }
 
 const mapStateToProps = (state) => ({
-  errors: authErrors(state),
   isAuthenticated: isAuthenticated(state)
 })
 

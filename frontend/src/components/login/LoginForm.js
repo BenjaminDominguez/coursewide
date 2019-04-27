@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { authErrors } from '../../reducers';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends Component {
 
 
   render() {
 
-    const { handleSubmit, handleChange } = this.props;
+    const { handleSubmit, handleChange, error } = this.props;
 
     return (
       <div>
@@ -15,6 +18,7 @@ class LoginForm extends Component {
                     <h1 className="form-heading"> Welcome back! </h1>
                     <p className="form-subheading">Enter your email and password below to get started. </p>
                   </div>
+                    { error ? error.msg ? <span className="flashed-message red small"> {error.msg} </span> : null : null}
                     <div className="form-control">
                       <input onChange={ handleChange } name="email" className="form-input" type="text" placeholder="Enter your email" />
                     </div>
@@ -22,7 +26,10 @@ class LoginForm extends Component {
                         <input onChange={ handleChange } name="password" className="form-input" type="password" placeholder="Password" />
                     </div>
                     <div className="step-button">
-                        <button className="button-continue" type="submit">Login</button>
+                        <button className="button-continue login-button" type="submit">Login</button>
+                    </div>
+                    <div className="form-control">
+              <p>Not already a user?<Link className="register-here" to="/register"> Register here!</Link></p>
                     </div>
               </form>
           </div>
@@ -31,4 +38,8 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+const mapStateToProps = state => ({
+  error: authErrors(state)
+})
+
+export default connect(mapStateToProps)(LoginForm);

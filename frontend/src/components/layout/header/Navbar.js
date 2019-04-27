@@ -22,7 +22,7 @@ class Navbar extends Component {
                 {
                 this.props.isAuthenticated ? (<Logout />) :  
                 (<div>
-                <Link to="/register" className="link login-link"> <span id="login-link" className="nav-link nav-link-login">Login </span></Link>
+                <Link to="/login" className="link login-link"> <span id="login-link" className="nav-link nav-link-login">Login </span></Link>
                 <Link to="/register" className="link"> <span className="nav-link nav-link-login">Register </span></Link>
                 </div>)
                 }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import CourseItem from './CourseItem';
-import Search from './Search';
 import Header from '../layout/header/Header';
-import { Redirect } from 'react-router-dom';
+import Footer from '../layout/Footer';
 
 
 class Courses extends Component {
@@ -13,11 +12,6 @@ class Courses extends Component {
             courses: [],
             query: ''
         }
-    }
-
-    handleSearch = e => {
-      e.preventDefault();
-      this.setState({query: e.target.value})
     }
 
 
@@ -47,13 +41,13 @@ class Courses extends Component {
     <Header />
       <div className="courses-bg-overlay">
       <div className="courses-container">
-        <h1 className="courses-heading"> Our available courses </h1>
-        <Search handleSearch={this.handleSearch} />
+        <h1 className="courses-heading"> Our available courses ({this.state.courses.length}) </h1>
           <div className="course-items">
           { this.state.courses }
           </div>
       </div>
       </div>
+    <Footer/>
     </div>
     )
   }

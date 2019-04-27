@@ -73,6 +73,7 @@ nav.navbar {
             color: white;
             text-decoration: none;
             margin: 1rem;
+            margin-top: 1.15rem;
             font-weight: 500;
 
             &.login-link{
@@ -89,7 +90,7 @@ nav.navbar {
         .nav-link{
             margin: 10px 20px;
             display: inline;
-            font-size: 1.6rem;
+            font-size: 1.3rem;
 
             &#login-link{
                 padding: 15px;

@@ -2,11 +2,15 @@
     text-align: center;
     color: $secondary-color;
     margin-bottom: 30px;
+    margin-top: 4rem;
 }
 
 
 .course-items{
-    margin-top: 100px;
+    margin-top: 10px;
+    &:last-child{
+        margin-bottom: 100px;
+    }
 }
 
 .courses-bg-overlay{

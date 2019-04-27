@@ -9,7 +9,7 @@ class CourseDetails extends Component {
     const { courseName, courseDescription, instructorName } = this.props;
 
     return (
-      <div className="course-container">
+      <div id="course-details" className="course-container">
         <CourseImage />
           <div id="course-info">
             <h1 className="course-title"> { courseName } </h1>
