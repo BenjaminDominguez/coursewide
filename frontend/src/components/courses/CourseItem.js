@@ -19,8 +19,6 @@ class CourseItem extends Component {
         <p className="course-description">{description}</p>
         <p className="course-instructor">Taught by { instructor }</p>
         <p className="course-lessons">{ numModules } modules</p>
-        <button className="course-language">Spanish</button>
-        <button className="course-language">Korean</button>
       </div>
     )
   }

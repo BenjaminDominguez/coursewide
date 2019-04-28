@@ -633,7 +633,8 @@ ul.course-navigation {
     padding: 7px;
     cursor: pointer;
     max-width: 80px;
-    background: #66a6ff; }
+    background: #66a6ff;
+    border-radius: 5px; }
     #course-info .language p {
       margin: 0;
       padding: 0;
@@ -709,7 +710,7 @@ ul.course-navigation {
   display: flex;
   flex-direction: column;
   height: auto;
-  padding: 10px 100px 40px 100px;
+  padding: 10px 100px 0 100px;
   background-color: rgba(17, 25, 38, 0.9);
   color: white; }
   .footer .first-row,
@@ -720,37 +721,43 @@ ul.course-navigation {
     flex-direction: column;
     margin-right: 30px; }
     .footer .courses-available .courses-available-link {
-      margin: 10px 0;
-      font-size: 1.6rem; }
+      margin: 10px 0; }
   .footer .supported-languages {
     display: flex;
     flex-direction: column; }
     .footer .supported-languages .supported-languages-link {
-      margin: 10px 0;
-      font-size: 1.6rem; }
+      margin: 10px 0; }
+  .footer .supported-languages-link, .footer .courses-available-link {
+    font-size: 1.2rem;
+    cursor: pointer; }
+    .footer .supported-languages-link:hover, .footer .courses-available-link:hover {
+      color: #66a6ff;
+      transition: color 0.3s ease; }
   .footer .right-side-footer {
-    padding: 30px;
+    padding: 20px 0 30px 30px;
     display: flex;
     flex-direction: column;
-    width: 60%; }
+    margin-left: auto; }
     .footer .right-side-footer .other-info {
       display: flex;
       flex-direction: column;
       text-align: right;
-      margin: 40px;
+      margin: 20px 40px 40px 40px;
       margin-right: 0; }
       .footer .right-side-footer .other-info .other-info-child {
         margin: 5px;
-        font-size: 1.3rem; }
-      .footer .right-side-footer .other-info i {
-        margin-right: 10px; }
+        font-size: 1.3rem;
+        cursor: pointer; }
+        .footer .right-side-footer .other-info .other-info-child:hover {
+          color: #66a6ff;
+          transition: color 0.3s ease; }
     .footer .right-side-footer .footer-icons {
-      display: flex; }
+      display: flex;
+      justify-content: flex-end; }
       .footer .right-side-footer .footer-icons i {
-        margin: auto; }
+        margin: 0 30px; }
         .footer .right-side-footer .footer-icons i:last-child {
-          margin: 0;
-          margin-left: auto; }
+          margin-right: 0; }
         .footer .right-side-footer .footer-icons i.fa-twitter:hover {
           color: rgba(102, 166, 255, 0.9);
           cursor: pointer;

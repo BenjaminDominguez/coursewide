@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Header from '../layout/header/Header';
 import CourseDetails from './CourseDetails';
-import EditCourse from './EditCourse';
 import CourseModules from './CourseModules';
 import { getCourseInfo } from '../../actions/courseActions';
 import { connect } from 'react-redux';
 import CourseBio from './CourseBio';
 import CourseNav from './CourseNav';
+import { isAuthenticated } from '../../reducers';
 
 /*
 Course will not be included in the redux store.
@@ -28,9 +28,9 @@ class Course extends Component {
 
   //Run as soon as the component mounts
   componentDidMount = () => {
-    console.log('Getting course info')  
-    this.props.getCourseInfo(this.props.match.params.id)
-  
+    const { getCourseInfo } = this.props;
+    const { id } = this.props.match.params;
+    getCourseInfo(id)
   }
 
   handleEditChange = (e) => {
@@ -107,5 +107,8 @@ class Course extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+  isAuthenticated: isAuthenticated(state)
+})
 
-export default connect(null, { getCourseInfo })(Course);
+export default connect(mapStateToProps, { getCourseInfo })(Course);

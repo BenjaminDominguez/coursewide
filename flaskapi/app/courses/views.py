@@ -1,5 +1,6 @@
 from app.courses import bp as api
 from flask import jsonify, request
+from flask_jwt_extended import jwt_required
 from app.models import Course, User, Module
 from app import db
 
@@ -7,9 +8,12 @@ from app import db
 def get_all_courses():
     return jsonify([course.json_response() for course in Course.query.all()]), 200
 
+
 @api.route('/courses/<int:id>', methods=['GET'])
 def get_course(id):
-
+    """
+    Access token is required to access this route
+    """
     course = Course.query.get(id)
 
     if course is None:
@@ -29,8 +33,11 @@ def create_new_course():
     if teacher_id:
         user = User.query.get(teacher_id)
         if user is None:
-            return jsonify({'error': 'Could not find teacher in DB'}, 500)
+            return jsonify({'error': 'Could not find teacher in DB'}), 500
 
+        #This is under the assumption that the teacher/user relationship has already
+        #been established. What we are doing below is grabbing the teacher object from
+        #the user.
         teacher = user.teacher
         teacher.courses_teaching.append(new_course)
         db.session.add(teacher)

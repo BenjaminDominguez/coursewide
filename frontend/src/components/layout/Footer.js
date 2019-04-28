@@ -19,11 +19,11 @@ class Footer extends Component {
         </div>
         <div className="right-side-footer">
             <div className="footer-icons">
-                <i class="fab fa-twitter fa-4x"></i>
-                <i class="fab fa-facebook-square fa-4x"></i>
-                <i class="fab fa-instagram fa-4x"></i>
-                <i class="fab fa-linkedin-in fa-4x"></i>
-                <i class="fab fa-github-alt fa-4x"></i>
+                <i class="fab fa-twitter fa-3x"></i>
+                <i class="fab fa-facebook-square fa-3x"></i>
+                <i class="fab fa-instagram fa-3x"></i>
+                <i class="fab fa-linkedin-in fa-3x"></i>
+                <i class="fab fa-github-alt fa-3x"></i>
             </div>
             <div className="other-info">
             <div className="email other-info-child">contact@coursewide.com</div>
@@ -33,8 +33,6 @@ class Footer extends Component {
         </div>
       </div>
       <div className="second-row">
-        <div className="flag" id="spanish"></div>
-        <div className="flag" id="america"></div>
       </div>
       </div>
     )

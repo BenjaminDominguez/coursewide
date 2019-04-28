@@ -30,13 +30,13 @@ student_course = db.Table('user_course',
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    first = db.Column(db.String(100), default=None)
-    last = db.Column(db.String(100), default=None)
-    email = db.Column(db.String(1000), unique=True, default=None)
-    password = db.Column(db.String(1000), default=None)
-    location = db.Column(db.String(1000), default=None)
-    isStudent = db.Column(db.Boolean, default=False)
-    isTeacher = db.Column(db.Boolean, default=False)
+    first = db.Column(db.String(100), nullable=False)
+    last = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(1000), unique=True, nullable=False)
+    password = db.Column(db.String(1000), nullable=False)
+    location = db.Column(db.String(1000), nullable=False)
+    isStudent = db.Column(db.Boolean, nullable=False)
+    isTeacher = db.Column(db.Boolean, nullable=False)
 
     student = db.relationship('Student', uselist=False, backref='user')
     teacher = db.relationship('Teacher', uselist=False, backref='user')
@@ -62,6 +62,7 @@ class User(db.Model):
                 "id": self.id,
                 "name": self.full_name(),
                 "email": self.email,
+                "location": self.location,
                 "password": self.password,
                 "isStudent": self.isStudent,
                 "isTeacher": self.isTeacher,
@@ -73,7 +74,8 @@ class User(db.Model):
 
         elif self.isTeacher:
             user['teacher_details'] = {}
-            courses_teaching = self.teacher.courses_teaching
+            #If the teacher does not have any courses teaching yet, this protects against an error
+            courses_teaching = self.teacher.courses_teaching if self.teacher else None
             if courses_teaching:
                 user['teacher_details']['courses_teaching'] = [
                     course.json_response(teacher=True) for course in courses_teaching
@@ -104,8 +106,7 @@ class Teacher(db.Model):
     def json_response(self):
         return {
             "user_id": self.user_id,
-            "name": self.user.full_name(),
-            "location": self.location
+            "name": self.user.full_name() if self.user else None
         }
 
     def __str__(self):

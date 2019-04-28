@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authErrors } from '../../reducers';
+import { clearErrors } from '../../actions/authActions';
 import { Link } from 'react-router-dom';
 
 class LoginForm extends Component {
 
+  componentDidMount = () => this.props.clearErrors();
 
   render() {
 
@@ -42,4 +44,8 @@ const mapStateToProps = state => ({
   error: authErrors(state)
 })
 
-export default connect(mapStateToProps)(LoginForm);
+const mapDispatchToProps = dispatch => ({
+  clearErrors: () => dispatch(clearErrors())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

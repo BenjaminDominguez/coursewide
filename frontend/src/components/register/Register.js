@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import EmailPassword from './EmailPassword';
 import FinalDetails from './FinalDetails';
 import Confirm from './Confirm';
-import { register } from '../../actions/authActions';
-import { connect } from 'react-redux';
 import Validator from './Validator';
 import FlashedMessages from './FlashedMessages';
-import { Redirect } from 'react-router-dom';
+import { register } from '../../actions/authActions';
+import { connect } from 'react-redux';
+import { authErrors } from '../../reducers';
 
 class Register extends Component {
   constructor() {
     super();
+
+    //register instance of validation class, will be more
+    //useful later on when password and email validation are added
     this.validator = new Validator();
-    this.passwordMsg = 'Password must be at least 10 characters long. Go back and change.'
     this.state = {
       step: 1,
       email: '',
@@ -26,32 +28,6 @@ class Register extends Component {
       flashedMessages: []
     }
   }
-
-  validateAndIncrement = (e) => {
-    e.preventDefault();
-    const { email, password, firstName, lastName, country } = this.state;
-    const values = [email, firstName, lastName, country]
-
-    let flashedMessages = [];
-
-    const validatePassword = this.validator.validateLength(password, 10);
-    if (!validatePassword) {
-      flashedMessages.push(<FlashedMessages flashClass="red small" text={this.passwordMsg} />) 
-    } else {
-      values.forEach(value => {
-        if (!this.validator.validateLength(value, 0)){
-          flashedMessages.push(<FlashedMessages flashClass="red" text="Please fill in all fields" />)
-        }
-      })
-    }
-
-    if (flashedMessages.length === 0){
-      this.incrementStep();
-    } else {
-      this.setState({flashedMessages: flashedMessages})
-    }
-  }
-
 
   incrementStep = () =>{
     const step = this.state.step
@@ -75,16 +51,38 @@ class Register extends Component {
     this.setState({showPassword: !this.state.showPassword})
   }
 
-  handleSubmit = (e) => {
+  handleRegister = (e) => {
     e.preventDefault();
-    const userDetails = {
-      email: this.state.email,
-      password: this.state.password,
-      first: this.state.firstName,
-      last: this.state.lastName,
-      country: this.state.country
+
+    //Deconstruct all relevant fields
+    const { email, password, firstName, lastName, country } = this.state;
+    const valuesToValidate = [email, password, firstName, lastName, country]
+
+    let flashedMessages = []
+
+    //Validate each, eventually we are going to move to email validation and password validation
+    valuesToValidate.forEach(value => {
+      if(!this.validator.validateLength(value, 0)){
+        flashedMessages.push(<FlashedMessages flashClass="red small" text="Please fill in all fields" />)
+      }
+    })
+
+    // If no validation errors, procede to register
+    if (flashedMessages.length === 0){
+
+      const userDetails = {
+        email: email,
+        password: password, 
+        first: firstName,
+        last: lastName,
+        location: country,
+        isStudent: true 
+      }
+      this.props.handleRegister(userDetails);
+    } else {
+      //Just send one flashed message
+      this.setState({flashedMessages: flashedMessages[0]})
     }
-    this.props.handleRegister(userDetails);
   }
 
   render() {
@@ -111,21 +109,19 @@ class Register extends Component {
         state={{email: this.state.email, first: this.state.firstName, last: this.state.lastName, country: this.state.country}}
         increment={this.validateAndIncrement} 
         decrement={this.decrementStep}
+        handleRegister={this.handleRegister}
         flashedMessages={this.state.flashedMessages} />
-      case 4:
-        //Register and log the user in
-        this.props.handleRegister({
-          email: this.state.email,
-          password: this.state.password
-        })
-
-        return <Redirect to="/" />
     }
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  handleRegister: (userDetails) => dispatch(register(userDetails))
+
+const mapStateToProps = state => ({
+  error: authErrors(state)
 })
 
-export default connect(null, mapDispatchToProps)(Register);
+const mapDispatchToProps = dispatch => ({
+  handleRegister: userDetails => dispatch(register(userDetails))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

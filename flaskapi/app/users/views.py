@@ -23,6 +23,7 @@ def create_new_user():
     user.create_password(password)
     db.session.add(user)
     
+    #this must be provided in the JSON or else other areas of code will not work.
     if user.isStudent:
         s = Student()
         db.session.add(s)

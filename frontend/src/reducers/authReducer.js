@@ -51,6 +51,11 @@ export default (state = initialState, action) => {
                 userDetails: undefined,
                 errors: {}
             }
+        case auth.CLEAR_ERRORS:
+            return {
+                ...state,
+                errors: {}
+            }
         default:
             return state
     }

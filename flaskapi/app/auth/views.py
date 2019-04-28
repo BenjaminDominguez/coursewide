@@ -2,6 +2,7 @@ from app.auth import bp as api
 from app.models import User, TokenBlacklist
 from app import jwt, db
 from flask import jsonify, request, current_app
+from sqlalchemy.exc import IntegrityError
 from flask_jwt_extended import (
     create_access_token, create_refresh_token,
     jwt_required, get_jwt_identity, jwt_refresh_token_required
@@ -39,10 +40,18 @@ def login():
 def register():
 
     data = request.get_json()
+
+    password = data.pop('password')
     
     new_user = User(**data)
+    new_user.create_password(password)
     db.session.add(new_user)
-    db.session.commit()
+
+    #Just in case email already exists
+    try:
+        db.session.commit()
+    except IntegrityError:
+        return jsonify({'msg': 'Email already exists'}), 400
 
     tokens = {
         "access": create_access_token(identity=new_user.id, user_claims=new_user.token_response()),
@@ -52,7 +61,7 @@ def register():
     add_token_to_database(tokens["access"], current_app.config['JWT_IDENTITY_CLAIM'])
     add_token_to_database(tokens["refresh"], current_app.config['JWT_IDENTITY_CLAIM'])
 
-    return jsonify(tokens), 200
+    return jsonify(tokens), 201
 
 @api.route('/auth/tokens', methods=['GET'])
 @jwt_required
