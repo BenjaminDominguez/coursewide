@@ -11,6 +11,7 @@ package-lock.json
 main.css
 
 /frontend/src/static/svg
+/frontend/src/static/img
 
 # testing
 /coverage
