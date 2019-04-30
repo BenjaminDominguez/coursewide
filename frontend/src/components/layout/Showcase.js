@@ -9,7 +9,7 @@ class Showcase extends Component {
       <div className="grid-container">
         <Row className="cta">
           <Col xs={12} sm={12} md={6} md={6} className="cta-heading">
-            <h1 className="cta-text">Here at CourseWide, we provide code courses for spanish speakers. Sign up, start learning to code today, and find a job.</h1>
+            <h1 className="cta-text">Here at CourseWide, we provide code courses for spanish speakers. Sign up and start learning to code today.</h1>
           <button className="cta-button">Learn more</button>
           </Col>
           <Col xs={12} sm={12} md={6} lg={6} className="cta-svg">

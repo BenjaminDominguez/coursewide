@@ -112,3 +112,9 @@ export function fullName(state) {
         return state.access.user_claims.user_details.name
     }
 }
+
+export function email(state) {
+    if (state.access) {
+        return state.access.user_claims.user_details.email
+    }
+}

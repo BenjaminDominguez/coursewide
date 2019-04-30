@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import CourseImage from './CourseImage';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { courseName, courseDescription, instructorName } from '../../reducers';
+
 
 class CourseDetails extends Component {
+
+  handlePaymentRedirect = () => this.props.history.push('/payment');
 
   render() {
 
@@ -10,13 +14,16 @@ class CourseDetails extends Component {
 
     return (
       <div id="course-details" className="course-container">
-        <CourseImage />
+        <img className="course-image" src="https://www.webdevelopersnotes.com/wp-content/uploads/free-html-course-physical-tags.png" />
           <div id="course-info">
             <h1 className="course-title"> { courseName } </h1>
             <p className="course-description"> { courseDescription } </p>
             <p className="course-instructor"><i className="fas fa-user-alt"></i> {" "}Taught by { instructorName }</p>
             <span className="course-location"><i className="fas fa-globe-americas"></i>{" "}<p>Belize</p></span>
-            <div className="language"><p>Spanish</p></div>
+          <div className="course-payment">
+            <div className="course-price">$9.99</div>
+            <div onClick={this.handlePaymentRedirect} className="course-purchase-now">Purchase now</div>
+          </div>
           </div>
       </div>
     )
@@ -24,9 +31,9 @@ class CourseDetails extends Component {
 }
 
 const mapStateToProps = state => ({
-  courseName: state.course.courseName,
-  courseDescription: state.course.courseDescription,
-  instructorName: state.course.instructorName
+  courseName: courseName(state),
+  courseDescription: courseDescription(state),
+  instructorName: instructorName(state)
 })
 
-export default connect(mapStateToProps)(CourseDetails);
+export default withRouter(connect(mapStateToProps)(CourseDetails));

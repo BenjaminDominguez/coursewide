@@ -8,6 +8,7 @@ class ModuleList extends Component {
     componentDidMount = () => {
       //If the user visited the page before the course page
       //For example, in their browser history
+      //This will only be available if the student is enrolled in the course
         if (this.props.modules.length === 0) {
             this.props.getCourseInfo(this.props.courseID)
         }

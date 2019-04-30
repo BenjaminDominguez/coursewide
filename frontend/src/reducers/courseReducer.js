@@ -23,6 +23,22 @@ export default (state=initialState, action) => {
     }
 }
 
+export function courseID(state){
+    return state.id
+}
+
 export function modules(state) {
    return state.modules 
+}
+
+export function courseName(state) {
+    return state.courseName
+}
+
+export function courseDescription(state){
+    return state.courseDescription
+}
+
+export function instructorName(state){
+    return state.instructorName
 }

@@ -12,6 +12,11 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import Payment from './components/payment/Payment';
+import { ProtectedRoute } from './RedirectRoutes';
+import { StripeProvider } from 'react-stripe-elements';
+
+const stripeAPIKEY = 'pk_test_tZPdcr7fAfy8Q9Rl3KKJy0Zp'
 
 const app = (
     <Provider store={ store }>
@@ -24,6 +29,9 @@ const app = (
                 <Route path="/courses/:id/modules/:order" component={Module} />
                 <Route exact path="/languages" component={Languages} />
                 <Route exact path="/login" component={Login} />
+                <StripeProvider apiKey={stripeAPIKEY}>
+                    <ProtectedRoute exact path="/payment" component={Payment} />
+                </StripeProvider>
             </div>
         </Router>
     </Provider>

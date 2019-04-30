@@ -12,6 +12,10 @@ class Module extends Component {
     }
   }
 
+  componentDidMount = () => {
+    //Fetch module information
+  }
+
   handleModuleRedirect = (url, order) => {
     this.props.history.push(url)
     this.setState({order})

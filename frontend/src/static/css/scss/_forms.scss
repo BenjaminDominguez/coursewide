@@ -4,6 +4,96 @@ form {
     }
 }
 
+form.stripe-form{
+    width: 50%;
+    margin: auto;
+    margin-top: 2rem;
+
+    label {
+        display: block;
+        margin: 0 0 5px 10px;
+
+        &[for="name-on-card"]{
+            color: darken(#cfd7df, 20%);
+        }
+    }
+
+    .stripe-form-title{
+        margin-left: 20px;
+        color: $primary-color;
+    }
+
+    .course-info {
+        display: flex;
+        margin-bottom: 40px;
+        align-items: center;
+        border-radius: 6.5px;
+        box-shadow: 0 1px 5px darken($border-color, 20%);
+        padding: 40px;
+        .course-image{
+            width: 150px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        .course-details{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            .actual-details{
+                h1, p{
+                    margin: 0;
+                    padding: 0;
+                }
+                h1{
+                    font-size: 1.5rem;
+                    margin-bottom: 5px;
+                }
+            }
+
+            .total-details{
+                p{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
+    .StripeElement {
+        box-sizing: border-box;
+        width: 400px;
+        height: 40px;
+        padding: 10px 12px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: rgba($border-color, 0.2);
+        box-shadow: 0 1px 3px 0 #e6ebf1;
+        -webkit-transition: box-shadow 150ms ease;
+        transition: box-shadow 150ms ease;
+        outline: none;
+        margin-bottom: 20px;
+
+        &--focus{
+            box-shadow: 0 1px 3px 0 #cfd7df;
+        }
+    }
+
+    .stripe-form-button{
+        box-sizing: border-box;
+        padding: 5px;
+        height: 40px;
+        width: 200px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        background: $secondary-color;
+        color: white;
+        border-radius: 5px;
+        font: inherit;
+        box-shadow: 0px 1px 6px $secondary-color;
+    }
+}
+
 form.register-form{
     display: flex;
     flex-direction: column;
@@ -119,8 +209,11 @@ form.register-form{
     margin: 10px auto 0 auto;
     display: inline;
 
-    .button-continue {
+    .button-continue,.button-back{
+        font: inherit;
+    }
 
+    .button-continue {
         cursor: pointer;
         outline: none;
         border: none;

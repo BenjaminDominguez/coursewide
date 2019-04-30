@@ -284,8 +284,7 @@ nav.navbar {
   margin-bottom: 20px;
   padding: 2rem;
   border-radius: 10px;
-  border: 4px solid white;
-  background: rgba(102, 166, 255, 0.1); }
+  border: 1.5px solid #e1e4e8; }
   .courseItem:hover {
     cursor: pointer;
     transition: background-color 0.2s ease-in;
@@ -311,6 +310,71 @@ nav.navbar {
 
 form input {
   font: inherit; }
+
+form.stripe-form {
+  width: 50%;
+  margin: auto;
+  margin-top: 2rem; }
+  form.stripe-form label {
+    display: block;
+    margin: 0 0 5px 10px; }
+    form.stripe-form label[for="name-on-card"] {
+      color: #92a4b6; }
+  form.stripe-form .stripe-form-title {
+    margin-left: 20px;
+    color: #111926; }
+  form.stripe-form .course-info {
+    display: flex;
+    margin-bottom: 40px;
+    align-items: center;
+    border-radius: 6.5px;
+    box-shadow: 0 1px 5px #a7b0bc;
+    padding: 40px; }
+    form.stripe-form .course-info .course-image {
+      width: 150px;
+      height: 100px;
+      margin-right: 20px; }
+    form.stripe-form .course-info .course-details {
+      display: flex;
+      justify-content: space-between;
+      width: 100%; }
+      form.stripe-form .course-info .course-details .actual-details h1, form.stripe-form .course-info .course-details .actual-details p {
+        margin: 0;
+        padding: 0; }
+      form.stripe-form .course-info .course-details .actual-details h1 {
+        font-size: 1.5rem;
+        margin-bottom: 5px; }
+      form.stripe-form .course-info .course-details .total-details p {
+        font-size: 1.5rem; }
+  form.stripe-form .StripeElement {
+    box-sizing: border-box;
+    width: 400px;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: rgba(225, 228, 232, 0.2);
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+    outline: none;
+    margin-bottom: 20px; }
+    form.stripe-form .StripeElement--focus {
+      box-shadow: 0 1px 3px 0 #cfd7df; }
+  form.stripe-form .stripe-form-button {
+    box-sizing: border-box;
+    padding: 5px;
+    height: 40px;
+    width: 200px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    background: #66a6ff;
+    color: white;
+    border-radius: 5px;
+    font: inherit;
+    box-shadow: 0px 1px 6px #66a6ff; }
 
 form.register-form {
   display: flex;
@@ -391,6 +455,8 @@ form.register-form {
 .step-button {
   margin: 10px auto 0 auto;
   display: inline; }
+  .step-button .button-continue, .step-button .button-back {
+    font: inherit; }
   .step-button .button-continue {
     cursor: pointer;
     outline: none;
@@ -559,8 +625,8 @@ form.courses-search-form {
   padding-bottom: 2rem;
   margin-top: 0; }
   .course-container .course-image {
-    width: 380px;
-    height: 200px;
+    width: 400px;
+    height: 240px;
     box-shadow: -1px 1px 3px #999;
     margin-right: 60px; }
   .course-container#course-details {
@@ -600,22 +666,40 @@ ul.course-navigation {
   flex-direction: column;
   margin-top: 0;
   height: 220px;
-  padding: 0 10px;
-  justify-content: space-between; }
+  padding: 0 10px; }
   #course-info h1, #course-info p {
     margin: 0;
+    margin-bottom: 15px;
     padding: 0;
     color: #66a6ff; }
-  #course-info h1 {
-    margin: 0 0 20px 0; }
   #course-info p {
-    margin: 0 0 20px 0;
     font-size: 1.5rem; }
     #course-info p.course-instructor {
       color: #999;
       font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 10px; }
+      font-weight: 600; }
+  #course-info .course-payment {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center; }
+    #course-info .course-payment .course-price, #course-info .course-payment .course-purchase-now {
+      box-sizing: border-box;
+      cursor: pointer; }
+    #course-info .course-payment .course-price {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-right: 20px;
+      color: #52BE80; }
+    #course-info .course-payment .course-purchase-now {
+      padding: 15px;
+      color: white;
+      background: rgba(82, 190, 128, 0.8);
+      box-shadow: 0px 1px 6px #52BE80;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: 500; }
   #course-info .course-location, #course-info .course-location p {
     color: #999;
     font-size: 1rem;
@@ -656,7 +740,7 @@ ul.course-navigation {
     cursor: pointer;
     margin-bottom: 10px;
     border-radius: 5px;
-    border: 2px solid #e1e4e8; }
+    border: 1px solid #e1e4e8; }
     .modules .module-item:hover {
       background: rgba(225, 228, 232, 0.5);
       transition: background-color 0.3s ease; }

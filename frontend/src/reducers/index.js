@@ -7,6 +7,7 @@ export default combineReducers({
     course: courseReducer
 })
 
+//Auth/user functions
 export const isAuthenticated = state => fromAuth.isAuthenticated(state.auth)
 export const accessToken = state => fromAuth.accessToken(state.auth)
 export const isAccessTokenExpired = state => fromAuth.isAccessTokenExpired(state.auth)
@@ -15,5 +16,12 @@ export const isRefreshTokenExpired = state => fromAuth.isRefreshTokenExpired(sta
 export const authErrors = state => fromAuth.errors(state.auth)
 export const userID = state => fromAuth.userID(state.auth)
 export const fullName = state => fromAuth.fullName(state.auth)
-export const modules = state => fromCourse.modules(state.course)
 export const JTI = state => fromAuth.JTI(state.auth)
+export const email = state => fromAuth.email(state.auth)
+
+//Course functions
+export const courseName = state => fromCourse.courseName(state.course)
+export const modules = state => fromCourse.modules(state.course)
+export const courseDescription = state => fromCourse.courseDescription(state.course)
+export const instructorName = state => fromCourse.instructorName(state.course)
+export const courseID = state => fromCourse.courseID(state.course)
