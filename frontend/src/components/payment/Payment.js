@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Elements } from 'react-stripe-elements';
 import CheckoutForm from './CheckoutForm';
 import Header from '../layout/header/Header';
+import Footer from '../layout/Footer';
 
 class Payment extends Component {
 
@@ -13,9 +14,10 @@ class Payment extends Component {
           <Elements>
             <CheckoutForm />
           </Elements>
+          <Footer />
       </div>
     )
   }
 }
 
-export default connect(null)(Payment);
+export default Payment;

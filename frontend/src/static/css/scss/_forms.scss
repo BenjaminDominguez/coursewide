@@ -8,6 +8,17 @@ form.stripe-form{
     width: 50%;
     margin: auto;
     margin-top: 2rem;
+    margin-bottom: 4rem;
+    box-shadow: 0 1px 6px $border-color;
+    border-radius: 10px;
+    padding: 40px 60px 60px 60px;
+
+    #line{
+        width: 100%;
+        height: 1.5px;
+        background: $border-color;
+        margin-bottom: 2rem;
+    }
 
     label {
         display: block;
@@ -23,12 +34,16 @@ form.stripe-form{
         color: $primary-color;
     }
 
+    .stripe-form-inputs{
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
     .course-info {
         display: flex;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         align-items: center;
-        border-radius: 6.5px;
-        box-shadow: 0 1px 5px darken($border-color, 20%);
         padding: 40px;
         .course-image{
             width: 150px;
@@ -69,6 +84,7 @@ form.stripe-form{
         box-shadow: 0 1px 3px 0 #e6ebf1;
         -webkit-transition: box-shadow 150ms ease;
         transition: box-shadow 150ms ease;
+        margin-left: auto;
         outline: none;
         margin-bottom: 20px;
 
@@ -81,16 +97,24 @@ form.stripe-form{
         box-sizing: border-box;
         padding: 5px;
         height: 40px;
-        width: 200px;
+        margin-left: auto;
+        width: 400px;
         outline: none;
         border: none;
         cursor: pointer;
         font-size: 1rem;
-        background: $secondary-color;
+        background: rgba($secondary-color, 0.8);
         color: white;
         border-radius: 5px;
         font: inherit;
         box-shadow: 0px 1px 6px $secondary-color;
+
+        &:hover{
+            box-shadow: -1px 1px 10px $secondary-color;
+            background: rgba($secondary-color, 1);
+            transition: background-color 0.5s ease;
+            transition: box-shadow 0.3s ease;
+        }
     }
 }
 

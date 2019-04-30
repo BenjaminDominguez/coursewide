@@ -5,7 +5,7 @@
 @import url("https://fonts.googleapis.com/css?family=Muli");
 nav.topbar {
   height: auto;
-  padding: 10px 0;
+  padding: 20px 0 2px 0;
   margin: auto;
   position: block;
   width: 100%;
@@ -20,7 +20,7 @@ nav.topbar {
     nav.topbar .username p {
       padding: 0;
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: #66a6ff; }
     nav.topbar .username .ball {
       width: 10px;
@@ -37,13 +37,14 @@ nav.topbar {
       nav.topbar .username .ball.ball-red {
         background: rgba(231, 76, 60, 0.9); }
     nav.topbar .username i {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: #66a6ff; }
       nav.topbar .username i.fa-caret-down {
         padding: 0;
-        margin: 5px 0 0 5px; }
+        margin: 0 0 0 5px; }
       nav.topbar .username i.fa-bell, nav.topbar .username i.fa-comment-alt {
-        margin: 3px 0 0 30px;
+        margin: 0 0 0 30px;
+        padding-bottom: 8px;
         position: relative; }
       nav.topbar .username i.fa-bell {
         font-size: 1.7rem; }
@@ -314,7 +315,16 @@ form input {
 form.stripe-form {
   width: 50%;
   margin: auto;
-  margin-top: 2rem; }
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 1px 6px #e1e4e8;
+  border-radius: 10px;
+  padding: 40px 60px 60px 60px; }
+  form.stripe-form #line {
+    width: 100%;
+    height: 1.5px;
+    background: #e1e4e8;
+    margin-bottom: 2rem; }
   form.stripe-form label {
     display: block;
     margin: 0 0 5px 10px; }
@@ -323,12 +333,14 @@ form.stripe-form {
   form.stripe-form .stripe-form-title {
     margin-left: 20px;
     color: #111926; }
+  form.stripe-form .stripe-form-inputs {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px; }
   form.stripe-form .course-info {
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     align-items: center;
-    border-radius: 6.5px;
-    box-shadow: 0 1px 5px #a7b0bc;
     padding: 40px; }
     form.stripe-form .course-info .course-image {
       width: 150px;
@@ -357,6 +369,7 @@ form.stripe-form {
     box-shadow: 0 1px 3px 0 #e6ebf1;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
+    margin-left: auto;
     outline: none;
     margin-bottom: 20px; }
     form.stripe-form .StripeElement--focus {
@@ -365,16 +378,22 @@ form.stripe-form {
     box-sizing: border-box;
     padding: 5px;
     height: 40px;
-    width: 200px;
+    margin-left: auto;
+    width: 400px;
     outline: none;
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    background: #66a6ff;
+    background: rgba(102, 166, 255, 0.8);
     color: white;
     border-radius: 5px;
     font: inherit;
     box-shadow: 0px 1px 6px #66a6ff; }
+    form.stripe-form .stripe-form-button:hover {
+      box-shadow: -1px 1px 10px #66a6ff;
+      background: #66a6ff;
+      transition: background-color 0.5s ease;
+      transition: box-shadow 0.3s ease; }
 
 form.register-form {
   display: flex;
@@ -691,15 +710,14 @@ ul.course-navigation {
       font-size: 2rem;
       font-weight: bold;
       margin-right: 20px;
-      color: #52BE80; }
+      color: #66a6ff; }
     #course-info .course-payment .course-purchase-now {
-      padding: 15px;
-      color: white;
-      background: rgba(82, 190, 128, 0.8);
-      box-shadow: 0px 1px 6px #52BE80;
-      border-radius: 10px;
+      padding: 10px 15px;
+      color: #5ca0ff;
+      background: rgba(102, 166, 255, 0.2);
       font-size: 1.2rem;
-      font-weight: 500; }
+      font-weight: 600;
+      border-radius: 2px; }
   #course-info .course-location, #course-info .course-location p {
     color: #999;
     font-size: 1rem;

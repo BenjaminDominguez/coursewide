@@ -24,7 +24,7 @@ export default (state=initialState, action) => {
 }
 
 export function courseID(state){
-    return state.id
+    return state.courseID
 }
 
 export function modules(state) {

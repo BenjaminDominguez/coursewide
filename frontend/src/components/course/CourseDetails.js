@@ -22,7 +22,7 @@ class CourseDetails extends Component {
             <span className="course-location"><i className="fas fa-globe-americas"></i>{" "}<p>Belize</p></span>
           <div className="course-payment">
             <div className="course-price">$9.99</div>
-            <div onClick={this.handlePaymentRedirect} className="course-purchase-now">Purchase now</div>
+            <div onClick={this.handlePaymentRedirect} className="course-purchase-now">Buy Now <i style={{ marginLeft: '5px'}}className="fas fa-arrow-right"></i></div>
           </div>
           </div>
       </div>

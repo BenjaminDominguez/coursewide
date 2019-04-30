@@ -35,8 +35,8 @@ class User(db.Model):
     email = db.Column(db.String(1000), unique=True, nullable=False)
     password = db.Column(db.String(1000), nullable=False)
     location = db.Column(db.String(1000), nullable=False)
-    isStudent = db.Column(db.Boolean, nullable=False)
-    isTeacher = db.Column(db.Boolean, nullable=False)
+    isStudent = db.Column(db.Boolean, default=False, nullable=False)
+    isTeacher = db.Column(db.Boolean, default=False, nullable=False)
 
     student = db.relationship('Student', uselist=False, backref='user')
     teacher = db.relationship('Teacher', uselist=False, backref='user')
@@ -53,7 +53,6 @@ class User(db.Model):
     def token_response(self):
         data = self.json_response()
         data['user_details'].pop('password')
-        data['user_details'].pop('id')
         return data
 
     def json_response(self):
@@ -117,6 +116,8 @@ class Course(db.Model):
     name = db.Column(db.String(1000), default=None)
     description = db.Column(db.String(500), default=None)
     bio = db.Column(db.String(1000), default=None)
+    price = db.Column(db.Float, default=None)
+    num_sales = db.Column(db.Integer, default=None)
 
     #Many courses have ONE teacher
     teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))

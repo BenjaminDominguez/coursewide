@@ -103,7 +103,7 @@ export function errors(state) {
 
 export function userID(state) {
     if (state.access) {
-        return state.access.user_id
+        return state.access.user_claims.user_details.id
     }
 }
 

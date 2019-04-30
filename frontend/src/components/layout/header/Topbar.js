@@ -30,12 +30,6 @@ class Topbar extends Component {
           } 
           </p>
           <i className="fas fa-caret-down"></i>
-            <i className="fas fa-bell">
-              <div className="ball ball-green"></div>
-            </i>
-            <i class="fas fa-comment-alt">
-              <div className="ball ball-red"></div>
-            </i>
           </div>
         ) 
           : null }

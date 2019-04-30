@@ -2,7 +2,7 @@ $top-bar-height: 2rem;
 
 nav.topbar {
     height: auto;
-    padding: 10px 0;
+    padding: 20px 0 2px 0;
     margin: auto;
     position: block;
     width: 100%;
@@ -19,7 +19,7 @@ nav.topbar {
         p {
             padding: 0;
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: $secondary-color;
         }
 
@@ -44,16 +44,17 @@ nav.topbar {
         }
 
         i {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: $secondary-color;
             &.fa-caret-down{
                 padding: 0;
-                margin: 5px 0 0 5px;
+                margin: 0 0 0 5px;
             }
 
             &.fa-bell,
             &.fa-comment-alt{
-                margin: 3px 0 0 30px;
+                margin: 0 0 0 30px;
+                padding-bottom: 8px;
                 position: relative;
             }
 

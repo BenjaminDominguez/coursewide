@@ -1,39 +1,55 @@
 import React, { Component } from 'react'; 
 import { injectStripe, CardElement } from 'react-stripe-elements';
-import { fullName, courseName, courseDescription } from '../../reducers';
+import { fullName, courseName, courseDescription, email, userID, courseID } from '../../reducers';
 import { connect } from 'react-redux';
 
 class CheckoutForm extends Component {
 
   constructor(props){
     super(props);
+    const { fullName } = this.props;
     this.state = {
-      complete: false
+      complete: false,
+      name: fullName,
+      cardErrors: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async handleSubmit(e) {
-    e.preventDefault()
-
-    const { token, errors } = await this.props.stripe.createToken({name: this.props.fullName})
-    const response = await fetch('/charge', {
-      method: 'POST',
-      headers: {'Content-type': 'text-plain'},
-      body: token.id
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.stripe.createToken({
+      type: 'card',
+      email: this.props.email,
+      name: this.state.name
     })
-
-    if (response.ok) {
-      this.setState({complete: true})
-    }
+      .then(tokenData => {
+        fetch('/api/payments/charge', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            paymentDetails: {
+              userID: this.props.userID,
+              courseID: this.props.courseID
+            },  
+            stripeToken: tokenData
+          })
+        })
+          .then((res) => res.json())
+            .then((data) => console.log(data))
+              .catch((err) => console.log(err))
+      })
+        .catch((err) => console.log(err))
   }
+
+  handleChange = e => this.setState({[e.target.name]: e.target.value});
 
   render() {
 
     const { courseName, courseDescription } = this.props;
 
     return (
-      <form className="stripe-form" onSubmit={this.submit}>
+      <form className="stripe-form" onSubmit={this.handleSubmit}>
         <h1 className="stripe-form-title"> Complete Purchase </h1>
         <div className="course-info">
           <img className="course-image" src="https://www.webdevelopersnotes.com/wp-content/uploads/free-html-course-physical-tags.png" />
@@ -47,10 +63,12 @@ class CheckoutForm extends Component {
             </div>
           </div>
         </div>
-        <label for="name-on-card">Name on card</label>
-        <input name="name-on-card" type="text" className="StripeElement" value={this.props.fullName} />
+        <div id="line"></div>
+        <div className="stripe-form-inputs">
+        <input name="name" type="text" placeholder="Name on card" className="StripeElement" onChange={this.handleChange} value={this.state.name} required />
         <CardElement />
-        <button className="stripe-form-button"> Confirm purchase </button>
+        <button className="stripe-form-button"> <i style={{marginRight: '10px'}}className="fas fa-lock"></i> Confirm and pay </button>
+        </div>
       </form>
     )
   }
@@ -59,7 +77,10 @@ class CheckoutForm extends Component {
 const mapStateToProps = state => ({
   fullName: fullName(state),
   courseName: courseName(state),
-  courseDescription: courseDescription(state)
+  courseDescription: courseDescription(state),
+  email: email(state),
+  courseID: courseID(state),
+  userID: userID(state)
 })
 
 export default connect(mapStateToProps)(injectStripe(CheckoutForm))
