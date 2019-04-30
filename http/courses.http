@@ -1,9 +1,0 @@
-
-POST http://localhost:8000/api/users/login_user/
-Content-Type: application/json
-
-{
-    "email": "bendominguez011@gmail.com",
-    "password": "mjnoppq12"
-}
-###
