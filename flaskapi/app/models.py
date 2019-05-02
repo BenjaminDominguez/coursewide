@@ -117,7 +117,7 @@ class Course(db.Model):
     description = db.Column(db.String(500), default=None)
     bio = db.Column(db.String(1000), default=None)
     price = db.Column(db.Float, default=None)
-    num_sales = db.Column(db.Integer, default=None)
+    num_sales = db.Column(db.Integer, default=0)
 
     #Many courses have ONE teacher
     teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))

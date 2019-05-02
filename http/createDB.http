@@ -1,0 +1,60 @@
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+    "first": "Ben",
+    "last": "Dominguez",
+    "email": "bendominguez011@gmail.com",
+    "password": "password",
+    "location": "USA",
+    "isStudent": true
+}
+
+###
+
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+    "first": "Ben",
+    "last": "Dominguez",
+    "email": "bmd16d@my.fsu.edu",
+    "password": "password",
+    "location": "USA",
+    "isTeacher": true
+}
+
+###
+
+POST http://localhost:5000/api/courses
+Content-Type: application/json
+
+{
+    "name": "HTML for beginners",
+    "description": "This is the HTML course for beginners",
+    "bio": "This is the HTML course for beginners",
+    "price": 9.99,
+    "num_sales": 0
+}
+
+###
+POST http://localhost:5000/api/courses
+Content-Type: application/json
+
+{
+    "name": "Django for beginners",
+    "description": "This is the web app course for beginners",
+    "bio": "This is the web app course for beginners",
+    "price": 11.99,
+    "num_sales": 0
+}
+
+###
+POST http://localhost:5000/api/courses/1/module
+Content-Type: application/json
+
+{
+    "name": "Introduction to HTML",
+    "order": 1,
+    "info": "this is an intro to html"
+}
