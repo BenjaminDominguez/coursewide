@@ -26,3 +26,13 @@ export const modules = state => fromCourse.modules(state.course)
 export const courseDescription = state => fromCourse.courseDescription(state.course)
 export const instructorName = state => fromCourse.instructorName(state.course)
 export const courseID = state => fromCourse.courseID(state.course)
+
+//Combined course and auth functions
+export const isEnrolled = state => {
+    let enrolled = false;
+    if(isAuthenticated(state) && coursesTaking(state)) {
+        const courseIDS = coursesTaking(state).map(course => course.courseID)
+        enrolled = courseIDS.includes(courseID(state))
+    }
+    return enrolled;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ModuleItem from './ModuleItem';
+import { isEnrolled, modules, courseID } from '../../reducers';
 import { connect } from 'react-redux';
 
 class CourseModules extends Component {
@@ -16,10 +17,11 @@ class CourseModules extends Component {
     return (
     <div class="course-container">
       <div class="modules">
+          {this.props.isEnrolled ? null : (<p className="buy-now-p">Buy this course now to access course modules.</p>)}
           { this.props.modules.map((module, index) => {
             return <ModuleItem 
             key = { index } 
-            module = { module } 
+            module = { module }
             moduleURL={ baseURL + `/${module.order}` }
             modules={ this.props.modules } />
           })}
@@ -30,8 +32,9 @@ class CourseModules extends Component {
 }
 
 const mapStateToProps = state => ({
-  modules: state.course.modules,
-  courseID: state.course.courseID
+  modules: modules(state),
+  courseID: courseID(state),
+  isEnrolled: isEnrolled(state)
 })
 
 export default connect(mapStateToProps)(CourseModules);

@@ -446,6 +446,15 @@ form.stripe-form {
         margin-bottom: 5px; }
       form.stripe-form .course-info .course-details .total-details p {
         font-size: 1.5rem; }
+  form.stripe-form .a-few-seconds {
+    text-align: left;
+    max-width: 400px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #8a96a6;
+    margin-left: auto; }
   form.stripe-form .StripeElement {
     box-sizing: border-box;
     width: 400px;
@@ -848,6 +857,10 @@ ul.course-navigation {
   display: flex;
   flex-direction: column;
   width: 100%; }
+  .modules .buy-now-p {
+    font-size: 1.2rem;
+    padding-left: 2rem;
+    color: #8a96a6; }
   .modules .module-item {
     max-width: 1000px;
     padding: 10px;
@@ -861,6 +874,10 @@ ul.course-navigation {
     .modules .module-item:hover {
       background: rgba(225, 228, 232, 0.5);
       transition: background-color 0.3s ease; }
+    .modules .module-item.unclickable {
+      cursor: auto; }
+      .modules .module-item.unclickable:hover {
+        background: white; }
 
 .moduleContainer {
   padding: 2rem 5rem 1rem 7rem;
@@ -879,14 +896,20 @@ ul.course-navigation {
     .moduleContainer .modules-ul .module-list-item {
       cursor: pointer;
       padding: 20px;
-      font-weight: 550; }
+      font-weight: 550;
+      background: rgba(225, 228, 232, 0.4);
+      color: black;
+      font-weight: 500;
+      border: 1px solid white;
+      width: 200px; }
       .moduleContainer .modules-ul .module-list-item .module-order {
         margin-right: 20px; }
-      .moduleContainer .modules-ul .module-list-item:hover, .moduleContainer .modules-ul .module-list-item.active {
-        background: rgba(102, 166, 255, 0.2); }
+      .moduleContainer .modules-ul .module-list-item.active {
+        color: #66a6ff;
+        font-weight: 700; }
   .moduleContainer .moduleVideoContainer {
     margin-top: 15px;
-    margin-left: 50px; }
+    margin-left: 20px; }
 
 .languages-container .languages-page-header {
   text-align: center; }

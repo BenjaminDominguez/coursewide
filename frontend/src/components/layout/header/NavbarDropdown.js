@@ -13,6 +13,8 @@ class TopbarDropdown extends Component {
       content = this.props.coursesTaking.map(course => {
         return (<div onClick={() => this.handleClick(course.courseID)} className="drop-down-item"> {course.courseName} </div>)
       })
+    } else {
+      content = (<div onClick={() => this.props.history.push('/courses')}className="drop-down-item"> <p>No courses yet. Browse courses and get started!</p> </div>)
     }
     return (
       <div className="drop-down">

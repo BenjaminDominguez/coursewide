@@ -74,6 +74,7 @@ class CheckoutForm extends Component {
         <div className="stripe-form-inputs">
         <input name="name" type="text" placeholder="Name on card" className="StripeElement" onChange={this.handleChange} value={this.state.name} required />
         <CardElement />
+        <p className="a-few-seconds"> It may take up to a few seconds to process your order. </p>
         <button className="stripe-form-button"> <i style={{marginRight: '10px'}}className="fas fa-lock"></i> Confirm and pay </button>
         </div>
       </form>

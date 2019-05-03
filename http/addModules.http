@@ -1,0 +1,8 @@
+POST http://localhost:5000/api/courses/1/module
+Content-Type: application/json
+
+{
+    "order": 2,
+    "name": "Divs and Paragraphs",
+    "info": "Intro to divs and paragraphs"
+}

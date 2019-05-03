@@ -1,4 +1,5 @@
 import jwtDecode from 'jwt-decode';
+import { courseID } from '../reducers';
 import * as auth from '../actions/authActions';
 
 const initialState = {

@@ -23,20 +23,25 @@
             cursor: pointer;
             padding: 20px;
             font-weight: 550;
+            background: rgba($border-color, 0.4);
+            color: black;
+            font-weight: 500;
+            border: 1px solid white;
+            width: 200px;
 
             .module-order{
                 margin-right: 20px;
             }
 
-            &:hover,
             &.active{
-                background: rgba($secondary-color, 0.2);
+                color: $secondary-color;
+                font-weight: 700;
             }
         }
     }
 
     .moduleVideoContainer{
         margin-top: 15px;
-        margin-left: 50px;
+        margin-left: 20px;
     }
 }

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import CourseBio from './CourseBio';
 import CourseNav from './CourseNav';
-import { isAuthenticated, coursesTaking, courseID } from '../../reducers';
+import { isAuthenticated, coursesTaking, isEnrolled, courseID } from '../../reducers';
 
 /*
 Course will not be included in the redux store.
@@ -58,7 +58,6 @@ class Course extends Component {
       <Header />
       <CourseDetails 
       handleToggle={this.handleToggle}
-      enrolled={this.props.enrolled}
       />
       <CourseNav infoActive={!this.state.showModules} modulesActive={this.state.showModules} handleNav={this.handleNav} />
     </div>
@@ -83,20 +82,11 @@ class Course extends Component {
     }
 }
 
-const mapStateToProps = state => {
-  let isEnrolled = false;
-  if (isAuthenticated(state)) {
-    const courseIDs = coursesTaking(state).map(course => {
-      return course.courseID
-    })
-    isEnrolled = courseIDs.includes(courseID(state));
-  }
+const mapStateToProps = state => ({
+  isAuthenticated: isAuthenticated(state),
+  coursesTaking: coursesTaking(state),
+  isEnrolled: isEnrolled(state)
+})
 
-  return ({
-    isAuthenticated: isAuthenticated(state),
-    coursesTaking: coursesTaking(state),
-    enrolled: isEnrolled
-  })
-}
 
 export default connect(mapStateToProps, { getCourseInfo })(Course);

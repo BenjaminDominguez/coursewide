@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { courseName, courseDescription, instructorName } from '../../reducers';
+import { courseName, courseDescription, instructorName, isEnrolled } from '../../reducers';
 
 
 class CourseDetails extends Component {
@@ -9,7 +9,7 @@ class CourseDetails extends Component {
   handlePaymentRedirect = () => this.props.history.push('/payment');
 
   paymentOrEnrolled = () => (
-    this.props.enrolled ?
+    this.props.isEnrolled ?
     (
       <div className="course-enrolled">
         <p><i class="fas fa-university"></i> {"  "} Enrolled </p>
@@ -45,7 +45,8 @@ class CourseDetails extends Component {
 const mapStateToProps = state => ({
   courseName: courseName(state),
   courseDescription: courseDescription(state),
-  instructorName: instructorName(state)
+  instructorName: instructorName(state),
+  isEnrolled: isEnrolled(state)
 })
 
 export default withRouter(connect(mapStateToProps)(CourseDetails));
