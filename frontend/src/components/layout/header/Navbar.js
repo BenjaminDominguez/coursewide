@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { isAuthenticated, userID } from '../../../reducers';
+import { isAuthenticated, userID, fullName } from '../../../reducers';
 import { connect } from 'react-redux';
 import Logout from '../../login/Logout';
+import NavbarDropdown from './NavbarDropdown';
 
 class Navbar extends Component {
 
@@ -18,10 +19,18 @@ class Navbar extends Component {
                 <span id="nav-brand">CourseWide</span>
                 <Link to = "/" className = "link"><span className="nav-link"> Home</span></Link>
                 <Link to = "/courses" className="link"><span className = "nav-link">Courses</span></Link>
-                <Link className="link"><span className="nav-link">Prospective Instructors</span></Link>
                 {
-                this.props.isAuthenticated ? (<Logout />) :  
+                this.props.isAuthenticated ? 
+                //If user is authenticated, add username dropdown plus logout button, else login or register button
+                (<React.Fragment>
+                <div className="username">
+                    <p>{this.props.fullName}<i className="fas fa-caret-down"></i></p>
+                    <NavbarDropdown />
+                </div>
+                <Logout />
+                </React.Fragment>) :  
                 (<div>
+                <Link className="link"><span className="nav-link">Prospective Instructors</span></Link>
                 <Link to="/login" className="link login-link"> <span id="login-link" className="nav-link nav-link-login">Login </span></Link>
                 <Link to="/register" className="link"> <span className="nav-link nav-link-login">Register </span></Link>
                 </div>)
@@ -34,7 +43,8 @@ class Navbar extends Component {
 
 const mapStateToProps = (state) => ({
     isAuthenticated: isAuthenticated(state),
-    userID: userID(state)
+    userID: userID(state),
+    fullName: fullName(state)
 })
 
 export default connect(mapStateToProps)(Navbar);

@@ -18,6 +18,7 @@ export const userID = state => fromAuth.userID(state.auth)
 export const fullName = state => fromAuth.fullName(state.auth)
 export const JTI = state => fromAuth.JTI(state.auth)
 export const email = state => fromAuth.email(state.auth)
+export const coursesTaking = state => fromAuth.coursesTaking(state.auth)
 
 //Course functions
 export const courseName = state => fromCourse.courseName(state.course)

@@ -8,6 +8,21 @@ class CourseDetails extends Component {
 
   handlePaymentRedirect = () => this.props.history.push('/payment');
 
+  paymentOrEnrolled = () => (
+    this.props.enrolled ?
+    (
+      <div className="course-enrolled">
+        <p><i class="fas fa-university"></i> {"  "} Enrolled </p>
+      </div>
+    ) :
+    (
+      <div className="course-payment">
+        <div className="course-price">$9.99</div>
+        <div onClick={this.handlePaymentRedirect} className="course-purchase-now">Buy Now <i style={{ marginLeft: '5px' }} className="fas fa-arrow-right"></i></div>
+      </div>
+    )
+  )
+
   render() {
 
     const { courseName, courseDescription, instructorName } = this.props;
@@ -20,10 +35,7 @@ class CourseDetails extends Component {
             <p className="course-description"> { courseDescription } </p>
             <p className="course-instructor"><i className="fas fa-user-alt"></i> {" "}Taught by { instructorName }</p>
             <span className="course-location"><i className="fas fa-globe-americas"></i>{" "}<p>Belize</p></span>
-          <div className="course-payment">
-            <div className="course-price">$9.99</div>
-            <div onClick={this.handlePaymentRedirect} className="course-purchase-now">Buy Now <i style={{ marginLeft: '5px'}}className="fas fa-arrow-right"></i></div>
-          </div>
+            { this.paymentOrEnrolled() }
           </div>
       </div>
     )

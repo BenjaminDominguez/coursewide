@@ -4,7 +4,7 @@ import * as auth from '../actions/authActions';
 const initialState = {
     access: undefined,
     refresh: undefined,
-    userDetails: {},
+    userDetails: undefined,
     errors: {}
 }
 
@@ -22,8 +22,7 @@ export default (state = initialState, action) => {
                     ...jwtDecode(action.payload.refresh)
                 },
                 userDetails: {
-                    user_id: jwtDecode(action.payload.access).user_id,
-                    username: jwtDecode(action.payload.access).username
+                    ...jwtDecode(action.payload.access).user_claims
                 },
                 errors: {}
             }
@@ -55,6 +54,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 errors: {}
+            }
+        case auth.UPDATE_USER_DETAILS:
+            return {
+                ...state,
+                userDetails: action.payload
             }
         default:
             return state
@@ -102,19 +106,28 @@ export function errors(state) {
 }
 
 export function userID(state) {
-    if (state.access) {
-        return state.access.user_claims.user_details.id
+    if (state.userDetails) {
+        return state.userDetails.user_details.id
     }
 }
 
 export function fullName(state) {
-    if (state.access) {
-        return state.access.user_claims.user_details.name
+    if (state.userDetails) {
+        return state.userDetails.user_details.name
     }
 }
 
 export function email(state) {
-    if (state.access) {
-        return state.access.user_claims.user_details.email
+    if (state.userDetails) {
+        return state.userDetails.user_details.email
+    }
+}
+
+export function coursesTaking(state) {
+    if(state.userDetails && state.userDetails.student_details.courses_taking) {
+        return state.userDetails.student_details.courses_taking.map((course) =>({
+            courseID: course.course_info.id,
+            courseName: course.course_info.name
+        }))
     }
 }

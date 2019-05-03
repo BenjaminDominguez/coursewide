@@ -69,7 +69,12 @@ class User(db.Model):
         }
 
         if self.isStudent:
-            user['courses_taking'] = []
+            user['student_details'] = {}
+            courses_taking = self.student.courses_taking if self.student else None
+            if courses_taking:
+                user['student_details']['courses_taking'] = [
+                    course.json_response(teacher=False) for course in courses_taking
+                ]
 
         elif self.isTeacher:
             user['teacher_details'] = {}
@@ -89,6 +94,9 @@ class Student(db.Model):
 
     courses_taking = db.relationship('Course', secondary=student_course, lazy='subquery',
     backref=db.backref('students', lazy=True))
+
+    def enroll_in_course(self, course_obj):
+        self.courses_taking.append(course_obj)
 
     def json_response(self):
         return {
@@ -132,6 +140,8 @@ class Course(db.Model):
                 "name": self.name,
                 "description": self.description,
                 "bio": self.bio,
+                "price": self.price,
+                "numStudents": len(self.students),
                 "teacher": self.teacher.json_response() if self.teacher else str(self.teacher)
             },
             "modules": [m.json_response() for m in self.modules]

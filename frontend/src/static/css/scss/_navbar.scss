@@ -1,12 +1,13 @@
+$navbar-height: 7rem;
+
 nav.navbar {
     margin: 0;
-    padding: 10px 0 15px 0;
-    position: relative;
+    padding: 10px 0 5px 0;
     box-sizing: border-box; 
     width: 100%;
-    max-height: 500px;
     overflow: hidden;
     border-bottom: 1px solid white;
+    max-height: $navbar-height;
     //box-shadow: -1px 1px 10px #999;
     display: flex;
     flex-direction: row;
@@ -62,17 +63,90 @@ nav.navbar {
 
     .nav-links{
         list-style-type: none;
-        margin: 2px 30px 0 0;
+        margin: 2px 0 0 4rem;
         padding: 0;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        .username {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            margin-right: 2rem;
+            margin-left: 2rem;
+            margin-top: 4rem;
+            text-align: right;
+            cursor: pointer;
+
+        .drop-down{
+            visibility: hidden;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            background: rgba($primary-color, 0.9);
+            z-index: 1000;
+            border-radius: 0 0 10px 10px;
+            padding-top: 20px;
+            text-align: right;
+            width: 375px;
+            height: auto;
+            margin-top: 0.3rem;
+            top: $navbar-height - 0.58rem;
+            right: 11rem;
+            box-shadow: -1px 1px 5px rgba($primary-color, 0.4);
+
+            .drop-down-heading{
+                padding: 0;
+                padding-right: 3rem;
+                margin: 0;
+                margin-bottom: 1rem;
+                color: $secondary-color;
+                font-weight: 300;
+            }
+
+            .drop-down-item{
+                text-decoration: none;
+                color: white;
+                font-size: 1.5rem;
+                padding: 1.5rem;
+                padding-right: 3rem;
+
+                &:last-child{
+                    border-radius: 0 0 10px 10px;
+                }
+
+                &:hover{
+                    background: $primary-color;
+                    color: $secondary-color;
+                    transition: color 0.3s, background-color 0.3s ease;
+                }
+            }
+        }
+
+        &:hover{
+            .drop-down{
+                visibility: visible;
+                opacity: 1;
+                transition: visibility 0s, opacity 0.2s ease;
+            }
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+            font-size: 1.3rem;
+            color: $secondary-color;
+        }
+    }
 
         .link {
             color: white;
             text-decoration: none;
-            margin: 1rem;
+            margin-left: 20px;
+            padding: 2px;
+            margin-bottom: 1rem;
             margin-top: 1.15rem;
             font-weight: 500;
 
@@ -88,7 +162,7 @@ nav.navbar {
         }
 
         .nav-link{
-            margin: 10px 20px;
+            text-align: center;
             display: inline;
             font-size: 1.3rem;
 
@@ -104,6 +178,7 @@ nav.navbar {
                 max-width: 50px;
                 font-size: 1.3rem;
                 border-radius: 5px;
+                margin-right: 4rem;
                 width: auto;
                 color: black;
                 cursor: pointer;

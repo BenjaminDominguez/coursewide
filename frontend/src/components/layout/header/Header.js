@@ -8,7 +8,6 @@ class Header extends Component {
   render() {
     return (
     <Fragment>
-        { this.props.isAuthenticated ? <Topbar /> : null }
         <Navbar />
     </Fragment>
     )

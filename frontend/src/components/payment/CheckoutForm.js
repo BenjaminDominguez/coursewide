@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { injectStripe, CardElement } from 'react-stripe-elements';
 import { fullName, courseName, courseDescription, email, userID, courseID } from '../../reducers';
 import { connect } from 'react-redux';
+import { updateUserDetails } from '../../actions/authActions';
 
 class CheckoutForm extends Component {
 
@@ -13,11 +14,11 @@ class CheckoutForm extends Component {
       name: fullName,
       cardErrors: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit = e => {
     e.preventDefault();
+    
     this.props.stripe.createToken({
       type: 'card',
       email: this.props.email,
@@ -35,9 +36,15 @@ class CheckoutForm extends Component {
             stripeToken: tokenData
           })
         })
-          .then((res) => res.json())
+          .then((res) => {
+            if (res.ok){
+              this.props.togglePaymentSuccess();
+              this.props.updateUserDetails(this.props.userID)
+            }
+          })
             .then((data) => console.log(data))
-              .catch((err) => console.log(err))
+              .catch(err => console.log(err))
+            
       })
         .catch((err) => console.log(err))
   }
@@ -83,4 +90,4 @@ const mapStateToProps = state => ({
   userID: userID(state)
 })
 
-export default connect(mapStateToProps)(injectStripe(CheckoutForm))
+export default connect(mapStateToProps, { updateUserDetails })(injectStripe(CheckoutForm))

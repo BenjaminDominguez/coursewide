@@ -4,9 +4,10 @@ import CourseDetails from './CourseDetails';
 import CourseModules from './CourseModules';
 import { getCourseInfo } from '../../actions/courseActions';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import CourseBio from './CourseBio';
 import CourseNav from './CourseNav';
-import { isAuthenticated } from '../../reducers';
+import { isAuthenticated, coursesTaking, courseID } from '../../reducers';
 
 /*
 Course will not be included in the redux store.
@@ -18,10 +19,7 @@ class Course extends Component {
     super(props);
 
     this.state = {
-      editContent: {
-        toggleEdit: false,
-        newModuleName: ''
-      },
+      userEnrolled: false,
       showModules: true
     }
   };
@@ -46,28 +44,6 @@ class Course extends Component {
     this.setState({editContent})
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    const { id } = this.props.match.params;
-
-    let APIURL = `http://localhost:8000/api/courses/${id}/add_module/`
-    fetch(APIURL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(
-          {
-            name: this.state.editContent.newModuleName,
-            order: this.state.courseContent.modules.length + 1
-          }
-        )
-    })
-    .then((res) => res.json())
-    .then((module) => console.log(module))
-  }
-
   handleNav = (location) => {
     location === 'info' ? 
     this.setState({showModules: false}) 
@@ -81,8 +57,8 @@ class Course extends Component {
     <div>
       <Header />
       <CourseDetails 
-      editState={this.state.editContent.toggleEdit} 
       handleToggle={this.handleToggle}
+      enrolled={this.props.enrolled}
       />
       <CourseNav infoActive={!this.state.showModules} modulesActive={this.state.showModules} handleNav={this.handleNav} />
     </div>
@@ -107,8 +83,20 @@ class Course extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-  isAuthenticated: isAuthenticated(state)
-})
+const mapStateToProps = state => {
+  let isEnrolled = false;
+  if (isAuthenticated(state)) {
+    const courseIDs = coursesTaking(state).map(course => {
+      return course.courseID
+    })
+    isEnrolled = courseIDs.includes(courseID(state));
+  }
+
+  return ({
+    isAuthenticated: isAuthenticated(state),
+    coursesTaking: coursesTaking(state),
+    enrolled: isEnrolled
+  })
+}
 
 export default connect(mapStateToProps, { getCourseInfo })(Course);

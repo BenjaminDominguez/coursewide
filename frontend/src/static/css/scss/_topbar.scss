@@ -13,8 +13,52 @@ nav.topbar {
 
     .username {
         display: flex;
-        margin-right: 40px;
+        flex-direction: column;
+        margin-right: 13rem;
+        text-align: right;
+        position: relative;
+        width: 400px;
         cursor: pointer;
+
+        .drop-down{
+            display: none;
+            position: absolute;
+            background: $primary-color;
+            z-index: 1;
+            padding: 10px 10px 10px 40px;
+            text-align: center;
+            width: 200px;
+            height: auto;
+            margin-top: 0.3rem;
+            top: 1.2rem;
+            right: 0;
+            box-shadow: -1px 1px 5px rgba($primary-color, 0.4);
+
+            .drop-down-heading{
+                padding: 0;
+                margin: 0;
+                margin-bottom: 1rem;
+                margin-top: 1rem;
+                color: $secondary-color;
+                font-weight: 300;
+            }
+
+            .drop-down-item{
+                list-style-type: none;
+                color: $secondary-color;
+
+                &:last-child{
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+
+        &:hover{
+            .drop-down{
+                display: flex;
+                flex-direction: column;
+            }
+        }
 
         p {
             padding: 0;

@@ -33,6 +33,7 @@ class Courses extends Component {
                     this.setState({courses: courses})
                     console.log(this.state.courses)
               })
+                .catch(err => console.log(err))
             }
 
   render() {

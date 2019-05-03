@@ -15,8 +15,40 @@ nav.topbar {
   background: rgba(17, 25, 38, 0.9); }
   nav.topbar .username {
     display: flex;
-    margin-right: 40px;
+    flex-direction: column;
+    margin-right: 13rem;
+    text-align: right;
+    position: relative;
+    width: 400px;
     cursor: pointer; }
+    nav.topbar .username .drop-down {
+      display: none;
+      position: absolute;
+      background: #111926;
+      z-index: 1;
+      padding: 10px 10px 10px 40px;
+      text-align: center;
+      width: 200px;
+      height: auto;
+      margin-top: 0.3rem;
+      top: 1.2rem;
+      right: 0;
+      box-shadow: -1px 1px 5px rgba(17, 25, 38, 0.4); }
+      nav.topbar .username .drop-down .drop-down-heading {
+        padding: 0;
+        margin: 0;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        color: #66a6ff;
+        font-weight: 300; }
+      nav.topbar .username .drop-down .drop-down-item {
+        list-style-type: none;
+        color: #66a6ff; }
+        nav.topbar .username .drop-down .drop-down-item:last-child {
+          margin-bottom: 2rem; }
+    nav.topbar .username:hover .drop-down {
+      display: flex;
+      flex-direction: column; }
     nav.topbar .username p {
       padding: 0;
       margin: 0;
@@ -107,13 +139,12 @@ nav.topbar {
 
 nav.navbar {
   margin: 0;
-  padding: 10px 0 15px 0;
-  position: relative;
+  padding: 10px 0 5px 0;
   box-sizing: border-box;
   width: 100%;
-  max-height: 500px;
   overflow: hidden;
   border-bottom: 1px solid white;
+  max-height: 7rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -154,16 +185,72 @@ nav.navbar {
       color: #66a6ff; }
   nav.navbar .nav-links {
     list-style-type: none;
-    margin: 2px 30px 0 0;
+    margin: 2px 0 0 4rem;
     padding: 0;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end; }
+    nav.navbar .nav-links .username {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin-right: 2rem;
+      margin-left: 2rem;
+      margin-top: 4rem;
+      text-align: right;
+      cursor: pointer; }
+      nav.navbar .nav-links .username .drop-down {
+        visibility: hidden;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background: rgba(17, 25, 38, 0.9);
+        z-index: 1000;
+        border-radius: 0 0 10px 10px;
+        padding-top: 20px;
+        text-align: right;
+        width: 375px;
+        height: auto;
+        margin-top: 0.3rem;
+        top: 6.42rem;
+        right: 11rem;
+        box-shadow: -1px 1px 5px rgba(17, 25, 38, 0.4); }
+        nav.navbar .nav-links .username .drop-down .drop-down-heading {
+          padding: 0;
+          padding-right: 3rem;
+          margin: 0;
+          margin-bottom: 1rem;
+          color: #66a6ff;
+          font-weight: 300; }
+        nav.navbar .nav-links .username .drop-down .drop-down-item {
+          text-decoration: none;
+          color: white;
+          font-size: 1.5rem;
+          padding: 1.5rem;
+          padding-right: 3rem; }
+          nav.navbar .nav-links .username .drop-down .drop-down-item:last-child {
+            border-radius: 0 0 10px 10px; }
+          nav.navbar .nav-links .username .drop-down .drop-down-item:hover {
+            background: #111926;
+            color: #66a6ff;
+            transition: color 0.3s, background-color 0.3s ease; }
+      nav.navbar .nav-links .username:hover .drop-down {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0s, opacity 0.2s ease; }
+      nav.navbar .nav-links .username p {
+        padding: 0;
+        margin: 0;
+        font-size: 1.3rem;
+        color: #66a6ff; }
     nav.navbar .nav-links .link {
       color: white;
       text-decoration: none;
-      margin: 1rem;
+      margin-left: 20px;
+      padding: 2px;
+      margin-bottom: 1rem;
       margin-top: 1.15rem;
       font-weight: 500; }
       nav.navbar .nav-links .link.login-link {
@@ -173,7 +260,7 @@ nav.navbar {
         color: #66a6ff;
         cursor: pointer; }
     nav.navbar .nav-links .nav-link {
-      margin: 10px 20px;
+      text-align: center;
       display: inline;
       font-size: 1.3rem; }
       nav.navbar .nav-links .nav-link#login-link {
@@ -186,6 +273,7 @@ nav.navbar {
         max-width: 50px;
         font-size: 1.3rem;
         border-radius: 5px;
+        margin-right: 4rem;
         width: auto;
         color: black;
         cursor: pointer;
@@ -697,6 +785,17 @@ ul.course-navigation {
       color: #999;
       font-size: 1rem;
       font-weight: 600; }
+  #course-info .course-enrolled {
+    background: rgba(46, 204, 113, 0.4);
+    max-width: 110px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer; }
+    #course-info .course-enrolled p, #course-info .course-enrolled i {
+      color: #29b765;
+      padding: 0;
+      margin: 0;
+      font-size: 1.2rem; }
   #course-info .course-payment {
     width: auto;
     display: flex;

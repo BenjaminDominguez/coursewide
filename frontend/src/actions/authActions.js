@@ -3,6 +3,7 @@ import { RSAA } from 'redux-api-middleware';
 //Auth Action Types
 
 export const CLEAR_ERRORS = '@@auth/CLEAR_ERRORS'
+export const UPDATE_USER_DETAILS = '@@auth/ADD_COURSE'
 
 export const LOGIN_REQUEST = '@@auth/LOGIN_REQUEST'
 export const LOGIN_SUCCESS = '@@auth/LOGIN_SUCCESS'
@@ -23,6 +24,15 @@ export const REGISTER_FAILURE = '@@auth/REGISTER_FAILURE'
 export const clearErrors = () => ({
     type: CLEAR_ERRORS
 })
+
+export const updateUserDetails = (userID) => (dispatch) => {
+    fetch(`/api/users/${userID}`)
+        .then(res => res.json()) 
+            .then(userData => dispatch({
+               type: UPDATE_USER_DETAILS,
+               payload: userData 
+        }))
+}
 
 export const register = (userDetails) => (
     {

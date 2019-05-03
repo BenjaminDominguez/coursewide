@@ -77,6 +77,20 @@ ul.course-navigation{
         }
     }
 
+    .course-enrolled {
+        p,i{
+            color: darken($success-color, 5%);
+            padding: 0;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        background: rgba($success-color, 0.4);
+        max-width: 110px;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
     .course-payment{
             width: auto;
             display: flex;

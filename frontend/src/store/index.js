@@ -13,7 +13,7 @@ const middleware = [apiMiddleware, thunk];
 
 //Which elements of our store should persist?
 const persistedFilter = createFilter(
-    'auth', ['access', 'refresh']
+    'auth', ['access', 'refresh', 'userDetails']
 )
 
 const reducer = persistReducer(
