@@ -139,19 +139,19 @@ nav.topbar {
 
 nav.navbar {
   margin: 0;
-  padding: 10px 0 5px 0;
+  padding: 20px;
+  padding-bottom: 0;
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  border-bottom: 1px solid white;
-  max-height: 7rem;
+  height: auto;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   background: rgba(17, 25, 38, 0.9); }
   nav.navbar .hamburger {
     position: absolute;
-    margin: 28px 10px 5px 10px;
+    margin: 20px 5px 5px 10px;
     left: 80%;
     transform: translate(10%, -45%);
     cursor: pointer;
@@ -164,42 +164,34 @@ nav.navbar {
       display: block; }
     nav.navbar .hamburger.hamburger-hidden {
       display: none; }
-  nav.navbar #nav-brand {
-    display: inline;
-    font-size: 2rem;
-    color: white;
-    margin: 10px 30px 5px 50px; }
-  nav.navbar .navbar-search-form {
-    margin: 10px 15px 0 15px; }
-    nav.navbar .navbar-search-form .navbar-search-input {
-      width: 300px;
-      height: 20px;
-      padding: 10px;
-      outline: none;
-      border: none;
-      font: inherit;
-      background: rgba(153, 153, 153, 0.02);
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 1.2px solid rgba(102, 166, 255, 0.7);
-      color: #66a6ff; }
   nav.navbar .nav-links {
     list-style-type: none;
     margin: 2px 0 0 4rem;
     padding: 0;
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: flex-end; }
+    nav.navbar .nav-links #nav-brand {
+      display: inline;
+      font-size: 2rem;
+      color: white;
+      margin: 0 10px;
+      padding-bottom: 1rem; }
+    nav.navbar .nav-links .content {
+      display: flex;
+      flex-direction: row;
+      align-content: center; }
     nav.navbar .nav-links .username {
       display: flex;
       flex-direction: column;
-      height: 100%;
-      margin-right: 2rem;
-      margin-left: 2rem;
-      margin-top: 4rem;
       text-align: right;
-      cursor: pointer; }
+      cursor: pointer;
+      box-sizing: border-box;
+      margin: 0 15px;
+      height: 100%;
+      padding: 0;
+      padding-top: 7px;
+      padding-bottom: 0.2rem; }
       nav.navbar .nav-links .username .drop-down {
         visibility: hidden;
         opacity: 0;
@@ -208,32 +200,32 @@ nav.navbar {
         position: absolute;
         background: rgba(17, 25, 38, 0.9);
         z-index: 1000;
-        border-radius: 0 0 10px 10px;
         padding-top: 20px;
+        padding-bottom: 5px;
         text-align: right;
         width: 375px;
         height: auto;
         margin-top: 0.3rem;
-        top: 6.42rem;
-        right: 11rem;
+        top: 4.55rem;
+        right: 10rem;
         box-shadow: -1px 1px 5px rgba(17, 25, 38, 0.4); }
         nav.navbar .nav-links .username .drop-down .drop-down-heading {
           padding: 0;
           padding-right: 3rem;
           margin: 0;
           margin-bottom: 1rem;
-          color: #66a6ff;
-          font-weight: 300; }
+          color: white;
+          font-weight: 600;
+          font-size: 1.3rem; }
         nav.navbar .nav-links .username .drop-down .drop-down-item {
           text-decoration: none;
           color: white;
-          font-size: 1.5rem;
-          padding: 1.5rem;
-          padding-right: 3rem; }
-          nav.navbar .nav-links .username .drop-down .drop-down-item:last-child {
-            border-radius: 0 0 10px 10px; }
+          font-size: 1.3rem;
+          padding: 1rem;
+          padding-right: 3rem;
+          font-weight: 500; }
           nav.navbar .nav-links .username .drop-down .drop-down-item:hover {
-            background: #111926;
+            background: rgba(17, 25, 38, 0.4);
             color: #66a6ff;
             transition: color 0.3s, background-color 0.3s ease; }
       nav.navbar .nav-links .username:hover .drop-down {
@@ -248,40 +240,29 @@ nav.navbar {
     nav.navbar .nav-links .link {
       color: white;
       text-decoration: none;
-      margin-left: 20px;
-      padding: 2px;
-      margin-bottom: 1rem;
-      margin-top: 1.15rem;
-      font-weight: 500; }
-      nav.navbar .nav-links .link.login-link {
-        margin: 0; }
+      font-weight: 500;
+      padding-top: 7px;
+      padding-bottom: 0.2rem; }
       nav.navbar .nav-links .link:hover {
         transition: color 0.1s ease-in;
         color: #66a6ff;
         cursor: pointer; }
     nav.navbar .nav-links .nav-link {
-      text-align: center;
-      display: inline;
-      font-size: 1.3rem; }
-      nav.navbar .nav-links .nav-link#login-link {
-        padding: 15px;
-        margin: 0;
-        margin-left: 40px;
-        border: none; }
+      font-size: 1.3rem;
+      margin: 0 15px; }
       nav.navbar .nav-links .nav-link.nav-link-login {
-        padding: 15px;
+        box-sizing: border-box;
         max-width: 50px;
         font-size: 1.3rem;
         border-radius: 5px;
         margin-right: 4rem;
+        padding-bottom: 0.2rem;
+        padding-top: 7px;
         width: auto;
         color: black;
         cursor: pointer;
         outline: none;
-        box-sizing: border-box;
-        color: #66a6ff;
-        border: 1px solid;
-        border-color: #66a6ff; }
+        color: #66a6ff; }
         nav.navbar .nav-links .nav-link.nav-link-login:hover {
           color: white;
           transition: color 0.3s ease; }
@@ -296,18 +277,35 @@ nav.navbar {
       nav.navbar .nav-links .nav-hamburger-toggle.nav-hamburger-toggle-hidden {
         max-height: 0px;
         transition: max-height 0.8s ease-out; }
+  nav.navbar .show-content {
+    visibility: show;
+    max-height: 1000px; }
+  nav.navbar .hide-content {
+    visibility: hidden;
+    max-height: 0; }
+  nav.navbar .show-content,
+  nav.navbar .hide-content {
+    transition: max-height 1s, visibility 1s ease-out; }
   @media (max-width: 900px) {
-    nav.navbar ul.nav-ul-link {
+    nav.navbar .nav-links {
       flex-direction: column; }
-      nav.navbar ul.nav-ul-link .nav-link {
-        display: block;
-        text-align: center;
-        font-size: 2rem;
-        margin-bottom: 10px; }
-        nav.navbar ul.nav-ul-link .nav-link#nav-brand {
-          margin: 10px auto; }
-        nav.navbar ul.nav-ul-link .nav-link.nav-link-login {
-          margin: 10px auto; } }
+      nav.navbar .nav-links #nav-brand {
+        padding: 0; }
+      nav.navbar .nav-links .content {
+        flex-direction: column;
+        box-sizing: content-box;
+        padding-bottom: 20px;
+        overflow: hidden; }
+        nav.navbar .nav-links .content .username {
+          text-align: left; }
+          nav.navbar .nav-links .content .username .drop-down {
+            width: 100%;
+            max-height: 125px;
+            left: 0;
+            top: 65px;
+            background: rgba(17, 25, 38, 0.95); }
+            nav.navbar .nav-links .content .username .drop-down .drop-down-heading {
+              margin-bottom: 0.5rem; } }
 
 .courseCarousel {
   position: relative;
@@ -795,16 +793,13 @@ ul.course-navigation {
       font-size: 1rem;
       font-weight: 600; }
   #course-info .course-enrolled {
-    background: rgba(46, 204, 113, 0.4);
-    max-width: 110px;
-    border-radius: 10px;
-    padding: 10px;
     cursor: pointer; }
     #course-info .course-enrolled p, #course-info .course-enrolled i {
-      color: #29b765;
+      color: #2ECC71;
       padding: 0;
       margin: 0;
-      font-size: 1.2rem; }
+      font-size: 1.2rem;
+      font-weight: 600; }
   #course-info .course-payment {
     width: auto;
     display: flex;

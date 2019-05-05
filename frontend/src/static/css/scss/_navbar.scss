@@ -1,14 +1,16 @@
 $navbar-height: 7rem;
+$navbar-padding: 20px;
+$navbar-color: rgba(#111926, 0.9);
+$link-padding-bottom: 0.2rem;
 
 nav.navbar {
     margin: 0;
-    padding: 10px 0 5px 0;
+    padding: $navbar-padding;
+    padding-bottom: 0;
     box-sizing: border-box; 
     width: 100%;
     overflow: hidden;
-    border-bottom: 1px solid white;
-    max-height: $navbar-height;
-    //box-shadow: -1px 1px 10px #999;
+    height: auto;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -16,7 +18,7 @@ nav.navbar {
 
     .hamburger {
         position: absolute;
-        margin: 28px 10px 5px 10px;
+        margin: 20px 5px 5px 10px;
         left: 80%;
         transform: translate(10%, -45%);
         cursor: pointer;
@@ -35,49 +37,39 @@ nav.navbar {
         }
     }
 
-    #nav-brand{
-        display: inline;
-        font-size: 2rem;
-        color: white;
-        margin: 10px 30px 5px 50px;
-    }
-
-    .navbar-search-form{
-        margin: 10px 15px 0 15px;
-        
-        .navbar-search-input{
-            width: 300px;
-            height: 20px;
-            padding: 10px;
-            outline: none;
-            border: none;
-            font: inherit;
-            background: rgba(#999, 0.02);
-            font-size: 1rem;
-            border-radius: 10px;
-            border: 1.2px solid rgba($secondary-color, 0.7);
-            color: $secondary-color;
-        }
-        
-    }
-
     .nav-links{
         list-style-type: none;
         margin: 2px 0 0 4rem;
         padding: 0;
         width: 100%;
         display: flex;
-        align-items: center;
         justify-content: flex-end;
+
+        #nav-brand{
+            display: inline;
+            font-size: 2rem;
+            color: white;
+            margin: 0 10px;
+            padding-bottom: 1rem;
+        }
+
+        .content{
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+        }
+
         .username {
             display: flex;
             flex-direction: column;
-            height: 100%;
-            margin-right: 2rem;
-            margin-left: 2rem;
-            margin-top: 4rem;
             text-align: right;
             cursor: pointer;
+            box-sizing: border-box;
+            margin: 0 15px;
+            height: 100%;
+            padding: 0;
+            padding-top: 7px;
+            padding-bottom: $link-padding-bottom;
 
         .drop-down{
             visibility: hidden;
@@ -85,16 +77,16 @@ nav.navbar {
             display: flex;
             flex-direction: column;
             position: absolute;
-            background: rgba($primary-color, 0.9);
+            background: $navbar-color;
             z-index: 1000;
-            border-radius: 0 0 10px 10px;
             padding-top: 20px;
+            padding-bottom: 5px;
             text-align: right;
             width: 375px;
             height: auto;
             margin-top: 0.3rem;
-            top: $navbar-height - 0.58rem;
-            right: 11rem;
+            top: 4.55rem;
+            right: 10rem;
             box-shadow: -1px 1px 5px rgba($primary-color, 0.4);
 
             .drop-down-heading{
@@ -102,23 +94,21 @@ nav.navbar {
                 padding-right: 3rem;
                 margin: 0;
                 margin-bottom: 1rem;
-                color: $secondary-color;
-                font-weight: 300;
+                color: white;
+                font-weight: 600;
+                font-size: 1.3rem;
             }
 
             .drop-down-item{
                 text-decoration: none;
                 color: white;
-                font-size: 1.5rem;
-                padding: 1.5rem;
+                font-size: 1.3rem;
+                padding: 1rem;
                 padding-right: 3rem;
-
-                &:last-child{
-                    border-radius: 0 0 10px 10px;
-                }
+                font-weight: 500;
 
                 &:hover{
-                    background: $primary-color;
+                    background: rgba($navbar-color, 0.4);
                     color: $secondary-color;
                     transition: color 0.3s, background-color 0.3s ease;
                 }
@@ -144,15 +134,10 @@ nav.navbar {
         .link {
             color: white;
             text-decoration: none;
-            margin-left: 20px;
-            padding: 2px;
-            margin-bottom: 1rem;
-            margin-top: 1.15rem;
             font-weight: 500;
-
-            &.login-link{
-                margin: 0;
-            }
+            //same as enrolled courses
+            padding-top: 7px;
+            padding-bottom: $link-padding-bottom;
 
             &:hover {
                 transition: color 0.1s ease-in;
@@ -162,31 +147,22 @@ nav.navbar {
         }
 
         .nav-link{
-            text-align: center;
-            display: inline;
             font-size: 1.3rem;
-
-            &#login-link{
-                padding: 15px;
-                margin: 0;
-                margin-left: 40px;
-                border: none;
-            }
+            margin: 0 15px;
 
             &.nav-link-login{
-                padding: 15px;
+                box-sizing: border-box;
                 max-width: 50px;
                 font-size: 1.3rem;
                 border-radius: 5px;
                 margin-right: 4rem;
+                padding-bottom: $link-padding-bottom;
+                padding-top: 7px;
                 width: auto;
                 color: black;
                 cursor: pointer;
                 outline: none;
-                box-sizing: border-box;
                 color: $secondary-color;
-                border: 1px solid;
-                border-color: $secondary-color;
 
                 &:hover{
                 color: white;
@@ -205,7 +181,7 @@ nav.navbar {
 
         .nav-hamburger-toggle {
             transition: max-height 0.8s ease-in;
-            max-height: 1000px;
+            max-height: 1000px; 
             
 
             &.nav-hamburger-toggle-hidden{
@@ -216,6 +192,19 @@ nav.navbar {
         }
     }
 
+    .show-content {
+        visibility: show;
+        max-height: 1000px;
+    }
+    .hide-content {
+        visibility: hidden;
+        max-height: 0;
+    }
+    .show-content,
+    .hide-content{
+        transition: max-height 1s, visibility 1s ease-out;
+    }
+
     // @media(max-width: 550px){
     //     max-height: 10px;
     //     transition: max-height 0.5s;
@@ -223,24 +212,35 @@ nav.navbar {
     //This is about the point where the branding meets the navbar with three items
     @media(max-width: 900px) {
         
-        ul.nav-ul-link {
+        .nav-links {
             flex-direction: column;
-            
-            .nav-link {
-                display: block;
-                text-align: center;
-                font-size: 2rem;
-                margin-bottom: 10px;
 
-                &#nav-brand{
-                    margin: 10px auto;
-                }
+            #nav-brand{
+                padding: 0;
+            }
 
-                &.nav-link-login{
-                    margin: 10px auto;
+            .content {
+                flex-direction: column;
+                box-sizing: content-box;
+                padding-bottom: 20px;
+                overflow: hidden;
+
+                .username {
+                    text-align: left;
+
+                    .drop-down{
+                        width: 100%;
+                        max-height: 125px;
+                        left: 0;
+                        top: 65px;
+                        background: rgba($primary-color, 0.95);
+
+                        .drop-down-heading {
+                            margin-bottom: 0.5rem;
+                        }
+                    }
                 }
             }
         }
-
     }
 }

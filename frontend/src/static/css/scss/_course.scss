@@ -79,15 +79,12 @@ ul.course-navigation{
 
     .course-enrolled {
         p,i{
-            color: darken($success-color, 5%);
+            color: $success-color;
             padding: 0;
             margin: 0;
             font-size: 1.2rem;
+            font-weight: 600;
         }
-        background: rgba($success-color, 0.4);
-        max-width: 110px;
-        border-radius: 10px;
-        padding: 10px;
         cursor: pointer;
     }
 

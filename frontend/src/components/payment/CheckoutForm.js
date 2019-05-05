@@ -16,6 +16,7 @@ class CheckoutForm extends Component {
     }
   }
 
+
   handleSubmit = e => {
     e.preventDefault();
     

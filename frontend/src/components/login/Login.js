@@ -26,13 +26,12 @@ class Login extends Component {
     this.props.onSubmit(this.state.email, this.state.password)
   }
 
+  handleLoginMessage = () => { 
+    const { message } = this.props.location.state;
+    return message ? (<div id="flashed-message"> { message }</div>) : null;
+  }
+
   render() {
-    switch(this.props.isAuthenticated){
-      case(true):
-        return (
-          <Redirect to="/" />
-        )
-      case(false):
         return (
           <div>
             <Header />
@@ -40,8 +39,7 @@ class Login extends Component {
             <Footer />
           </div>
         )  
-      }  
-    }
+    }  
   }
 
 const mapStateToProps = (state) => ({

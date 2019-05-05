@@ -9,4 +9,6 @@ export const getCourseInfo = (courseID) => dispatch => {
         type: COURSE_INFO_REQUEST,
         payload: course
     })}
-)}   
+    )
+    .catch(err => console.log(err))
+}   
