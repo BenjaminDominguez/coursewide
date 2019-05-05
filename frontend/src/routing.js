@@ -6,8 +6,6 @@ import { Route, Redirect } from 'react-router-dom';
 import Module from './components/module/Module';
 import CourseCreator from './components/coursecreator/CourseCreator';
 
-const loginMessage = 'Please login to see this course'
-
 const grabFromStore = (func) => {
     const { data } = useSelector(state => ({
         data: func(state)
@@ -47,9 +45,9 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
             loggedIn ?
             <Component {...props} /> :
             <Redirect to={{
-                pathname: '/login',
+                pathname: '/register',
                 state: {
-                    message: loginMessage
+                    message: "Please create an account to purchase this course!"
                 }
             }} />
         )

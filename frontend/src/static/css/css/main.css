@@ -407,6 +407,23 @@ nav.navbar {
 form input {
   font: inherit; }
 
+form.prospective-form input {
+  box-sizing: border-box;
+  width: 400px;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  display: block;
+  border-radius: 4px;
+  background-color: rgba(225, 228, 232, 0.2);
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+  outline: none;
+  margin-bottom: 20px; }
+  form.prospective-form input:focus {
+    box-shadow: -1px 1px 6px rgba(102, 166, 255, 0.8); }
+
 form.stripe-form {
   width: 50%;
   margin: auto;

@@ -95,6 +95,7 @@ class Register extends Component {
         handlePasswordToggle={this.handlePasswordToggle} 
         handleChange={this.handleChange} 
         increment={this.incrementStep}
+        message={this.props.location.state ? this.props.location.state.message : null}
         />
       case 2:
         return <FinalDetails 
