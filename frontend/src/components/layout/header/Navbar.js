@@ -59,11 +59,11 @@ class Navbar extends Component {
                 </div>
                 <Logout />
                 </React.Fragment>) :  
-                (<div>
-                <Link className="link"><span className="nav-link">Prospective Instructors</span></Link>
+                (<React.Fragment>
+                <Link to="/teacher" className="link"><span className="nav-link">Prospective Instructors</span></Link>
                 <Link to="/login" className="link"> <span className="nav-link nav-link-login">Login </span></Link>
                 <Link to="/register" className="link"> <span className="nav-link nav-link-login">Register </span></Link>
-                </div>)
+                </React.Fragment>)
                 }
                 </div>
             </div>

@@ -19,6 +19,9 @@ export const fullName = state => fromAuth.fullName(state.auth)
 export const JTI = state => fromAuth.JTI(state.auth)
 export const email = state => fromAuth.email(state.auth)
 export const coursesTaking = state => fromAuth.coursesTaking(state.auth)
+export const coursesTeaching = state => fromAuth.coursesTeaching(state.auth)
+export const isStudent = state => fromAuth.isStudent(state.auth)
+export const isTeacher = state => fromAuth.isTeacher(state.auth)
 
 //Course functions
 export const courseName = state => fromCourse.courseName(state.course)
@@ -35,4 +38,14 @@ export const isEnrolled = state => {
         enrolled = courseIDS.includes(courseID(state))
     }
     return enrolled;
+}
+
+export const isTeacherOfCourse = state => {
+    let instructing = false;
+    if (isAuthenticated(state) && coursesTeaching(state)) {
+        const courseIDS = coursesTeaching(state).map(course => course.courseID)
+        instructing = courseIDS.includes(courseID(state))
+    }
+
+    return instructing;
 }

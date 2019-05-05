@@ -166,8 +166,8 @@ ul.course-navigation{
         max-width: 1000px;
         padding: 10px;
         max-height: 20rem;
-        color: $secondary-color;
-        font-size: 0.7rem;
+        color: darken($border-color, 25%);
+        font-size: 0.5rem;
         cursor: pointer;
         margin-bottom: 10px;
         border-radius: 5px;

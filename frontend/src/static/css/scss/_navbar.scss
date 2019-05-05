@@ -6,6 +6,7 @@ $link-padding-bottom: 0.2rem;
 nav.navbar {
     margin: 0;
     padding: $navbar-padding;
+    padding-right: 2rem;
     padding-bottom: 0;
     box-sizing: border-box; 
     width: 100%;
@@ -65,7 +66,7 @@ nav.navbar {
             text-align: right;
             cursor: pointer;
             box-sizing: border-box;
-            margin: 0 15px;
+            margin: 0 20px;
             height: 100%;
             padding: 0;
             padding-top: 7px;
@@ -86,7 +87,7 @@ nav.navbar {
             height: auto;
             margin-top: 0.3rem;
             top: 4.55rem;
-            right: 10rem;
+            right: 9rem;
             box-shadow: -1px 1px 5px rgba($primary-color, 0.4);
 
             .drop-down-heading{
@@ -121,13 +122,17 @@ nav.navbar {
                 opacity: 1;
                 transition: visibility 0s, opacity 0.2s ease;
             }
+            p{
+                color: $secondary-color;
+                transition: $secondary-color 0.3s ease;
+            }
         }
 
         p {
             padding: 0;
             margin: 0;
             font-size: 1.3rem;
-            color: $secondary-color;
+            color: white;
         }
     }
 
@@ -148,24 +153,23 @@ nav.navbar {
 
         .nav-link{
             font-size: 1.3rem;
-            margin: 0 15px;
+            margin: 0 20px;
 
             &.nav-link-login{
                 box-sizing: border-box;
                 max-width: 50px;
                 font-size: 1.3rem;
                 border-radius: 5px;
-                margin-right: 4rem;
                 padding-bottom: $link-padding-bottom;
                 padding-top: 7px;
                 width: auto;
                 color: black;
                 cursor: pointer;
                 outline: none;
-                color: $secondary-color;
+                color: white;
 
                 &:hover{
-                color: white;
+                color: $secondary-color;
                 transition: color 0.3s ease;
                 }
 
@@ -219,6 +223,10 @@ nav.navbar {
                 padding: 0;
             }
 
+            .nav-link{
+                margin-left: 0.5rem;
+            }
+
             .content {
                 flex-direction: column;
                 box-sizing: content-box;
@@ -227,16 +235,22 @@ nav.navbar {
 
                 .username {
                     text-align: left;
+                    margin-left: 0.5rem;
 
                     .drop-down{
                         width: 100%;
                         max-height: 125px;
                         left: 0;
                         top: 65px;
+                        padding-bottom: 2rem;
                         background: rgba($primary-color, 0.95);
 
                         .drop-down-heading {
                             margin-bottom: 0.5rem;
+                        }
+
+                        .drop-down-item {
+                            padding: 0 2rem 5px 0;
                         }
                     }
                 }

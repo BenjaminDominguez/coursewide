@@ -1,9 +1,10 @@
 import React from 'react';
-import { isAuthenticated, isEnrolled, courseID } from './reducers';
+import { isAuthenticated, isEnrolled, isTeacherOfCourse, courseID } from './reducers';
 import { useSelector } from 'react-redux';
 import Login from './components/login/Login';
 import { Route, Redirect } from 'react-router-dom';
 import Module from './components/module/Module';
+import CourseCreator from './components/coursecreator/CourseCreator';
 
 const loginMessage = 'Please login to see this course'
 
@@ -66,4 +67,18 @@ export const ModuleRoute = ({...rest}) => {
             <Redirect to={`/courses/`} />
         )
     } />)
+}
+
+export const CourseCreatorRoute = ({...rest}) => {
+    const isTeacherCourse = grabFromStore(isTeacherOfCourse);
+
+    return (
+        <Route {...rest} render={
+            (props) => (
+                isTeacherCourse ?
+                <CourseCreator {...props} /> : 
+                <Redirect to='/' />
+            )
+        }/>
+    )
 }

@@ -124,9 +124,30 @@ export function email(state) {
     }
 }
 
+export function isStudent(state) {
+    if (state.userDetails) {
+        return state.userDetails.isStudent
+    }
+}
+
+export function isTeacher(state){
+    if (state.userDetails) {
+        return state.userDetails.isTeacher
+    }
+}
+
 export function coursesTaking(state) {
     if(state.userDetails && state.userDetails.student_details.courses_taking) {
         return state.userDetails.student_details.courses_taking.map((course) =>({
+            courseID: course.course_info.id,
+            courseName: course.course_info.name
+        }))
+    }
+}
+
+export function coursesTeaching(state) {
+    if(state.userDetails.teacher_details && state.userDetails.teacher_details.courses_teaching) {
+        return state.userDetails.teacher_details.courses_teaching.map((course) => ({
             courseID: course.course_info.id,
             courseName: course.course_info.name
         }))

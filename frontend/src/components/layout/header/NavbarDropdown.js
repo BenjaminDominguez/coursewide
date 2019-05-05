@@ -5,7 +5,10 @@ import { withRouter } from 'react-router-dom';
 
 class TopbarDropdown extends Component {
 
-  handleClick = (courseID) => this.props.history.push(`/courses/${courseID}`)
+  handleClick = (courseID) => {
+    this.props.history.push(`/courses/${courseID}`)
+    window.location.reload();
+  }
 
   render() {
     let content;

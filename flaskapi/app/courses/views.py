@@ -4,6 +4,23 @@ from flask_jwt_extended import jwt_required
 from app.models import Course, User, Module
 from app import db
 
+@api.route('/courses/clear/<int:user_id>', methods=['GET'])
+def clear_all_courses(user_id):
+    """ 
+    Helper function to help clear courses for testing. Do not use in production.
+    """
+    user = User.query.get_or_404(user_id)
+    student = user.student
+    student.courses_taking.clear()
+    db.session.commit()
+
+    return jsonify({
+        'msg': 'Deleted all courses'
+    })
+
+
+
+
 @api.route('/courses', methods=['GET'])
 def get_all_courses():
     return jsonify([course.json_response() for course in Course.query.all()]), 200
