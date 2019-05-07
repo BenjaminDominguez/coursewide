@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import CourseBio from './CourseBio';
 import CourseNav from './CourseNav';
 import { isAuthenticated, coursesTaking, isEnrolled, courseID } from '../../reducers';
+import Footer from '../layout/Footer';
 
 /*
 Course will not be included in the redux store.
@@ -69,6 +70,7 @@ class Course extends Component {
           <div>
             { header }
             <CourseModules />
+            <Footer />
           </div>
       )
       case(false):
@@ -76,6 +78,7 @@ class Course extends Component {
             <div>
               { header }
               <CourseBio />
+              <Footer />
             </div>
           )
         }

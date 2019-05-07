@@ -10,6 +10,8 @@ const Form = () => {
             <input type="text" placeholder="Your email (Required)"></input>
             <input type="text" placeholder="Where are you from? (Required)"></input>
             <input type="text" placeholder="What can you teach? (Required)"></input>
+            <input type="text" placeholder="Link to github (Optional)"></input>
+            <input type="text" placeholder="Link to resume (Optional)"></input>
             <button style={styles.button2} type="submit">Submit{"  "}<i className="fas fa-check"></i></button>
         </form>
     )
