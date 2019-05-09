@@ -524,7 +524,8 @@ form.register-form {
   height: auto;
   border-radius: 10px 10px 5px 5px;
   background: white;
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+  box-shadow: -1px 1px 8px #e1e4e8; }
   form.register-form .form-heading-bg {
     width: 100%;
     text-align: center;
@@ -586,7 +587,7 @@ form.register-form {
   form.register-form#login-form {
     height: auto;
     width: 375px;
-    margin-bottom: 100px; }
+    padding: 40px; }
 
 .buttons {
   margin: auto;

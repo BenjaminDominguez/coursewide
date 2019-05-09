@@ -11,29 +11,8 @@ def get_all_users():
 def get_user(id):
     user = User.query.get_or_404(id)
     return jsonify(user.json_response()), 200
-    
-@api.route('/users', methods=['POST'])
-def create_new_user():
 
-    user_data = request.get_json()
-
-    password = user_data.pop('password')
-
-    user = User(**user_data)
-    user.create_password(password)
-    db.session.add(user)
-    
-    #this must be provided in the JSON or else other areas of code will not work.
-    if user.isStudent:
-        s = Student()
-        db.session.add(s)
-        user.student = s
-    elif user.isTeacher:
-        t = Teacher()
-        db.session.add(t)
-        user.teacher = t
-
-    db.session.commit()
-
-    return jsonify(user.json_response()), 201
+@api.route('/teachers', methods=['GET'])
+def get_all_teachers():
+    return jsonify([t.json_response() for t in User.query.filter_by(isTeacher=True).all()])
 

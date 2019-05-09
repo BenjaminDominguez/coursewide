@@ -1,9 +1,10 @@
 import React from 'react';
-import { isAuthenticated, isEnrolled, isTeacherOfCourse, courseID } from './reducers';
+import { isAuthenticated, isEnrolled, isTeacherOfCourse, courseID, courseName } from './reducers';
 import { useSelector } from 'react-redux';
 import Login from './components/login/Login';
 import { Route, Redirect } from 'react-router-dom';
 import Module from './components/module/Module';
+import Payment from './components/payment/Payment';
 import CourseCreator from './components/coursecreator/CourseCreator';
 
 const grabFromStore = (func) => {
@@ -54,6 +55,25 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
     } />)
 }
 
+export const ProtectedPayment = ({...args}) => {
+    const loggedIn = grabFromStore(isAuthenticated)
+    const nameOfCourse = grabFromStore(courseName)
+    const message = nameOfCourse ? `Please create an account to purchase ${nameOfCourse}` : null
+
+    return (<Route {...args} render={
+        (props) => (
+            loggedIn ?
+            <Payment {...props} /> :
+            <Redirect to={{
+                pathname: '/register',
+                state: {
+                    message: message
+                }
+            }} />
+        )
+    } />)
+}
+
 export const ModuleRoute = ({...rest}) => {
     const isEnrolledInCourse = grabFromStore(isEnrolled)
     const idForCourse = grabFromStore(courseID)
@@ -70,8 +90,7 @@ export const ModuleRoute = ({...rest}) => {
 export const CourseCreatorRoute = ({...rest}) => {
     const isTeacherCourse = grabFromStore(isTeacherOfCourse);
 
-    return (
-        <Route {...rest} render={
+    return (<Route {...rest} render={
             (props) => (
                 isTeacherCourse ?
                 <CourseCreator {...props} /> : 

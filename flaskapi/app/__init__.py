@@ -32,7 +32,9 @@ def register_blueprints(app, url_prefix='/api'):
     from app.courses import bp as courses_bp
     from app.auth import bp as auth_bp
     from app.payments import bp as payments_bp
+    from app.aws import bp as aws_bp
     app.register_blueprint(users_bp, url_prefix=url_prefix)
     app.register_blueprint(courses_bp, url_prefix=url_prefix)
     app.register_blueprint(auth_bp, url_prefix=url_prefix)
     app.register_blueprint(payments_bp, url_prefix=url_prefix)
+    app.register_blueprint(aws_bp, url_prefix=url_prefix)

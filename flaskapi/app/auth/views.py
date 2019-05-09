@@ -4,12 +4,12 @@ from app import jwt, db
 from flask import jsonify, request, current_app
 from sqlalchemy.exc import IntegrityError
 from flask_jwt_extended import (
-    create_access_token, create_refresh_token,
     jwt_required, get_jwt_identity, jwt_refresh_token_required
 )
 from app.auth.helpers import (
     add_token_to_database, is_token_revoked,
-    get_user_tokens, revoke_token, unrevoke_token, TokenNotFound
+    get_user_tokens, revoke_token, unrevoke_token, TokenNotFound,
+    create_tokens
 )
 
 @jwt.token_in_blacklist_loader
@@ -26,13 +26,7 @@ def login():
     if user is None or not user.check_password(password):
         return jsonify({'msg': 'No user found or incorrect password'}), 404
 
-    tokens = {
-        "access": create_access_token(identity=user.id, user_claims=user.token_response()),
-        "refresh": create_refresh_token(identity=user.id, user_claims=user.token_response())
-    }
-
-    add_token_to_database(tokens["access"], current_app.config['JWT_IDENTITY_CLAIM'])
-    add_token_to_database(tokens["refresh"], current_app.config['JWT_IDENTITY_CLAIM'])
+    tokens = create_tokens(user)
 
     return jsonify(tokens), 200
 
@@ -53,15 +47,13 @@ def register():
     except IntegrityError:
         return jsonify({'msg': 'Email already exists'}), 400
 
-    tokens = {
-        "access": create_access_token(identity=new_user.id, user_claims=new_user.token_response()),
-        "refresh": create_refresh_token(identity=new_user.id, user_claims=new_user.token_response())
-    }
-
-    add_token_to_database(tokens["access"], current_app.config['JWT_IDENTITY_CLAIM'])
-    add_token_to_database(tokens["refresh"], current_app.config['JWT_IDENTITY_CLAIM'])
+    tokens = create_tokens(new_user)
 
     return jsonify(tokens), 201
+
+@api.route('/auth/register/teacher', methods=['POST'])
+def register_teacher():
+    return '' 
 
 @api.route('/auth/tokens', methods=['GET'])
 @jwt_required

@@ -2,6 +2,10 @@ from flask_jwt_extended import decode_token
 from app.models import TokenBlacklist
 from app import db
 from datetime import datetime
+from flask import current_app
+from flask_jwt_extended import (
+    create_access_token, create_refresh_token
+)
 
 class TokenNotFound(Exception):
     """ Raised when the token in question cannot be found """
@@ -40,6 +44,17 @@ def is_token_revoked(decoded_token):
         return True
     
     return token.revoked
+
+def create_tokens(user_obj):
+    tokens = {
+        "access": create_access_token(identity=user_obj.id, user_claims=user_obj.token_response()),
+        "refresh": create_refresh_token(identity=user_obj.id, user_claims=user_obj.token_response())
+    }
+
+    add_token_to_database(tokens["access"], current_app.config['JWT_IDENTITY_CLAIM'])
+    add_token_to_database(tokens["refresh"], current_app.config['JWT_IDENTITY_CLAIM'])
+
+    return tokens
 
 def get_user_tokens(user_identity):
     return TokenBlacklist.query.filter_by(user_identity=user_identity).all()

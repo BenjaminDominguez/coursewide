@@ -160,6 +160,7 @@ form.register-form{
     border-radius: 10px 10px 5px 5px;
     background: white;
     padding-bottom: 10px;
+    box-shadow: -1px 1px 8px $border-color;
 
     .form-heading-bg{
         width: 100%;
@@ -252,7 +253,7 @@ form.register-form{
     &#login-form{
         height: auto;
         width: 375px;
-        margin-bottom: 100px;
+        padding: 40px;
     }
  
 }

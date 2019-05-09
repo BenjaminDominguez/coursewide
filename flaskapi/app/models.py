@@ -108,6 +108,10 @@ class Student(db.Model):
 class Teacher(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    github = db.Column(db.String(200), default=None, nullable=True)
+    subject = db.Column(db.String(200), nullable=False)
+    link_to_resume = db.Column(db.String(200), default=None, nullable=True)
+    approved = db.Column(db.Boolean, default=False)
     courses_teaching = db.relationship('Course', backref='teacher', lazy='dynamic')
 
     def json_response(self):

@@ -4,8 +4,12 @@ import Footer from '../layout/Footer';
 
 
 const Form = () => {
+
+    const onSubmit = () => {
+    }
+
     return (
-        <form className="prospective-form">
+        <form className="prospective-form" onSubmit={onSubmit}>
             <input type="text" placeholder="Your name (Required)"></input>
             <input type="text" placeholder="Your email (Required)"></input>
             <input type="text" placeholder="Where are you from? (Required)"></input>
@@ -24,6 +28,13 @@ class Prospectives extends Component {
         this.state = { 
             showForm: false
         }
+    }
+
+    handleClick = (e) => {
+        e.preventDefault()
+        this.setState({showForm: true})
+        //Scroll to the top of the page
+        window.scrollTo(0, 0)
     }
 
   render() {
@@ -53,7 +64,7 @@ class Prospectives extends Component {
                     <li style={styles.li}><i className="fas fa-laptop-code"></i>{" "}Experience in software developement</li>
             </ul>
             <p style={styles.paragraph2}> Meet the requirements?</p>
-            <button onClick={() => this.setState({showForm: true})}style={styles.button}>Fill out a form now!</button>
+            <button onClick={this.handleClick}style={styles.button}>Fill out a form now!</button>
         </div>
         <Footer />
       </div>
@@ -64,7 +75,8 @@ class Prospectives extends Component {
 const styles = {
     container: {
         width: '60%',
-        margin: '3rem auto'
+        margin: '3rem auto',
+        paddingBottom: '2rem'
     },
     title: {
         color: '#707070',
@@ -105,7 +117,6 @@ const styles = {
         color: 'rgb(102,166,255)',
         fontWeight: 800,
         borderRadius: '10px',
-        marginBottom: '6rem',
         width: '300px'
     },
     button2: {
