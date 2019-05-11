@@ -1,5 +1,5 @@
 from flask_jwt_extended import decode_token
-from app.models import TokenBlacklist
+from app.models import TokenBlacklist, Student, Teacher
 from app import db
 from datetime import datetime
 from flask import current_app
@@ -10,6 +10,16 @@ from flask_jwt_extended import (
 class TokenNotFound(Exception):
     """ Raised when the token in question cannot be found """
     pass
+
+def add_role(user, data):
+    if data.get('isStudent', None):
+        student = Student()
+        user.student = student
+        db.session.add(student)
+    elif data.get('isTeacher', None):
+        teacher = Teacher()
+        user.teacher = teacher
+        db.session.add(teacher)
 
 def epoch_utc_to_datetime(epoch_utc):
     """ Helper function to convert 
