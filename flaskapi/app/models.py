@@ -113,12 +113,19 @@ class Teacher(db.Model):
     link_to_resume = db.Column(db.String(200), default=None, nullable=True)
     approved = db.Column(db.Boolean, default=False)
     courses_teaching = db.relationship('Course', backref='teacher', lazy='dynamic')
+    temp_password = db.Column(db.String(255), default=None)
 
     def json_response(self):
         return {
             "user_id": self.user_id,
             "name": self.user.full_name() if self.user else None
         }
+
+    def check_temp_password(self, temp_password_recieved):
+        if temp_password_recieved == self.temp_password:
+            return True
+        else:
+            return False
 
     def __str__(self):
         return 'Teacher ' + str(self.user_id)

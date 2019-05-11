@@ -11,20 +11,21 @@ class Form extends Component {
 
     render() {
 
-    const { handleSubmit, handleChange } = this.props;    
+        const { handleSubmit, handleChange } = this.props;    
 
-    return (
-        <form className="prospective-form" onSubmit={handleSubmit}>
-            <input onChange={handleChange} name="first" type="text" placeholder="Your first name (Required)"></input>
-            <input onChange={handleChange} name="last" type="text" placeholder="Your last name (Required)"></input>
-            <input onChange={handleChange} name="email" type="text" placeholder="Your email (Required)"></input>
-            <input onChange={handleChange} name="location" type="text" placeholder="Where are you from? (Required)"></input>
-            <input onChange={handleChange} name="subject" type="text" placeholder="What can you teach? (Required)"></input>
-            <input onChange={handleChange} name="github" type="text" placeholder="Link to github (Optional)"></input>
-            <input onChange={handleChange} name="resume" type="text" placeholder="Link to resume (Optional)"></input>
-            <button style={styles.button2} type="submit">Submit{"  "}<i className="fas fa-check"></i></button>
-        </form>
-    )}
+        return (
+            <form className="prospective-form" onSubmit={handleSubmit}>
+                <input onChange={handleChange} name="first" type="text" placeholder="Your first name (Required)"></input>
+                <input onChange={handleChange} name="last" type="text" placeholder="Your last name (Required)"></input>
+                <input onChange={handleChange} name="email" type="text" placeholder="Your email (Required)"></input>
+                <input onChange={handleChange} name="location" type="text" placeholder="Where are you from? (Required)"></input>
+                <input onChange={handleChange} name="subject" type="text" placeholder="What can you teach? (Required)"></input>
+                <input onChange={handleChange} name="github" type="text" placeholder="Link to github (Optional)"></input>
+                <input onChange={handleChange} name="resume" type="text" placeholder="Link to resume (Optional)"></input>
+                <button style={styles.button2} type="submit">Submit{"  "}<i className="fas fa-check"></i></button>
+            </form>
+        )
+    }
 }
 
 class Prospectives extends Component {
