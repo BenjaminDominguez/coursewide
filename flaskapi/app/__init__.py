@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_mail import Mail
 from app.config import Config
 from flask_jwt_extended import JWTManager
 import stripe
@@ -10,6 +11,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 cors = CORS()
 jwt = JWTManager()
+mail = Mail()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -24,6 +26,7 @@ def register_dependencies(app):
     migrate.init_app(app, db)
     cors.init_app(app)
     jwt.init_app(app)
+    mail.init_app(app)
 
     stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
@@ -33,8 +36,10 @@ def register_blueprints(app, url_prefix='/api'):
     from app.auth import bp as auth_bp
     from app.payments import bp as payments_bp
     from app.aws import bp as aws_bp
+    from app.emails import bp as emails_bp
     app.register_blueprint(users_bp, url_prefix=url_prefix)
     app.register_blueprint(courses_bp, url_prefix=url_prefix)
     app.register_blueprint(auth_bp, url_prefix=url_prefix)
     app.register_blueprint(payments_bp, url_prefix=url_prefix)
     app.register_blueprint(aws_bp, url_prefix=url_prefix)
+    app.register_blueprint(emails_bp, url_prefix=url_prefix)
