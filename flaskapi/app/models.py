@@ -32,9 +32,9 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first = db.Column(db.String(100), nullable=False)
     last = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(1000), unique=True, nullable=False)
-    password = db.Column(db.String(1000), nullable=False)
-    location = db.Column(db.String(1000), nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.String(100), nullable=False)
+    location = db.Column(db.String(100), nullable=False)
     isStudent = db.Column(db.Boolean, default=False, nullable=False)
     isTeacher = db.Column(db.Boolean, default=False, nullable=False)
 
@@ -125,9 +125,9 @@ class Teacher(db.Model):
 
 class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(1000), default=None)
-    description = db.Column(db.String(500), default=None)
-    bio = db.Column(db.String(1000), default=None)
+    name = db.Column(db.String(255), default=None)
+    description = db.Column(db.String(255), default=None)
+    bio = db.Column(db.String(255), default=None)
     price = db.Column(db.Float, default=None)
     num_sales = db.Column(db.Integer, default=0)
 
@@ -159,9 +159,9 @@ class Course(db.Model):
     
 class Module(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(1000), default=None)
+    name = db.Column(db.String(255), default=None)
     order = db.Column(db.Integer, default=None)
-    info = db.Column(db.String(1000), default=None)
+    info = db.Column(db.String(255), default=None)
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'))
 
     def json_response(self):

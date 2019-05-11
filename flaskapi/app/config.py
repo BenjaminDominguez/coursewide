@@ -7,10 +7,8 @@ env_path = os.path.join(base_directory, '.env')
 load_dotenv(env_path)
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{0}:{1}@{2}/{3}'.format(
-        os.environ.get('AWS_DB_USER'), os.environ.get('AWS_DB_PASSWORD'),
-        os.environ.get('AWS_DB_ENDPOINT'), os.environ.get('AWS_DB_URL')
-    )
+    SQLALCHEMY_DATABASE_URI = 'mysql://{0}:{1}@localhost/coursewide'.format(
+        os.environ.get('MYSQL_USERNAME'), os.environ.get('MYSQL_PASSWORD'))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = '67D35D63146AF81D9C1F6C33DE787' #Do not use in production
     JWT_BLACKLIST_ENABLED = True
