@@ -22,7 +22,10 @@ jmespath==0.9.4
 Mako==1.0.9
 MarkupSafe==1.1.1
 marshmallow==2.19.2
+mysql-connector-python==8.0.16
+mysqlclient==1.4.2.post1
 Pillow==6.0.0
+protobuf==3.7.1
 pyasn1==0.4.5
 pycparser==2.19
 PyJWT==1.7.1

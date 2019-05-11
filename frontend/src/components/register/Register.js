@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import EmailPassword from './EmailPassword';
 import FinalDetails from './FinalDetails';
 import Confirm from './Confirm';
-import Validator from './Validator';
-import FlashedMessages from './FlashedMessages';
+import Validator from '../../Validator';
 import { register } from '../../actions/authActions';
 import { connect } from 'react-redux';
 import { authErrors } from '../../reducers';
@@ -14,7 +13,7 @@ class Register extends Component {
 
     //register instance of validation class, will be more
     //useful later on when password and email validation are added
-    this.validator = new Validator();
+    this.validator = new Validator("red small");
     this.state = {
       step: 1,
       email: '',
@@ -58,14 +57,7 @@ class Register extends Component {
     const { email, password, firstName, lastName, country } = this.state;
     const valuesToValidate = [email, password, firstName, lastName, country]
 
-    let flashedMessages = []
-
-    //Validate each, eventually we are going to move to email validation and password validation
-    valuesToValidate.forEach(value => {
-      if(!this.validator.validateLength(value, 0)){
-        flashedMessages.push(<FlashedMessages flashClass="red small" text="Please fill in all fields" />)
-      }
-    })
+    const flashedMessages = this.validator.validateEachLength(valuesToValidate);
 
     // If no validation errors, procede to register
     if (flashedMessages.length === 0){

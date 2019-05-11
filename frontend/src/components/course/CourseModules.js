@@ -10,13 +10,13 @@ class CourseModules extends Component {
     }
 
   render() {
-
+    const { isEnrolled, modules, extraModules } = this.props;
     return (
     <div class="course-container">
       <div class="modules">
-          {this.props.isEnrolled ? null : (<p className="buy-now-p">Buy this course now to access course modules.</p>)}
-          { this.props.modules }
-          { this.props.extraModules ? <p className="buy-now-p"> {this.props.extraModules.length} more modules available. Purchase course now to access all of the them! </p> : null }
+          { isEnrolled ? null : (<p className="buy-now-p">Buy this course now to access course modules.</p>)}
+          { modules }
+          { extraModules && !isEnrolled ? <p className="buy-now-p"> {this.props.extraModules.length} more modules available. Purchase course now to access all of the them! </p> : null }
       </div>
     </div>
     )

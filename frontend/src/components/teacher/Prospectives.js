@@ -1,32 +1,50 @@
 import React, { Component } from 'react';
 import Header from '../layout/header/Header';
 import Footer from '../layout/Footer';
+import { connect } from 'react-redux';
+import { registerTeacher } from '../../actions/authActions';
+import Validator from '../../Validator';
 
 
-const Form = () => {
+class Form extends Component {
 
-    const onSubmit = () => {
-    }
+    render() {
+
+    const { handleSubmit, handleChange } = this.props;    
 
     return (
-        <form className="prospective-form" onSubmit={onSubmit}>
-            <input type="text" placeholder="Your name (Required)"></input>
-            <input type="text" placeholder="Your email (Required)"></input>
-            <input type="text" placeholder="Where are you from? (Required)"></input>
-            <input type="text" placeholder="What can you teach? (Required)"></input>
-            <input type="text" placeholder="Link to github (Optional)"></input>
-            <input type="text" placeholder="Link to resume (Optional)"></input>
+        <form className="prospective-form" onSubmit={handleSubmit}>
+            <input onChange={handleChange} name="first" type="text" placeholder="Your first name (Required)"></input>
+            <input onChange={handleChange} name="last" type="text" placeholder="Your last name (Required)"></input>
+            <input onChange={handleChange} name="email" type="text" placeholder="Your email (Required)"></input>
+            <input onChange={handleChange} name="location" type="text" placeholder="Where are you from? (Required)"></input>
+            <input onChange={handleChange} name="subject" type="text" placeholder="What can you teach? (Required)"></input>
+            <input onChange={handleChange} name="github" type="text" placeholder="Link to github (Optional)"></input>
+            <input onChange={handleChange} name="resume" type="text" placeholder="Link to resume (Optional)"></input>
             <button style={styles.button2} type="submit">Submit{"  "}<i className="fas fa-check"></i></button>
         </form>
-    )
+    )}
 }
 
 class Prospectives extends Component {
 
     constructor(){
         super();
+
+        this.validator = new Validator("red");
+
         this.state = { 
-            showForm: false
+            showForm: false,
+            email: '',
+            location: '',
+            first: '',
+            last: '',
+            last: '',
+            subject: '',
+            github: '',
+            resume: '',
+
+            flashedMessages: undefined
         }
     }
 
@@ -37,16 +55,51 @@ class Prospectives extends Component {
         window.scrollTo(0, 0)
     }
 
+    handleChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    handleSubmit = (e) => {
+
+        e.preventDefault();
+
+        const { email, location, first, last, subject, github, resume } = this.state;
+
+        const valuesToValidate = [email, location, first, last, subject]
+
+        const flashedMessages = this.validator.validateEachLength(valuesToValidate);
+
+        if (flashedMessages.length === 0) {
+            const teacherData = {
+                approved: false,
+                email: email,
+                location: location,
+                first: first,
+                last: last,
+                subject: subject,
+                github: github,
+                resume: resume
+            }
+
+            this.props.handleRegister(teacherData)
+        } else {
+            this.setState({flashedMessages: flashedMessages[0]})
+        }
+    }
+
   render() {
 
-    if (this.state.showForm) {
+    const { showForm, flashedMessages } = this.state;
+
+    if (showForm) {
         return (
             <div>
                 <Header />
+                    { flashedMessages }
                     <div style={styles.container}>
                     <h1 style={styles.title}>Looking to become an instructor at coursewide?</h1>
                     <p style={styles.paragraph}> Fill out the form below to get started</p>
-                    <Form />
+                    <Form handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
                     </div>
                 <Footer />
             </div>
@@ -134,4 +187,8 @@ const styles = {
     }
 }
 
-export default Prospectives;
+const mapDispatchToProps = dispatch => ({
+    handleRegister: (teacherData) => { dispatch(registerTeacher(teacherData)) }
+})
+
+export default connect(null, mapDispatchToProps)(Prospectives);

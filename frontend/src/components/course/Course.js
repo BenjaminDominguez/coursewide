@@ -38,17 +38,12 @@ class Course extends Component {
     this.setState({editContent})
   }
 
-  handleToggle = (e) => {
-    e.preventDefault();
-    let editContent = { ...this.state.editContent }
-    editContent.toggleEdit = !editContent.toggleEdit
-    this.setState({editContent})
-  }
-
   handleNav = (location) => {
     location === 'info' ? 
     this.setState({showModules: false}) 
     : this.setState({showModules: true})
+
+    window.scrollTo(0, 0)
   }
 
 

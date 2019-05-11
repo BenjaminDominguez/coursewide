@@ -48,6 +48,20 @@ export const register = (userDetails) => (
     }
 )
 
+export const registerTeacher = (teacherDetails) => (
+    {
+        [RSAA]: {
+            endpoint: '/api/auth/register/teacher',
+            method: 'POST',
+            body: JSON.stringify(teacherDetails),
+            headers: {'Content-Type': 'application/json'},
+            types: [
+                REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE
+            ]
+        }
+    }
+)
+
 export const login = (email, password) => (
     {
         [RSAA]: {
