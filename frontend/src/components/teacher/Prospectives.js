@@ -4,6 +4,7 @@ import Footer from '../layout/Footer';
 import { connect } from 'react-redux';
 import { registerTeacher } from '../../actions/authActions';
 import Validator from '../../Validator';
+import { Link } from 'react-router-dom';
 
 
 class Form extends Component {
@@ -110,8 +111,9 @@ class Prospectives extends Component {
         <Header />
         <div style={styles.container}>   
             <h1 style={styles.title}>Looking to become an instructor at coursewide?</h1>
+            <Link style={styles.checkingstatus}>Check status of an application by clicking here.</Link>
             <div className="prospective-svg"> </div>
-            <p style={styles.paragraph}> If you meet the following requirements below, sign up below and we'll get back to you within 24 hours.</p> 
+            <p style={styles.paragraph}> If you meet the following requirements below, sign up below and we'll get back to you within a few hours.</p> 
             <ul style={styles.ul}>
                     <li style={styles.li}><i className="fas fa-globe-americas"></i>{" "}Fluent in both English and Spanish</li>
                     <li style={styles.li}><i className="fas fa-laptop-code"></i>{" "}Experience in software developement</li>
@@ -133,13 +135,18 @@ const styles = {
     },
     title: {
         color: '#707070',
-        marginBottom: '2rem'
+        marginBottom: '1rem'
     },
     paragraph: {
         marginBottom: '2rem',
         fontSize: '1.5rem',
         color: '#707070',
         lineHeight: '2'
+    },
+    checkingstatus: {
+        textDecoration: 'none',
+        fontSize: '1.2rem',
+        color: '#66a6ff'
     },
     paragraph2: {
         fontSize: '1.5rem',
